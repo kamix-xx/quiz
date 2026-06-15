@@ -9,7 +9,7 @@
             --primary: #007AFF; /* iOS Blue */
             --primary-hover: #0056b3;
             --success: #34C759; /* iOS Green */
-            --danger: #FF3B30;  /* iOS Red */
+            --danger: #FF3B30; /* iOS Red */
             --bg: #F2F2F7;
             --card-bg: #FFFFFF;
             --text: #1C1C1E;
@@ -20,6 +20,7 @@
             --option-selected: #E5F1FF;
             --option-selected-border: #007AFF;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
@@ -32,16 +33,21 @@
             padding: 20px;
             box-sizing: border-box;
         }
+
         .quiz-container {
             background: var(--card-bg);
             max-width: 800px;
             width: 100%;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             padding: 40px;
             box-sizing: border-box;
         }
-        .hidden { display: none !important; }
+
+        .hidden {
+            display: none !important;
+        }
+
         h1 {
             margin-top: 0;
             color: var(--text);
@@ -50,12 +56,14 @@
             margin-bottom: 16px;
             letter-spacing: -0.02em;
         }
+
         .intro-text {
             font-size: 1.15em;
             color: var(--text-muted);
             margin-bottom: 35px;
             line-height: 1.6;
         }
+
         .progress {
             font-size: 0.95em;
             font-weight: 600;
@@ -65,6 +73,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .progress-bar-container {
             flex-grow: 1;
             background: var(--option-border);
@@ -73,15 +82,18 @@
             margin-right: 20px;
             overflow: hidden;
         }
+
         .progress-bar {
             height: 100%;
             background: var(--primary);
             width: 0%;
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .question-box {
             margin-bottom: 30px;
         }
+
         .question-type-badge {
             display: inline-block;
             background: #E5E5EA;
@@ -94,6 +106,7 @@
             margin-bottom: 15px;
             letter-spacing: 0.5px;
         }
+
         .question {
             font-size: 1.3em;
             font-weight: 600;
@@ -101,6 +114,7 @@
             line-height: 1.4;
             color: var(--text);
         }
+
         code {
             background: #F2F2F7;
             padding: 2px 6px;
@@ -108,6 +122,7 @@
             font-family: monospace;
             color: #D50000;
         }
+
         .option {
             display: flex;
             align-items: center;
@@ -123,26 +138,30 @@
             white-space: pre-wrap;
             color: var(--text);
         }
+
         .option:hover {
             background: var(--option-hover);
         }
+
         .option.selected {
             background: var(--option-selected);
             border-color: var(--option-selected-border);
         }
+
         /* States after checking answer */
         .option.correct-answer {
             background: #E8F5E9;
             border-color: var(--success);
             color: #1B5E20;
         }
+
         .option.wrong-answer {
             background: #FFEBEE;
             border-color: var(--danger);
             color: #B71C1C;
             opacity: 0.8;
         }
-        
+
         .checkbox-indicator {
             width: 22px;
             height: 22px;
@@ -155,28 +174,34 @@
             flex-shrink: 0;
             transition: all 0.2s;
         }
+
         .option.selected .checkbox-indicator {
             background: var(--primary);
             border-color: var(--primary);
         }
+
         .option.selected .checkbox-indicator::after {
             content: "✓";
             color: white;
             font-weight: bold;
             font-size: 14px;
         }
+
         .option.correct-answer .checkbox-indicator {
             background: var(--success);
             border-color: var(--success);
         }
+
         .option.correct-answer .checkbox-indicator::after {
             content: "✓";
             color: white;
         }
+
         .option.wrong-answer .checkbox-indicator {
             background: var(--danger);
             border-color: var(--danger);
         }
+
         .option.wrong-answer .checkbox-indicator::after {
             content: "✕";
             color: white;
@@ -196,14 +221,16 @@
             margin-top: 30px;
             transition: all 0.2s;
         }
-        .btn:hover { 
+
+        .btn:hover {
             background: var(--primary-hover);
         }
+
         .btn:disabled {
             background: #D1D1D6;
             cursor: not-allowed;
         }
-        
+
         .feedback {
             margin-top: 25px;
             padding: 16px;
@@ -214,21 +241,31 @@
             animation: fadeIn 0.3s ease;
             line-height: 1.5;
         }
+
         .feedback.correct {
-            background: #E8F5E9; color: #1B5E20; display: block;
+            background: #E8F5E9;
+            color: #1B5E20;
+            display: block;
         }
+
         .feedback.incorrect {
-            background: #FFEBEE; color: #B71C1C; display: block;
+            background: #FFEBEE;
+            color: #B71C1C;
+            display: block;
         }
+
         .explanation {
             margin-top: 10px;
             font-size: 0.9em;
             font-weight: normal;
-            border-top: 1px solid rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             padding-top: 10px;
         }
-        
-        .score-container { text-align: center; }
+
+        .score-container {
+            text-align: center;
+        }
+
         .score {
             font-size: 4em;
             font-weight: 800;
@@ -238,332 +275,873 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @media(max-width: 600px) {
-            .quiz-container { padding: 25px 20px; }
-            h1 { font-size: 1.8em; }
-            .question { font-size: 1.15em; }
-            .option { font-size: 1em; padding: 14px 16px; }
-            .btn { padding: 16px 20px; }
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question {
+                font-size: 1.15em;
+            }
+
+            .option {
+                font-size: 1em;
+                padding: 14px 16px;
+            }
+
+            .btn {
+                padding: 16px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="quiz-container" id="quiz-container">
-        <div id="start-screen">
-            <h1>Quiz: Bazy danych SQL i NoSQL</h1>
-            <p class="intro-text">
-            
-                Z naszej puli <strong><span id="total-q-count"></span> pytań</strong> aplikacja losuje <strong>15 zagadnień</strong> na każdą sesję. 
-                <br><br>
-                <strong>Uwaga: Pytania mogą być wielokrotnego wyboru!</strong> Zaznacz wszystkie poprawne odpowiedzi i kliknij "Sprawdź".
-            </p>
-            <button class="btn" id="start-btn">Rozpocznij Quiz</button>
-        </div>
-        
-        <div id="quiz-screen" class="hidden">
-            <div class="progress">
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="progress-bar"></div>
-                </div>
-                <span id="progress-text">1 / 15</span>
-            </div>
-            
-            <div class="question-box">
-                <div class="question-type-badge" id="q-type-badge">Wielokrotny wybór</div>
-                <div class="question" id="question-text"></div>
-            </div>
-            
-            <div id="options-container"></div>
-            
-            <div id="feedback-message" class="feedback"></div>
-            
-            <button class="btn" id="check-btn" disabled>Zaznacz odpowiedź, aby sprawdzić</button>
-            <button class="btn hidden" id="next-btn">Następne pytanie</button>
-        </div>
+<div class="quiz-container" id="quiz-container">
+    <div id="start-screen">
+        <h1>Quiz: Bazy danych SQL i NoSQL</h1>
+        <p class="intro-text">
 
-        <div id="result-screen" class="hidden score-container">
-            <h1>Koniec Quizu!</h1>
-            <p class="intro-text">Oto Twój wynik z tej sesji:</p>
-            <div class="score" id="score"></div>
-            <button class="btn" id="restart-btn">Zagraj ponownie (nowe losowanie)</button>
-        </div>
+            Z naszej puli <strong><span id="total-q-count"></span> pytań</strong> aplikacja losuje <strong>15
+            zagadnień</strong> na każdą sesję.
+            <br><br>
+            <strong>Uwaga: Pytania mogą być wielokrotnego wyboru!</strong> Zaznacz wszystkie poprawne odpowiedzi i
+            kliknij "Sprawdź".
+        </p>
+        <button class="btn" id="start-btn">Rozpocznij Quiz</button>
     </div>
 
-    <script>
-        const allQuestions = [
-  {
-    "question": "Polecenie CREATE USER user1 IDENTIFIED BY 'password' oznacza:",
-    "options": [
-      "Utworzenie użytkownika user1 dla hosta localhost",
-      "Utworzenie użytkownika user1 dla hosta %",
-      "Komenda jest błędna",
-      "Utworzenie użytkownika user1 bez określonego hosta (host będzie miał wartość NULL)"
-    ],
-    "correct": [1],
-    "explanation": "W systemach bazodanowych takich jak MySQL lub MariaDB, pominięcie jawnego określenia hosta podczas tworzenia użytkownika powoduje automatyczne przypisanie domyślnego znaku wieloznacznego '%', co zezwala na połączenia z dowolnego adresu IP."
-  },
-  {
-    "question": "Spójność bazy danych:",
-    "options": [
-      "Jest ściśle powiązana z efektywnością przetwarzania danych",
-      "Zapewnia poprawne odzwierciedlenie rzeczywistości",
-      "Zapewnia się ją poprzez nadawanie ograniczeń integralnościowych",
-      "Można ją uzyskać poprzez unikanie redundancji"
-    ],
-    "correct": [1, 2],
-    "explanation": "Spójność (consistency) oznacza, że dane w bazie poprawnie i prawdziwie odzwierciedlają stan faktyczny. Głównym narzędziem do jej wymuszenia i utrzymania są więzy oraz ograniczenia integralnościowe (klucze główne, obce, reguły CHECK itp.)."
-  },
-  {
-    "question": "Protokół ścisłego blokowania dwufazowego:",
-    "options": [
-      "Zapewnia spójność bazy danych",
-      "Jest mechanizmem obsługującym transakcje",
-      "Jest mechanizmem zapewniającym zabezpieczony dostęp do danych",
-      "Jest mechanizmem uruchamianym w przypadku zakleszczeń transakcji"
-    ],
-    "correct": [0, 1],
-    "explanation": "Protokół Strict 2PL to klasyczny mechanizm kontroli współbieżności transakcji (obsługujący transakcje), który poprzez blokowanie zasobów gwarantuje serializowalność harmonogramów, zapobiegając anomaliom i tym samym zapewniając spójność bazy danych."
-  },
-  {
-    "question": "Wskaż zdanie (zdania) prawdziwe:",
-    "options": [
-      "Indeks stosuje się w celu poprawy wydajności bazy danych podczas operacji zapisu i wyszukiwania",
-      "Indeks stosuje się w celu poprawy wydajności bazy danych podczas operacji zapisu",
-      "Indeks stosuje się w celu poprawy wydajności bazy danych podczas wszystkich operacji bazodanowych",
-      "Indeks stosuje się w celu poprawy wydajności bazy danych podczas wyszukiwania"
-    ],
-    "correct": [3],
-    "explanation": "Indeksy są strukturami tworzonymi specjalnie w celu przyspieszenia wyszukiwania i odczytu danych (operacji SELECT). W przypadku operacji modyfikacji danych (INSERT, UPDATE, DELETE) indeksy zazwyczaj dodatkowo obciążają system, ponieważ każda zmiana wymaga przebudowania struktury indeksu."
-  },
-  {
-    "question": "Zapytanie MATCH (n {name: 'Kim'}) RETURN n to przykład zapytania w:",
-    "options": [
-      "Języku T-SQL",
-      "Języku Cypher",
-      "Języku Redis query",
-      "Języku CQL"
-    ],
-    "correct": [1],
-    "explanation": "Składnia wykorzystująca słowa kluczowe MATCH oraz RETURN i nawiasy klamrowe do dopasowywania wzorców właściwości węzłów jest cechą charakterystyczną języka Cypher, używanego w grafowej bazie danych Neo4j."
-  },
-  {
-    "question": "Protokół Weak Strict 2PL został wprowadzony aby:",
-    "options": [
-      "Zapewnić lepszą spójność danych niż w protokole Strict 2PL",
-      "Zapewnić mniejszą liczbę zakleszczeń niż w protokole Strict 2PL",
-      "Zapewnić szybszy dostęp do danych niż w protokole Strict 2PL",
-      "Zapewnić szybsze zwalnianie wszystkich blokad niż w protokole Strict 2PL"
-    ],
-    "correct": [2],
-    "explanation": "Wariant 'Weak Strict 2PL' pozwala na wcześniejsze zwalnianie blokad współdzielonych (odczytu) przed formalnym zatwierdzeniem lub wycofaniem transakcji (w odróżnieniu od Strict 2PL, gdzie wszystkie blokady trzymane są do końca). Zwiększa to poziom współbieżności i zapewnia innym transakcjom szybszy dostęp do odczytywanych danych."
-  },
-  {
-    "question": "Wskaż stwierdzenie (stwierdzenia) prawdziwe (na podstawie przedstawionego diagramu z encją Order):",
-    "options": [
-      "Aby był to poprawny fragment relacyjnego modelu logicznego (konceptualnego), konieczne jest dodanie dodatkowej encji",
-      "Możliwe jest bezpośrednie odwzorowanie tego modelu w relacyjny model fizyczny bazy danych",
-      "Aby był to poprawny fragment relacyjnego modelu logicznego (konceptualnego), konieczne jest usunięcie „kółeczka” na połączeniu",
-      "Jest to poprawny fragment relacyjnego modelu logicznego (konceptualnego)"
-    ],
-    "correct": [0],
-    "explanation": "Zaprezentowany na diagramie symbol 'kurzej łapki' (crow's foot) oznacza relację, która z definicji musi łączyć ze sobą dwa obiekty. Linia relacji nie może kończyć się w pustym miejscu – do poprawności tego fragmentu modelu niezbędne jest dodanie drugiej, powiązanej encji."
-  }
-]
-        const totalQuestionsToAsk = 15;
-        
-        document.getElementById('total-q-count').innerText = allQuestions.length;
-        
-        let currentSessionQuestions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let selectedOptions = new Set();
-        let isQuestionChecked = false;
+    <div id="quiz-screen" class="hidden">
+        <div class="progress">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <span id="progress-text">1 / 15</span>
+        </div>
 
-        function shuffle(array) {
-            let currentIndex = array.length, randomIndex;
-            while (currentIndex != 0) {
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        <div class="question-box">
+            <div class="question-type-badge" id="q-type-badge">Wielokrotny wybór</div>
+            <div class="question" id="question-text"></div>
+        </div>
+
+        <div id="options-container"></div>
+
+        <div id="feedback-message" class="feedback"></div>
+
+        <button class="btn" id="check-btn" disabled>Zaznacz odpowiedź, aby sprawdzić</button>
+        <button class="btn hidden" id="next-btn">Następne pytanie</button>
+    </div>
+
+    <div id="result-screen" class="hidden score-container">
+        <h1>Koniec Quizu!</h1>
+        <p class="intro-text">Oto Twój wynik z tej sesji:</p>
+        <div class="score" id="score"></div>
+        <button class="btn" id="restart-btn">Zagraj ponownie (nowe losowanie)</button>
+    </div>
+</div>
+
+<script>
+    const allQuestions = [
+        {
+            "question": "Polecenie CREATE USER user1 IDENTIFIED BY 'password' oznacza:",
+            "options": [
+                "Utworzenie użytkownika user1 dla hosta localhost",
+                "Utworzenie użytkownika user1 dla hosta %",
+                "Komenda jest błędna",
+                "Utworzenie użytkownika user1 bez określonego hosta (host będzie miał wartość NULL)"
+            ],
+            "correct": [1],
+            "explanation": "W systemach bazodanowych takich jak MySQL lub MariaDB, pominięcie jawnego określenia hosta podczas tworzenia użytkownika powoduje automatyczne przypisanie domyślnego znaku wieloznacznego '%', co zezwala na połączenia z dowolnego adresu IP."
+        },
+        {
+            "question": "Spójność bazy danych:",
+            "options": [
+                "Jest ściśle powiązana z efektywnością przetwarzania danych",
+                "Zapewnia poprawne odzwierciedlenie rzeczywistości",
+                "Zapewnia się ją poprzez nadawanie ograniczeń integralnościowych",
+                "Można ją uzyskać poprzez unikanie redundancji"
+            ],
+            "correct": [1, 2],
+            "explanation": "Spójność (consistency) oznacza, że dane w bazie poprawnie i prawdziwie odzwierciedlają stan faktyczny. Głównym narzędziem do jej wymuszenia i utrzymania są więzy oraz ograniczenia integralnościowe (klucze główne, obce, reguły CHECK itp.)."
+        },
+        {
+            "question": "Protokół ścisłego blokowania dwufazowego:",
+            "options": [
+                "Zapewnia spójność bazy danych",
+                "Jest mechanizmem obsługującym transakcje",
+                "Jest mechanizmem zapewniającym zabezpieczony dostęp do danych",
+                "Jest mechanizmem uruchamianym w przypadku zakleszczeń transakcji"
+            ],
+            "correct": [0, 1],
+            "explanation": "Protokół Strict 2PL to klasyczny mechanizm kontroli współbieżności transakcji (obsługujący transakcje), który poprzez blokowanie zasobów gwarantuje serializowalność harmonogramów, zapobiegając anomaliom i tym samym zapewniając spójność bazy danych."
+        },
+        {
+            "question": "Wskaż zdanie (zdania) prawdziwe:",
+            "options": [
+                "Indeks stosuje się w celu poprawy wydajności bazy danych podczas operacji zapisu i wyszukiwania",
+                "Indeks stosuje się w celu poprawy wydajności bazy danych podczas operacji zapisu",
+                "Indeks stosuje się w celu poprawy wydajności bazy danych podczas wszystkich operacji bazodanowych",
+                "Indeks stosuje się w celu poprawy wydajności bazy danych podczas wyszukiwania"
+            ],
+            "correct": [3],
+            "explanation": "Indeksy są strukturami tworzonymi specjalnie w celu przyspieszenia wyszukiwania i odczytu danych (operacji SELECT). W przypadku operacji modyfikacji danych (INSERT, UPDATE, DELETE) indeksy zazwyczaj dodatkowo obciążają system, ponieważ każda zmiana wymaga przebudowania struktury indeksu."
+        },
+        {
+            "question": "Zapytanie MATCH (n {name: 'Kim'}) RETURN n to przykład zapytania w:",
+            "options": [
+                "Języku T-SQL",
+                "Języku Cypher",
+                "Języku Redis query",
+                "Języku CQL"
+            ],
+            "correct": [1],
+            "explanation": "Składnia wykorzystująca słowa kluczowe MATCH oraz RETURN i nawiasy klamrowe do dopasowywania wzorców właściwości węzłów jest cechą charakterystyczną języka Cypher, używanego w grafowej bazie danych Neo4j."
+        },
+        {
+            "question": "Protokół Weak Strict 2PL został wprowadzony aby:",
+            "options": [
+                "Zapewnić lepszą spójność danych niż w protokole Strict 2PL",
+                "Zapewnić mniejszą liczbę zakleszczeń niż w protokole Strict 2PL",
+                "Zapewnić szybszy dostęp do danych niż w protokole Strict 2PL",
+                "Zapewnić szybsze zwalnianie wszystkich blokad niż w protokole Strict 2PL"
+            ],
+            "correct": [2],
+            "explanation": "Wariant 'Weak Strict 2PL' pozwala na wcześniejsze zwalnianie blokad współdzielonych (odczytu) przed formalnym zatwierdzeniem lub wycofaniem transakcji (w odróżnieniu od Strict 2PL, gdzie wszystkie blokady trzymane są do końca). Zwiększa to poziom współbieżności i zapewnia innym transakcjom szybszy dostęp do odczytywanych danych."
+        },
+        {
+            "question": "Wskaż stwierdzenie (stwierdzenia) prawdziwe (na podstawie przedstawionego diagramu z encją Order):",
+            "options": [
+                "Aby był to poprawny fragment relacyjnego modelu logicznego (konceptualnego), konieczne jest dodanie dodatkowej encji",
+                "Możliwe jest bezpośrednie odwzorowanie tego modelu w relacyjny model fizyczny bazy danych",
+                "Aby był to poprawny fragment relacyjnego modelu logicznego (konceptualnego), konieczne jest usunięcie „kółeczka” na połączeniu",
+                "Jest to poprawny fragment relacyjnego modelu logicznego (konceptualnego)"
+            ],
+            "correct": [0],
+            "explanation": "Zaprezentowany na diagramie symbol 'kurzej łapki' (crow's foot) oznacza relację, która z definicji musi łączyć ze sobą dwa obiekty. Linia relacji nie może kończyć się w pustym miejscu – do poprawności tego fragmentu modelu niezbędne jest dodanie drugiej, powiązanej encji."
+        },
+
+        {
+            "question": "Co to są systemy zarządzania bazą danych (DBMS) w kontekście / W układ systemu baz danych (SBD) wchodzą:",
+            "options": [
+                "Systemy zarządzania bazą danych, schemat bazy danych",
+                "Systemy zarządzania bazą danych, aplikacje, schemat bazy danych",
+                "Systemy zarządzania bazą danych, aplikacje, schemat bazy danych, użytkownicy",
+                "Systemy zarządzania bazą danych, aplikacje, schemat bazy danych, użytkownicy, dane"
+            ],
+            "correct": [3],
+            "explanation": "W pełny skład systemu baz danych obok samego DBMS i schematu, wchodzą również dane, powiązane aplikacje dostępowe oraz sami użytkownicy[cite: 2, 6]."
+        },
+        {
+            "question": "Która właściwość bazy danych jest niepożądana?",
+            "options": [
+                "Brak redundancji",
+                "Zawisłość danych od programów",
+                "Współdzielenie dostępu",
+                "Współdzielenie danych"
+            ],
+            "correct": [1],
+            "explanation": "Bazy danych projektuje się tak, aby zachować niezależność danych od aplikacji (programów), zatem zawisłość (uzależnienie) jest zjawiskiem wysoce niepożądanym[cite: 7, 9]."
+        },
+        {
+            "question": "ACID jest skrótem od słów:",
+            "options": [
+                "Atomicity, Consistency, Isolation, Durability",
+                "Analyse, Completely, Integrated, Data",
+                "Asynchronous, Consistent, Isolated, Data",
+                "Atomicity, Consistency, Independency, Durability"
+            ],
+            "correct": [0],
+            "explanation": "ACID to zbiór właściwości gwarantujących poprawne przetwarzanie transakcji w bazach danych: Atomicity (Niepodzielność), Consistency (Spójność), Isolation (Izolacja), Durability (Trwałość)[cite: 12, 13]."
+        },
+        {
+            "question": "Model implementacyjny:",
+            "options": [
+                "Jest sformalizowanym modelem realizacyjnym konkretnego schematu konceptualnego",
+                "Określa sposób organizacji danych w pamięci zewnętrznej komputera",
+                "Stanowi model konceptualny lub semantyczny problemu",
+                "Określa metody odwzorowania spójności bazy danych"
+            ],
+            "correct": [0],
+            "explanation": "Model implementacyjny określa sposób realizacji schematu na gruncie konkretnego oprogramowania (np. modelu relacyjnego), w przeciwieństwie do fizycznego, który tyczy się pamięci zewnętrznej[cite: 17, 18, 19]."
+        },
+        {
+            "question": "Co nie należy do zadań systemu zarządzania bazą danych?",
+            "options": [
+                "Organizacja struktury bazy danych",
+                "Przetwarzanie danych",
+                "Brak poprawnej odpowiedzi",
+                "Współbieżny dostęp do danych"
+            ],
+            "correct": [2],
+            "explanation": "Zarówno organizacja struktury, przetwarzanie danych, jak i zarządzanie współbieżnym dostępem są podstawowymi zadaniami DBMS, więc żadna z tych opcji nie jest poprawnym wykluczeniem[cite: 23, 24, 25, 26, 27]."
+        },
+        {
+            "question": "Jaka jest poprawna kolejność modelowania relacyjnej bazy danych?",
+            "options": [
+                "Skrypty SQL, zbieranie wymagań, fizyczny model danych, logiczny model danych",
+                "Zbieranie wymagań, fizyczny model danych, logiczny model danych, skrypty SQL",
+                "Zbieranie wymagań, logiczny model danych, skrypty SQL, fizyczny model danych",
+                "Zbieranie wymagań, logiczny model danych, fizyczny model danych, skrypty SQL"
+            ],
+            "correct": [3],
+            "explanation": "Proces projektowania rozpoczyna się od analizy wymagań, następnie tworzy się uniwersalny model logiczny, który przekładany jest na konkretny system (model fizyczny), by na koniec wygenerować skrypty SQL (np. DDL)[cite: 28, 30]."
+        },
+        {
+            "question": "Klucz obcy to:",
+            "options": [
+                "Klucz zawsze oparty na jednym atrybucie",
+                "Klucz jednoznacznie identyfikujący instancję encji",
+                "Klucz zawsze oparty na zbiorze atrybutów",
+                "Klucz wymagający zgodności typów"
+            ],
+            "correct": [3],
+            "explanation": "Klucz obcy musi być zgodny pod względem typu danych z kluczem głównym encji rodzica, do której się odwołuje w ramach więzów referencyjnych[cite: 31, 35]."
+        },
+        {
+            "question": "Relacja rekurencyjna:",
+            "options": [
+                "To relacja do tej samej encji",
+                "To zależność pomiędzy izolacją i spójnością transakcji",
+                "To relacja oparta wyłącznie na atrybucie prostym",
+                "To relacja do innej encji"
+            ],
+            "correct": [0],
+            "explanation": "Relacja rekurencyjna występuje, gdy klucz obcy w tabeli odwołuje się do klucza głównego w tej samej tabeli (np. powiązanie Pracownik - Przełożony, obaj są w tabeli Pracownicy)[cite: 36, 37]."
+        },
+        {
+            "question": "Więzy integralności referencyjnej określają:",
+            "options": [
+                "Konieczność unikania wartości danych",
+                "Warunki nałożone na klucze na poziomie pojedynczego atrybutu",
+                "Warunki nałożone na dane na poziomie całej relacji",
+                "Zachowanie się związku pomiędzy tabelami w przypadku zajścia różnych zdarzeń"
+            ],
+            "correct": [3],
+            "explanation": "Więzy integralności referencyjnej sterują powiązaniami między krotkami (poprzez klucze obce) i pozwalają określić zasady reagowania (np. kaskadowanie, restrykcja) na modyfikację lub usunięcie powiązanych danych[cite: 41, 45]."
+        },
+        {
+            "question": "Wielowersyjność w relacyjnych bazach danych polega na:",
+            "options": [
+                "Możliwości odczytywania danych zmienianych równocześnie przez inne transakcje w takiej postaci, w jakiej istniały w określonych momentach w przeszłości",
+                "Przechowywaniu wszystkich zmian w bazie danych dla określonego dostępu",
+                "Zakładaniu bloków na obiekty bazy danych",
+                "Wykorzystaniu kopii zapasowych raz na jakiś czas"
+            ],
+            "correct": [0],
+            "explanation": "Protokół MVCC (Multi-Version Concurrency Control) zapewnia spójny odczyt poprzez dostarczanie starych wersji danych transakcjom czytającym bez nakładania blokad wykluczających[cite: 46, 47, 48]."
+        },
+        {
+            "question": "Jaki rodzaj blokad jest dopuszczany przy odczycie danych?",
+            "options": [
+                "Wyłączne i współdzielone",
+                "Tylko wyłączne",
+                "Tylko współdzielone",
+                "Blokady nie są zakładane na tabeli szukał"
+            ],
+            "correct": [2],
+            "explanation": "Operacje czystego odczytu standardowo ubiegają się o nałożenie blokad współdzielonych (Shared Locks), które pozwalają innym transakcjom również czytać, lecz uniemożliwiają modyfikacje[cite: 51, 53]."
+        },
+        {
+            "question": "Anomalia transakcji polegająca na tym, że w trakcie jej wykonywania (przy powtórnym zapytaniu) pojawiają się nowe wiersze spełniające warunki zapytania, które nie były widoczne na początku, to:",
+            "options": [
+                "Brudny odczyt",
+                "Utracona modyfikacja",
+                "Fantom",
+                "Niepowtarzalny odczyt"
+            ],
+            "correct": [2],
+            "explanation": "Zjawisko odczytywania nowych krotek wygenerowanych w innej, współbieżnie zakończonej transakcji, to anomalia nazywana Fantomem (Phantom read)[cite: 55, 58]."
+        },
+        {
+            "question": "Indeks, to:",
+            "options": [
+                "Numer wpisu w dzienniku transakcji",
+                "Struktura danych zoptymalizowana pod kątem wyszukiwania",
+                "Metoda replikacji bazy danych",
+                "Metoda wykorzystania kopii zapasowej bazy danych"
+            ],
+            "correct": [1],
+            "explanation": "Indeksy w bazach danych to wydzielone struktury struktury (np. B-drzewa), służące drastycznemu przyspieszeniu procesu lokalizowania i pobierania poszukiwanych informacji[cite: 60, 62]."
+        },
+        {
+            "question": "Rola, to:",
+            "options": [
+                "Metoda autoryzacji konta użytkownika",
+                "Zbiór uprawnień, która można przypisać do użytkownika",
+                "Element integralności referencyjnej danych",
+                "Element definicji indeksu"
+            ],
+            "correct": [1],
+            "explanation": "W systemach autoryzacji (np. w SQL) Rola (Role) to elastyczny zbiór konkretnych uprawnień, który jako jedna całość może być następnie wygodnie mapowany na poszczególnych użytkowników[cite: 65, 67]."
+        },
+        {
+            "question": "Wskaż typ kopii zapasowej, gdy zawiera ona jedynie zmiany w stosunku do ostatniej dowolnej kopii zapasowej:",
+            "options": [
+                "Pełna",
+                "Różnicowa",
+                "Przyrostowa",
+                "Dziennika transakcji"
+            ],
+            "correct": [2],
+            "explanation": "Kopia przyrostowa (Incremental) obejmuje jedynie zbiór danych zmienionych od czasu stworzenia absolutnie jakiejkolwiek poprzedniej kopii, w przeciwieństwie do różnicowej, polegającej na pełnej kopii[cite: 70, 73]."
+        },
+        {
+            "question": "Wskaż wadę baz danych NoSQL?",
+            "options": [
+                "Dynamiczny schemat danych",
+                "Dobra wydajność w dedykowanych zastosowaniach",
+                "Zróżnicowane zapytania",
+                "Obsługa danych o zróżnicowanej strukturze"
+            ],
+            "correct": [2],
+            "explanation": "Bazy NoSQL nierzadko posiadają dość unikalne lub mocno ustrukturyzowane własne API bez ustandaryzowanego na miarę SQL, silnego języka do obsługi skomplikowanych i wysoce zróżnicowanych zapytań analitycznych[cite: 75, 78]."
+        },
+        {
+            "question": "To że bazy danych NoSQL (zwłaszcza rozproszone) po pewnym czasie (po zakończeniu operacji zapisu na wszystkich replikach) będą spójne, jest nazywane:",
+            "options": [
+                "Podstawową dostępnością",
+                "Ostateczną spójnością",
+                "Stanem miękkim",
+                "Izolacją"
+            ],
+            "correct": [1],
+            "explanation": "Mechanizm pozwalający na asynchroniczną i rozłożoną w czasie replikację aktualizacji pomiędzy węzłami nosi nazwę ostatecznej spójności (Eventual consistency)[cite: 80, 82]."
+        },
+        {
+            "question": "Bazy danych, gdzie wartości są przechowywane w postaci węzłów i krawędzi (reprezentujących relacje między węzłami), to:",
+            "options": [
+                "Kolumnowe bazy danych",
+                "Grafowe bazy danych",
+                "Dokumentowe bazy danych",
+                "Bazy danych szeregów czasowych"
+            ],
+            "correct": [1],
+            "explanation": "Pojęcia węzłów (nodes) oraz krawędzi (edges/relationships) to esencja modelu danych specyficznego dla grafowych baz danych (np. Neo4j)[cite: 85, 86, 88]."
+        },
+        {
+            "question": "W dokumentowych bazach danych odpowiednikiem złączeń (joins) z relacyjnych baz danych (RDBMS) często są:",
+            "options": [
+                "Kolekcje",
+                "Krotki",
+                "Wiodoki",
+                "Zagnieżdżone dokumenty"
+            ],
+            "correct": [3],
+            "explanation": "Bazy dokumentowe zachęcają do denormalizacji polegającej na fizycznym umieszczaniu (zagnieżdżaniu) powiązanych danych w jednym dokumencie, redukując w ten sposób konieczność wykonywania złączeń (joins)[cite: 91, 95]."
+        },
+        {
+            "question": "Replikacja bazy danych polega na:",
+            "options": [
+                "Utrzymywaniu wielu kopii (replik) danych na różnych serwerach (instancjach) bazy danych",
+                "Redundancji danych w ramach jednej instancji bazy danych",
+                "Tworzeniu bazy zewnętrznych indeksów",
+                "Definiowaniu roli użytkownika bazy danych"
+            ],
+            "correct": [0],
+            "explanation": "Celem replikacji jest stworzenie w sieci oddzielnych, niezależnych serwerów w formie klonów z tą samą zawartością, aby uodpornić środowisko na awarie lub rozłożyć zrównoważyć obciążenie systemu odczytem[cite: 96, 97]."
+        },
+        {
+            "question": "Co nie jest elementem współbieżnej transakcji?",
+            "options": [
+                "Dane zapisane w bazie danych muszą być prawidłowe zgodnie ze wszystkimi zdefiniowanymi regułami",
+                "Równoległe i sekwencyjne wykonanie zestawu transakcji pozostawia bazę danych w takim samym stanie",
+                "Baza danych jest przenoszona z jednego prawidłowego stanu do drugiego",
+                "Zachowywane są wszystkie niezmienniki danych"
+            ],
+            "correct": [1],
+            "explanation": "Opcja (b) stanowi sztywną definicję wysokiego poziomu izolacji (Serializable) lub wręcz zaprzecza samej idei współbieżności tam, gdzie niższe poziomy izolacji celowo umożliwiają powstawanie rozbieżności z wykonaniem w pełni sekwencyjnym, na rzecz wyższej wydajności[cite: 101, 104, 105]."
+        },
+        {
+            "question": "Jaki jest poprawny sposób radzenia sobie z zakleszczeniem (deadlock)?",
+            "options": [
+                "Ustalenie limitu oczekiwania na blokadę (timeout)",
+                "Wszystkie odpowiedzi są poprawne",
+                "Przeporządkowanie transakcjom priorytetów (lub wycofanie transakcji o niższym priorytecie)",
+                "Wykrywanie cyklu oczekiwań na zasoby/blokady"
+            ],
+            "correct": [1],
+            "explanation": "Powszechne podejścia do obsługi tzw. Deadlocków obejmują m.in. implementację limitów czasowych (timeouty), mechanizmy monitorowania grafu oczekiwań z heurystyką usuwania cyklów czy też wycofywanie na bazie priorytetów[cite: 107, 108, 109, 110, 111]."
+        },
+        {
+            "question": "Co jest cechą systemu zarządzania bazą danych (DBMS)?",
+            "options": [
+                "Transakcyjność przetwarzania",
+                "Optymalizacja zapytań",
+                "Wszystkie odpowiedzi są poprawne",
+                "Przestrzeganie ograniczeń (integralności)"
+            ],
+            "correct": [2],
+            "explanation": "Silnik bazy danych udostępnia zróżnicowany aparat funkcji, obejmując swoimi cechami przetwarzanie w blokach transakcyjnych, wbudowany silnik optymalizacji zapytań i rygorystyczną kontrolę poprawności[cite: 112, 113, 114, 115, 116]."
+        },
+        {
+            "question": "Co nie jest ograniczeniem integralności definiowanym na poziomie atrybutu?",
+            "options": [
+                "Wymagalność wartości (np. NOT NULL)",
+                "Unikalność wartości (np. UNIQUE dla pojedynczej kolumny)",
+                "Dziedzina (np. typ danych, ograniczenie CHECK)",
+                "Nazwa (atrybutu)"
+            ],
+            "correct": [3],
+            "explanation": "Sama specyfikacja nazy nazwy dla nowej kolumny to wyłącznie opis struktury tworzonego obiektu w schemacie, podczas gdy ograniczeniami są NOT NULL, klucze unikalne lub reguły formatu walidacji[cite: 117, 118, 119, 120, 121]."
+        },
+        {
+            "question": "Dobrą praktyką jest?",
+            "options": [
+                "Ustawiane długiej ważności konta użytkownika",
+                "Ustawiania użytkownikom minimalnego potrzebnego zakresu uprawnień",
+                "Dopuszczanie ruchu ze wszystkich adresów sieciowych",
+                "Praca aplikacji dostępowych na tym samym użytkowniku bazy danych"
+            ],
+            "correct": [1],
+            "explanation": "Zasada najmniejszych uprawnień (Principle of Least Privilege) nakazuje konfigurację środowiska, w której użytkownik dysponuje wyłącznie uprawnieniami niezbędnymi do poprawnej realizacji jego bezpośrednich zadań[cite: 122, 124]."
+        },
+        {
+            "question": "Wskaż typ kopii zapasowej, gdy zawiera ona całą bazę danych:",
+            "options": [
+                "Przyrostowa",
+                "Różnicowa",
+                "Pełna",
+                "Dziennika transakcji"
+            ],
+            "correct": [2],
+            "explanation": "Tylko wariant 'Pełna' (Full backup) zawiera kompletny zrzut wszystkich obiektów bazy i struktur danych zebranych z chwili wykonania danej operacji[cite: 127, 130]."
+        },
+        {
+            "question": "To, że bazy danych NoSQL sprzyjają dostępności danych, a nie ich poprawności, jest nazywane:",
+            "options": [
+                "Podstawową dostępnością",
+                "Ostateczną dostępnością",
+                "Stanem miękkim",
+                "Izolacją"
+            ],
+            "correct": [0],
+            "explanation": "Odnosi się to do pojęcia Basic Availability (BA) z popularnego z paradygmatu BASE w bazach NoSQL, które faworyzują dostępność ponad natychmiastową i ścisłą spójność transakcyjną[cite: 132, 133]."
+        },
+        {
+            "question": "Twierdzenie CAP mówi, że:",
+            "options": [
+                "Rozproszony system może mieć 2 z cech: spójność, dostępność, tolerancja partycji",
+                "Rozproszony system musi mieć zawsze wszystkie cechy: spójność, dostępność, tolerancja partycji",
+                "Rozproszony system może mieć 1 z cech: spójność, dostępność, tolerancja partycji",
+                "Rozproszony system musi spełniać pełen ACID"
+            ],
+            "correct": [0],
+            "explanation": "Zgodnie z w twierdzeniem Brevera (CAP) o rozproszonych architekturach, inżynierowie systemów zawsze zmuszeni są na kompromis i dokonanie wyboru 2 z 3 fundamentalnych parametrów – Consistency (C), Availability (A) i Partition tolerance (P)[cite: 137, 138]."
+        },
+        {
+            "question": "Masz zbadać i przechować zależności pomiędzy studentami, a także studentami i prowadzącymi. Jakiego rodzaju bazy danych użyjesz?",
+            "options": [
+                "Kolumnowe bazy danych",
+                "Grafowe bazy danych",
+                "Dokumentowe bazy danych",
+                "Bazy danych klucz-wartość"
+            ],
+            "correct": [1],
+            "explanation": "Sieć relacji np. edukacyjnych najlepiej umodelować jako skomplikowaną siatkę powiązań między węzłami (student, prowadzący) za pomocą ułatwiających to zadanie baz w wariancie grafowym[cite: 141, 143]."
+        },
+        {
+            "question": "Nietypowy format zapisu dokumentów w dokumentowej bazie danych, to:",
+            "options": [
+                "JSON",
+                "BSON",
+                "XML",
+                "XLSX"
+            ],
+            "correct": [3],
+            "explanation": "Dokumenty przechowuje się standardowo m.in. w otwartych tekstowych (JSON, XML) czy zoptymalizowanych formatach binarnych (BSON). Format z pakietu Excela (XLSX) jest całkowicie do tego natywnie nieużywany[cite: 146, 147, 148, 149, 150]."
+        },
+        {
+            "question": "W ramach replikacji wyróżnia się:",
+            "options": [
+                "Węzły secondary",
+                "Węzły Heartbeat",
+                "Węzły sftp",
+                "Węzły kontroli wersji"
+            ],
+            "correct": [0],
+            "explanation": "Architektura sieci replikacyjnej bazuje powszechnie na podziale ról serwerów na węzły nadrzędne (Primary/Master) odbierające zapisy oraz kopiujące ich stan węzły dodatkowe (Secondary/Slave)[cite: 151, 152]."
+        },
+        {
+            "question": "Która z zasad rządzi tabelami?",
+            "options": [
+                "Nazwy tabeli i kolumny są jednoznaczne",
+                "Wszystkie wartości w kolumnie muszą być tego samego typu",
+                "Każdy wiersz w tabeli musi być różny",
+                "Wszystkie odpowiedzi są poprawne"
+            ],
+            "correct": [3],
+            "explanation": "Podstawowe pryncypia ortodoksyjnej teorii modelowania relacyjnego zakazują zduplikowanych krotek (wierszy) oraz rygorystycznie wymuszają spójność typu w obrębie zdefiniowanych, unikalnych kolumn w tabeli[cite: 156, 157, 158, 159, 160]."
+        },
+        {
+            "question": "Podczas definiowania klucza obcego można określić, jakie jest zachowanie dziecka przy zmianie klucza rodzica. Co oznacza opcja Kaskada?",
+            "options": [
+                "Ustawia klucz obcy dzieci na null",
+                "Brak akcji",
+                "Zabrania zmiany",
+                "Zmienia klucz obcy dzieci na nowy klucz rodzica"
+            ],
+            "correct": [3],
+            "explanation": "Zadeklarowanie reakcji CASCADE na zmianę oznacza, że baza silnika w tle automatycznie podmieni wartości uzależnionym tabelom na ten nowo wskazany zaktualizowany klucz rodzica[cite: 161, 162, 166]."
+        },
+        {
+            "question": "Dziennik w relacyjnych bazach danych polega na:",
+            "options": [
+                "Możliwości odczytywania danych zmienianych równocześnie przez inne transakcje w takiej postaci, w jakiej istniały w określonych momentach w przeszłości",
+                "Zapisywaniu wszystkich zmian w bazie danych do specjalnego logu, aby np, wycofać zmiany wprowadzone przez niezatwierdzoną transakcję",
+                "Zakładaniu blokad na obiekty bazy danych",
+                "Wykorzystaniu kopii zapasowych raz na jakiś czas"
+            ],
+            "correct": [1],
+            "explanation": "Dziennik transakcji (Transaction log) przechowuje logikę chronologicznych zmian sekwencyjnie modyfikowanych danych, by na ich podstawie móc następnie z powodzeniem wykonać proces roll-forward / roll-back dla wycofywania transakcji lub odzyskiwania bazy[cite: 167, 169]."
+        },
+        {
+            "question": "Anomalia transakcji polegająca na odczycie niezatwierdzonych danych, to:",
+            "options": [
+                "Brudny odczyt",
+                "Utracona modyfikacja",
+                "Fantom",
+                "Niepowtarzalny odczyt"
+            ],
+            "correct": [0],
+            "explanation": "Brudny odczyt (Dirty Read) materializuje się w sytuacji odczytu krotek wstawianych w trakcie procesu zapisywania z nieskończonej i potencjalnie jeszcze niepotwierdzonej ostatecznym zatwierdzeniem współbieżnej transakcji drugiego wątku[cite: 172]."
+        },
+        {
+            "question": "Model danych:",
+            "options": [
+                "Stanowi odwzorowanie semantyki wycinka świata rzeczywistego",
+                "Stanowi fizyczną organizację danych na dysku",
+                "Implementuje współbieżny dostęp do danych",
+                "Stanowi system ograniczeń zdefiniowanych przez użytkownika"
+            ],
+            "correct": [0],
+            "explanation": "Pojęcie Modelu Danych odnosi się z reguły do fazy analizy wymagań - konceptualizacji i strukturyzowania abstrakcji dla opisu wyizolowanych zasad (semantyki) fragmentu rzeczywistości przeznaczonych do przetwarzania informatycznego[cite: 176, 177]."
+        },
+        {
+            "question": "Elementem spójności bazy danych nie jest:",
+            "options": [
+                "Współbieżny dostęp do danych",
+                "Poufność danych",
+                "Odpornośc na błędy użytkowników",
+                "Uwzględnienie ograniczeń zdefiniowanych przez użytkowników"
+            ],
+            "correct": [1],
+            "explanation": "Chociaż ochrona przed nieuprawnionym dostępem (Poufność danych) stanowi nieodłączny element szeroko rozumianego bezpieczeństwa operacyjnego, nie zależy ona od zasad matematyczno-relacyjnej logiki spójności[cite: 181, 183]."
+        },
+        {
+            "question": "Cecha atomowości transakcji oznacza, że:",
+            "options": [
+                "Każda transakcja jest traktowana jako pojedyncza całość, która cała kończy się sukcesem albo cała się nie udaje",
+                "Równolegle i sekwencyjnie wykonanie zestawu transakcji pozostawia bazę danych w takim samym stanie",
+                "Baza danych jest przenoszona z jednego prawidłowego stanu do drugiego",
+                "Zachowywane są wszystkie niezmienniki danych - każdy z nich oddzielnie"
+            ],
+            "correct": [0],
+            "explanation": "Atomicity (Atomowość/Niepodzielność) gwarantuje z logicznego punktu widzenia brak możliwości rozłożenia w czasie z sukcesem tylko połowy paczki zapytań: transakcja jako jednostka pracy wykonuje bezkompromisowo wszystkie operacje (commit) albo żadnej (rollback)[cite: 186, 187]."
+        },
+        {
+            "question": "Model fizyczny:",
+            "options": [
+                "Jest sformalizowanym modelem realizacyjnym konkretnego schematu konceptualnego",
+                "Określa sposób organizacji danych w pamięci zewnętrznej komputera",
+                "Stanowi model konceptualny lub semantyczny problemu",
+                "Określa metody odwzorowania spójności bazy danych"
+            ],
+            "correct": [1],
+            "explanation": "Projektując model w ujęciu 'fizycznym', inżynierzy określają techniczne szczegóły z obszaru optymalizacji takie jak system plików, partycjonowanie przestrzeni na twardym dysku komputera w celu obsługi żądań i organizacja buforów pamięci[cite: 191, 193]."
+        },
+        {
+            "question": "Język sterowania danymi określa się skrótem:",
+            "options": [
+                "DQL",
+                "DML",
+                "DCL",
+                "DDL"
+            ],
+            "correct": [2],
+            "explanation": "Skrótowiec DCL (Data Control Language) opisuje zestaw komend SQL przeznaczonych do rygorystycznego zarządzania uprawnieniami za pomocą wywołań np. w postaci poleceń `GRANT` i `REVOKE`[cite: 196, 199]."
+        },
+        {
+            "question": "Co nie jest cechą encji?",
+            "options": [
+                "Encje muszą być rozróżnialne po nazwie",
+                "Instancje encji muszą być rozróżnialne",
+                "Encje mają instancje",
+                "Encje mają zbiór i zakres dozwolonych wartości"
+            ],
+            "correct": [3],
+            "explanation": "Elementy określające typ, dziedzinę oraz maksymalny zbiór poszczególnych dopuszczalnych w polach wartości powiązane są i przynależą ze swej zasady definicyjnej stricte do poziomów poszczególnych atrybutów, a nie całości encji[cite: 201, 205]."
+        },
+        {
+            "question": "Typ uczestnictwa związku pomiędzy encjami oznacza:",
+            "options": [
+                "Liczebność związku",
+                "Znaną liczbę pojedynczych atrybutów",
+                "Minimalną i maksymalną liczbę rekordów z jednej tabeli, które można powiązać z jednym rekordem w drugiej tabeli",
+                "Obowiązkowość, opcjonalność"
+            ],
+            "correct": [3],
+            "explanation": "W specyfikacji modelowania udział we wskazanym uczestnictwie dotyczy wymogu (Obowiązkowość / Opcjonalność). Jeśli jakaś encja wymusza posiadanie konkretnego partnera, uważa się, że relacyjnie uczestniczy w jego tworzeniu w pełni obowiązkowo[cite: 206, 211]."
+        },
+        {
+            "question": "Pole segmentowe jest to pole:",
+            "options": [
+                "Zawierające wartość będącą wynikiem operacji konkatenacji",
+                "Zawierające wartość będącą wynikiem operacji matematycznej",
+                "Zawierające jedną daną określonego typu",
+                "Zawierające więcej niż jeden typ wartości"
+            ],
+            "correct": [0],
+            "explanation": "Określenie pole 'segmentowe' wywodzi się z łączenia kilku węższych części (segmentów np. składowych z oddzielnych struktur kodu wieloczęściowego) w jedną wartość końcową metodą pospolitej konkatenacji tekstu[cite: 212, 213]."
+        },
+        {
+            "question": "Podczas definiowania klucza obcego można określić, jakie jest zachowanie dziecka przy kasowaniu rodzica. Co oznacza opcja Restrykcja?",
+            "options": [
+                "Ustawia klucz obcy dzieci na wartość zastępczą",
+                "Kasuje zapisy dzieci",
+                "Ustawia klucz obcy dzieci na null",
+                "Zabrania kasowania"
+            ],
+            "correct": [3],
+            "explanation": "Jeśli silnik bazy zostanie napotka regułę usuwania ON DELETE RESTRICT w kluczu powiązań tabeli od strony zagnieżdżonych obcych rekordów zależnych, odmówi wykonania polecenia usuwającego macierzysty wiersz blokując go[cite: 217, 218, 222]."
+        },
+        {
+            "question": "Wycofanie transakcji odbywa się z użyciem słowa kluczowego:",
+            "options": [
+                "rollback",
+                "commit",
+                "revoke",
+                "set"
+            ],
+            "correct": [0],
+            "explanation": "Uznanym w ustandaryzowanej sferze protokołu poleceniem do przedwczesnego zakończenia trwającej transakcji operacyjnej bez zachowywania i zatwierdzania jakichkolwiek dotychczasowych wprowadzanych w niej przez użytkownika modyfikacji danych na poziomie wierszy w tabelach jest klauzula ROLLBACK[cite: 223, 224]."
+        },
+        {
+            "question": "Poziom izolacji transakcji eliminujący anomalie transakcji, to:",
+            "options": [
+                "Read Uncommitted",
+                "Read Committed",
+                "Repeatable Read",
+                "Serializable"
+            ],
+            "correct": [3],
+            "explanation": "Tryb Serializable stanowi z naukowego punktu widzenia barierę całkowicie najwyższej ochrony i symuluje ścisłe sekwencyjne jednowątkowe działanie dla transakcji, dając absolutne zapewnienie na wykluczenie standardowych anomalii jak zjawiska fantomów lub powtarzających się modyfikacji współbieżnych[cite: 228, 232]."
+        },
+        {
+            "question": "Co nie jest sposobem na poprawę wydajności bazy danych?",
+            "options": [
+                "Analiza planów zapytań",
+                "Stosowanie indeksów na tabelach, które są często aktualizowane lub wstawiane są nowe dane",
+                "Przeprojektowanie schematu bazy danych",
+                "Dobranie parametrów środowiskowych"
+            ],
+            "correct": [1],
+            "explanation": "Budowanie i ciągłe wstawianie struktury indeksów mocno obciążonych w tabelach wymagających częstych wstawień rekordów lub cyklicznych aktualizacji znacząco ogranicza szybkość wprowadzania wprowadzanych DML, spowalniając zapis na dysk, jest więc wysoce kontrproduktywnym mechanizmem dążenia poprawy na płaszczyźnie wydajności ogólnej[cite: 233, 235]."
+        }
+    ]
+    const totalQuestionsToAsk = 15;
+
+    document.getElementById('total-q-count').innerText = allQuestions.length;
+
+    let currentSessionQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let selectedOptions = new Set();
+    let isQuestionChecked = false;
+
+    function shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    document.getElementById('start-btn').addEventListener('click', startQuiz);
+    document.getElementById('check-btn').addEventListener('click', checkAnswer);
+    document.getElementById('next-btn').addEventListener('click', nextQuestion);
+    document.getElementById('restart-btn').addEventListener('click', startQuiz);
+
+    function startQuiz() {
+        score = 0;
+        currentQuestionIndex = 0;
+
+        let shuffledAll = shuffle([...allQuestions]);
+        currentSessionQuestions = shuffledAll.slice(0, Math.min(totalQuestionsToAsk, allQuestions.length));
+
+        document.getElementById('start-screen').classList.add('hidden');
+        document.getElementById('result-screen').classList.add('hidden');
+        document.getElementById('quiz-screen').classList.remove('hidden');
+
+        showQuestion();
+    }
+
+    function formatCode(text) {
+        // Simple replacer for inline code ticks ` `
+        return text.replace(/`([^`]+)`/g, '<code>$1</code>');
+    }
+
+    function showQuestion() {
+        isQuestionChecked = false;
+        selectedOptions.clear();
+
+        document.getElementById('check-btn').classList.remove('hidden');
+        document.getElementById('check-btn').disabled = true;
+        document.getElementById('check-btn').innerText = "Sprawdź odpowiedź";
+        document.getElementById('next-btn').classList.add('hidden');
+
+        const feedbackEl = document.getElementById('feedback-message');
+        feedbackEl.className = 'feedback';
+        feedbackEl.innerHTML = '';
+
+        const q = currentSessionQuestions[currentQuestionIndex];
+
+        // Progress Bar
+        const progressPercent = ((currentQuestionIndex) / currentSessionQuestions.length) * 100;
+        document.getElementById('progress-bar').style.width = progressPercent + '%';
+        document.getElementById('progress-text').innerText = `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
+
+        // Question Text & Badge
+        document.getElementById('question-text').innerHTML = formatCode(q.question);
+        const badge = document.getElementById('q-type-badge');
+        badge.innerText = q.correct.length > 1 ? "Wielokrotny wybór" : "Jednokrotny wybór";
+
+        // Render Options
+        const optionsContainer = document.getElementById('options-container');
+        optionsContainer.innerHTML = '';
+
+        let optionsWithIndex = q.options.map((opt, index) => ({text: opt, originalIndex: index}));
+        optionsWithIndex = shuffle(optionsWithIndex); // Shuffle answers
+
+        optionsWithIndex.forEach((optObj, idx) => {
+            const optDiv = document.createElement('div');
+            optDiv.className = 'option';
+            optDiv.dataset.originalIndex = optObj.originalIndex;
+
+            const indicator = document.createElement('div');
+            indicator.className = 'checkbox-indicator';
+            optDiv.appendChild(indicator);
+
+            const textSpan = document.createElement('span');
+            textSpan.innerHTML = formatCode(optObj.text);
+            optDiv.appendChild(textSpan);
+
+            optDiv.addEventListener('click', function () {
+                if (isQuestionChecked) return;
+
+                if (selectedOptions.has(optObj.originalIndex)) {
+                    selectedOptions.delete(optObj.originalIndex);
+                    this.classList.remove('selected');
+                } else {
+                    // If it's a single choice, unselect others
+                    if (q.correct.length === 1) {
+                        selectedOptions.clear();
+                        document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+                    }
+                    selectedOptions.add(optObj.originalIndex);
+                    this.classList.add('selected');
+                }
+
+                document.getElementById('check-btn').disabled = selectedOptions.size === 0;
+            });
+
+            optionsContainer.appendChild(optDiv);
+        });
+    }
+
+    function checkAnswer() {
+        isQuestionChecked = true;
+        document.getElementById('check-btn').classList.add('hidden');
+        document.getElementById('next-btn').classList.remove('hidden');
+
+        const q = currentSessionQuestions[currentQuestionIndex];
+        const correctSet = new Set(q.correct);
+
+        // Check if selected matches correct exactly
+        let isPerfect = true;
+        if (selectedOptions.size !== correctSet.size) {
+            isPerfect = false;
+        } else {
+            for (let selected of selectedOptions) {
+                if (!correctSet.has(selected)) {
+                    isPerfect = false;
+                    break;
+                }
             }
-            return array;
         }
 
-        document.getElementById('start-btn').addEventListener('click', startQuiz);
-        document.getElementById('check-btn').addEventListener('click', checkAnswer);
-        document.getElementById('next-btn').addEventListener('click', nextQuestion);
-        document.getElementById('restart-btn').addEventListener('click', startQuiz);
+        // Style the options
+        document.querySelectorAll('.option').forEach(optDiv => {
+            const originalIndex = parseInt(optDiv.dataset.originalIndex);
+            const isSelected = selectedOptions.has(originalIndex);
+            const isActuallyCorrect = correctSet.has(originalIndex);
 
-        function startQuiz() {
-            score = 0;
-            currentQuestionIndex = 0;
-            
-            let shuffledAll = shuffle([...allQuestions]);
-            currentSessionQuestions = shuffledAll.slice(0, Math.min(totalQuestionsToAsk, allQuestions.length));
-            
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            
+            optDiv.classList.remove('selected');
+
+            if (isActuallyCorrect) {
+                optDiv.classList.add('correct-answer');
+            } else if (isSelected && !isActuallyCorrect) {
+                optDiv.classList.add('wrong-answer');
+            }
+        });
+
+        // Feedback Message
+        const feedbackEl = document.getElementById('feedback-message');
+        if (isPerfect) {
+            score++;
+            feedbackEl.innerHTML = '<strong>Świetnie! Poprawna odpowiedź.</strong>';
+            feedbackEl.classList.add('correct');
+        } else {
+            let msg = '<strong>Niestety, odpowiedź nie jest w pełni poprawna.</strong><br>Prawidłowe opcje zostały zaznaczone na zielono.';
+            feedbackEl.innerHTML = msg;
+            feedbackEl.classList.add('incorrect');
+        }
+
+        // Add Explanation if exists
+        if (q.explanation && q.explanation.trim() !== '') {
+            const expDiv = document.createElement('div');
+            expDiv.className = 'explanation';
+            expDiv.innerHTML = formatCode(q.explanation);
+            feedbackEl.appendChild(expDiv);
+        }
+
+        // Update button text if last question
+        if (currentQuestionIndex === currentSessionQuestions.length - 1) {
+            document.getElementById('next-btn').innerText = "Zakończ i pokaż wynik";
+        }
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentSessionQuestions.length) {
             showQuestion();
+        } else {
+            showResult();
         }
+    }
 
-        function formatCode(text) {
-            // Simple replacer for inline code ticks ` `
-            return text.replace(/`([^`]+)`/g, '<code>$1</code>');
-        }
+    function showResult() {
+        document.getElementById('quiz-screen').classList.add('hidden');
+        document.getElementById('result-screen').classList.remove('hidden');
 
-        function showQuestion() {
-            isQuestionChecked = false;
-            selectedOptions.clear();
-            
-            document.getElementById('check-btn').classList.remove('hidden');
-            document.getElementById('check-btn').disabled = true;
-            document.getElementById('check-btn').innerText = "Sprawdź odpowiedź";
-            document.getElementById('next-btn').classList.add('hidden');
-            
-            const feedbackEl = document.getElementById('feedback-message');
-            feedbackEl.className = 'feedback';
-            feedbackEl.innerHTML = '';
-            
-            const q = currentSessionQuestions[currentQuestionIndex];
-            
-            // Progress Bar
-            const progressPercent = ((currentQuestionIndex) / currentSessionQuestions.length) * 100;
-            document.getElementById('progress-bar').style.width = progressPercent + '%';
-            document.getElementById('progress-text').innerText = `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
-            
-            // Question Text & Badge
-            document.getElementById('question-text').innerHTML = formatCode(q.question);
-            const badge = document.getElementById('q-type-badge');
-            badge.innerText = q.correct.length > 1 ? "Wielokrotny wybór" : "Jednokrotny wybór";
-            
-            // Render Options
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-            
-            let optionsWithIndex = q.options.map((opt, index) => ({ text: opt, originalIndex: index }));
-            optionsWithIndex = shuffle(optionsWithIndex); // Shuffle answers
-            
-            optionsWithIndex.forEach((optObj, idx) => {
-                const optDiv = document.createElement('div');
-                optDiv.className = 'option';
-                optDiv.dataset.originalIndex = optObj.originalIndex;
-                
-                const indicator = document.createElement('div');
-                indicator.className = 'checkbox-indicator';
-                optDiv.appendChild(indicator);
-                
-                const textSpan = document.createElement('span');
-                textSpan.innerHTML = formatCode(optObj.text);
-                optDiv.appendChild(textSpan);
-                
-                optDiv.addEventListener('click', function() {
-                    if (isQuestionChecked) return;
-                    
-                    if (selectedOptions.has(optObj.originalIndex)) {
-                        selectedOptions.delete(optObj.originalIndex);
-                        this.classList.remove('selected');
-                    } else {
-                        // If it's a single choice, unselect others
-                        if (q.correct.length === 1) {
-                            selectedOptions.clear();
-                            document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
-                        }
-                        selectedOptions.add(optObj.originalIndex);
-                        this.classList.add('selected');
-                    }
-                    
-                    document.getElementById('check-btn').disabled = selectedOptions.size === 0;
-                });
-                
-                optionsContainer.appendChild(optDiv);
-            });
-        }
-        
-        function checkAnswer() {
-            isQuestionChecked = true;
-            document.getElementById('check-btn').classList.add('hidden');
-            document.getElementById('next-btn').classList.remove('hidden');
-            
-            const q = currentSessionQuestions[currentQuestionIndex];
-            const correctSet = new Set(q.correct);
-            
-            // Check if selected matches correct exactly
-            let isPerfect = true;
-            if (selectedOptions.size !== correctSet.size) {
-                isPerfect = false;
-            } else {
-                for (let selected of selectedOptions) {
-                    if (!correctSet.has(selected)) {
-                        isPerfect = false;
-                        break;
-                    }
-                }
-            }
-            
-            // Style the options
-            document.querySelectorAll('.option').forEach(optDiv => {
-                const originalIndex = parseInt(optDiv.dataset.originalIndex);
-                const isSelected = selectedOptions.has(originalIndex);
-                const isActuallyCorrect = correctSet.has(originalIndex);
-                
-                optDiv.classList.remove('selected');
-                
-                if (isActuallyCorrect) {
-                    optDiv.classList.add('correct-answer');
-                } else if (isSelected && !isActuallyCorrect) {
-                    optDiv.classList.add('wrong-answer');
-                }
-            });
-            
-            // Feedback Message
-            const feedbackEl = document.getElementById('feedback-message');
-            if (isPerfect) {
-                score++;
-                feedbackEl.innerHTML = '<strong>Świetnie! Poprawna odpowiedź.</strong>';
-                feedbackEl.classList.add('correct');
-            } else {
-                let msg = '<strong>Niestety, odpowiedź nie jest w pełni poprawna.</strong><br>Prawidłowe opcje zostały zaznaczone na zielono.';
-                feedbackEl.innerHTML = msg;
-                feedbackEl.classList.add('incorrect');
-            }
-            
-            // Add Explanation if exists
-            if (q.explanation && q.explanation.trim() !== '') {
-                const expDiv = document.createElement('div');
-                expDiv.className = 'explanation';
-                expDiv.innerHTML = formatCode(q.explanation);
-                feedbackEl.appendChild(expDiv);
-            }
-            
-            // Update button text if last question
-            if (currentQuestionIndex === currentSessionQuestions.length - 1) {
-                document.getElementById('next-btn').innerText = "Zakończ i pokaż wynik";
-            }
-        }
-        
-        function nextQuestion() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < currentSessionQuestions.length) {
-                showQuestion();
-            } else {
-                showResult();
-            }
-        }
-        
-        function showResult() {
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-            
-            const percentage = Math.round((score / currentSessionQuestions.length) * 100);
-            document.getElementById('score').innerText = `${score} / ${currentSessionQuestions.length} 
+        const percentage = Math.round((score / currentSessionQuestions.length) * 100);
+        document.getElementById('score').innerText = `${score} / ${currentSessionQuestions.length}
 (${percentage}%)`;
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
