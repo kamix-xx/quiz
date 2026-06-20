@@ -1161,17 +1161,6 @@ const allQuestions = [
         "correct": 4
     },
     {
-        "question": "Czym charakteryzuje się model publikacji i subskrypcji w systemach wiadomości?",
-        "options": [
-            "Koniecznością pobierania wiadomości z kolejki przez klienta w modelu pull.",
-            "Możliwością wysyłania jednej wiadomości do wielu odbiorców zainteresowanych tematem.",
-            "Silnym powiązaniem producenta i klienta na poziomie formatu danych.",
-            "Brakiem możliwości replikacji tematów pomiędzy klastrami serwerów.",
-            "Wykorzystaniem wyłącznie połączeń punkt-punkt bez udziału brokera."
-        ],
-        "correct": 1
-    },
-    {
         "question": "Czym jest exchange w brokerze RabbitMQ?",
         "options": [
             "Mechanizmem umożliwiającym wymianę certyfikatów przy połączeniu szyfrowanym",

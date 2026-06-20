@@ -262,6 +262,8 @@
         <button class="btn" id="restart-btn">
             Następna sesja (kolejne 20 pytań z puli)
         </button>
+        <br>
+        <span id="pool-info2" style="color: #c10000; font-weight: bold;"></span>
     </div>
 </div>
 <script src="questionsIS.js"></script>
@@ -302,8 +304,10 @@
     // Aktualizacja tekstu informacyjnego w menu głównym
     function updatePoolInfo() {
         const pool = getQuestionPool();
-        document.getElementById("pool-info").innerText = 
-            `W puli pozostało jeszcze ${pool.length} pytań, których nie widziałeś.`;
+        const mess = `W puli pozostało jeszcze ${pool.length} pytań, których nie widziałeś.`;
+        document.getElementById("pool-info").innerText = mess;
+        document.getElementById("pool-info2").innerText = mess;
+
     }
 
     // Resetowanie ręczne całej puli
