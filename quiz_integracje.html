@@ -1,0 +1,1912 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Quiz - Integracja Systemów</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --text-muted: #6b7280;
+            --option-bg: #f9fafb;
+            --option-border: #e5e7eb;
+            --option-hover: #eef2ff;
+            --option-hover-border: #c7d2fe;
+        }
+
+        body {
+            font-family: "Inter",
+            system-ui,
+            -apple-system,
+            sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+            0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: var(--text);
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-text {
+            font-size: 1.15em;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .progress {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            background: var(--option-border);
+            height: 10px;
+            border-radius: 5px;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .question {
+            font-size: 1.35em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .option {
+            display: block;
+            background: var(--option-bg);
+            margin: 12px 0;
+            padding: 18px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1em;
+            border: 2px solid var(--option-border);
+            line-height: 1.45;
+            white-space: pre-wrap;
+            color: var(--text);
+        }
+
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--option-hover-border);
+            transform: translateY(-2px);
+        }
+
+        .option.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .option.incorrect {
+            background: #fef2f2;
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 18px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-top: 35px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px -1px rgba(79, 70, 229, 0.3);
+        }
+
+        .score-container {
+            text-align: center;
+        }
+
+        .score {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 25px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1.1em;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question {
+                font-size: 1.2em;
+            }
+
+            .option {
+                font-size: 1.05em;
+                padding: 15px 20px;
+            }
+
+            .btn {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container" id="quiz-container">
+    <div id="start-screen">
+        <h1>Quiz: Integracja Systemów</h1>
+        <p class="intro-text">
+            Przygotuj się do egzaminu! Z naszej puli
+            <strong><span id="total-q-count"></span> pytań</strong> aplikacja
+            wylosuje za każdym razem <strong>20 unikalnych zagadnień</strong>.
+            Odpowiedzi również są tasowane na nowo za każdym podejściem.
+            Powodzenia!
+        </p>
+        <button class="btn" id="start-btn">Rozpocznij Quiz</button>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
+        <div class="progress">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <span id="progress-text">1 / 20</span>
+        </div>
+        <div class="question" id="question-text"></div>
+        <div id="options-container"></div>
+        <div id="feedback-message" class="feedback"></div>
+        <button class="btn hidden" id="next-btn">Następne pytanie</button>
+    </div>
+
+    <div id="result-screen" class="hidden score-container">
+        <h1>Koniec Quizu!</h1>
+        <p class="intro-text">Oto Twój wynik z tej sesji:</p>
+        <div class="score" id="score"></div>
+        <button class="btn" id="restart-btn">
+            Zagraj ponownie (losuje nowe 20 pytań)
+        </button>
+    </div>
+</div>
+
+<script>
+    const allQuestions = [
+        {
+            question: "W układ systemu baz danych (SBD) wchodzą:",
+            options: [
+                "Systemy zarządzania bazą danych, schemat bazy danych",
+                "Systemy zarządzania bazą danych, aplikacje, schemat bazy danych",
+                "Systemy zarządzania bazą danych, aplikacje, schemat bazy danych, użytkownicy",
+                "Systemy zarządzania bazą danych, aplikacje, schemat bazy danych, użytkownicy, dane",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Czym jest segment w standardzie ANSI X12?",
+            options: [
+                "Pojedyńczym wierszem danych w dokumencie elektronicznym",
+                "Znakiem rozdzielającym poszczególne kolumy wiersza danych",
+                "Jedną w trzech głównych sekcji dokumentu elektronicznego",
+                "Pętlą występującą w każdym dokumencie elektronicznym",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Na czym polega poziom izolacji Repeatable read?",
+            options: [
+                "Na zapewnieniu, że dane odczytane przez jedną transakcję nie mogą być modyfikowalne przez drugą dopóki pierwsza się nie zakończy",
+                "Na zrobieniu kopii fragmentu bazy danych dostępnej tylko dla jednej transakcji",
+                "Na umożliwieniu odczytania danych, które są zatwierdzone",
+                "Na umożliwieniu odczytania danych, które są niezatwierdzone",
+                "Na zablokowaniu danych tak by ostatnia transakcja mogła czytać dane wielokrotnie",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Czym jest zbiór transakcji w standardzie ANSI X12?",
+            options: [
+                "Zbiorem dokumentów opisanych poprzez ten standard",
+                "Jedną z trzech głównych sekcji dokumentu elektronicznego",
+                "Zbiorem znaków rozdzielających poszczególne kolumny wiersza danych",
+                "Pętlą występującą w każdym dokumencie elektronicznym",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Co oznacza skrót GIOP?",
+            options: [
+                "General Inter-ORB Protocol",
+                "Global Internet Operation Protocol",
+                "General Integration Output Process",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Parser XML, który umożliwia tworzenie nowych dokumentów XML to:",
+            options: ["Xquery", "DOM", "SAX", "StaX"],
+            correct: 1,
+        },
+        {
+            question: "Własnością modelu Publikacji i Subskrypcji nie jest:",
+            options: [
+                "Niedostępność",
+                "Obsługa niepowodzeń",
+                "Modyfikowalność",
+                "Skalowalność",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Wyszukiwanie wzorca w architekturze EDA to:",
+            options: ["SEP", "CEP", "ESP", "SSP"],
+            correct: 1,
+        },
+        {
+            question: "Co nie jest składnikiem ESB:",
+            options: ["Adapter", "Usługa sieciowa", "Dyspozytor", "Agent żądań"],
+            correct: 1,
+        },
+        {
+            question: "Do publikacji Web Service w Javie konieczne jest:",
+            options: [
+                "Umieszczenie serwisu na serwerze J2EE",
+                "Umieszczenie serwisu na serwerze Tomcat",
+                "Kompilacja serwisu i rejestracja w usłudze nazewniczej, którą należy wcześniej uruchomić",
+                "Jeżeli korzystamy z serwera Metro użycie metody publish",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Kompilator IDL w Javie to:",
+            options: ["Idlj", "Orbd", "Idl3java", "Nameserv"],
+            correct: 0,
+        },
+        {
+            question: "Modele ORB to:",
+            options: [
+                "RMI, CORBA, DCOM",
+                "DCOM, CORBA, IDL",
+                "RPC, RMI, CORBA",
+                "RPC, RMI, XDR",
+            ],
+            correct: 0,
+        },
+        {
+            question: "XDR to:",
+            options: [
+                "Niezależny od platformy format danych",
+                "Koncepcja szeregowania argumentów",
+                "Koncepcja deszeregowania argumentów",
+                "Opis usługi sieciowej",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Klasa Java reprezentująca gniazdo to:",
+            options: [
+                "Socket",
+                "ServerSocket",
+                "InputStreamWriter",
+                "FileWriter",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Do czego służy klasa dziedzicząca po DefaultHandler w przypadku parsera SAX?",
+            options: [
+                "Do przetwarzania zdarzeń generowanych przez parser",
+                "Do generowania dokumentów XML z obiektów Java",
+                "Do zarządzania sesjami użytkowników w aplikacji internetowej",
+                "Do szyfrowania i deszyfrowania danych w locie",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Co oznacza skrót SOAP?",
+            options: [
+                "Simple Object Access Protocol",
+                "Service Oriented Architecture Protocol",
+                "Service Object Architecture Protocol",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Do połączenia informacji o operacjach serwisu z informacją o sposobie połączenia w protokole komunikacyjnym stosowanym podczas wymiany danych z usługą w pliku WSDL służy sekcja:",
+            options: ["binding", "service", "operations", "portType"],
+            correct: 0,
+        },
+        {
+            question: "Co oznacza skrót WSDL?",
+            options: [
+                "Web Service Description Language",
+                "Web Service Definition Language",
+                "Web Service Data Link",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Czym jest UDDI:",
+            options: [
+                "serwerem udostępniającym usługi sieciowe",
+                "standardem przemysłowym serwera SRR",
+                "interfejsem usługi sieciowej",
+                "Universal Description, Discovery and Introduction",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Cecha XML:",
+            options: [
+                'atrybuty elementów muszą być zawsze ujęte w cudzysłów, np. nazwisko="Janowski"',
+                "nie używa takich części składowych dokumentu jak HTML, tzn.: elementów, atrybutów i ich wartości",
+                "elementy (znaczniki) nie muszą być domknięte",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Architektura zorientowana na serwisy to:",
+            options: [
+                "architektoniczne podejście do biznesu wspierane przez możliwości technologiczne",
+                "technologia wytwarzania Web Services",
+                "nie używa takich części składowych dokumentu jak HTML, tzn.: elementów, atrybutów i ich wartości",
+                "elementy (znaczniki) nie muszą być domknięte",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Twórcą architektury SOA jest:",
+            options: ["Microsoft", "Sun", "Oracle", "Organizacja nie jest znana"],
+            correct: 3,
+        },
+        {
+            question: "Co to jest Web Service?",
+            options: [
+                "Usługa sieciowa, pewien komponent programowy niezależny od platformy i implementacji udostępniający określoną funkcjonalność",
+                "klasa w Javie zlokalizowana na serwerze sieciowym",
+                "usługa udostępniająca zasoby, obsługująca żądanie typu GET",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Integracja horyzontalna:",
+            options: [
+                "łączy systemy i aplikacje",
+                "Łączy procesy biznesowe",
+                "Łączy użytkowników systemu",
+                "Łączy zależności biznesowe",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Usługi OMA to:",
+            options: [
+                "Usługa transakcji, usługa nazw, usługa bezpieczeństwa, usługa cyklu życia, usługa współbieżności",
+                "Usługa kompresji, usługa archiwizacji, usługa synchronizacji, usługa raportowania",
+                "Usługa kodowania, usługa dekodowania, usługa replikacji",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Kolejki wiadomości:",
+            options: [
+                "Gwarantują dostarczenie wiadomości",
+                "Zawsze przechowują wiadomości w formacie JSON",
+                "Gwarantują szyfrowanie wszystkich wiadomości",
+                "Są używane tylko w systemach operacyjnych Unix",
+                "Mogą być używane tylko do przesyłania plików graficznych",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Właściwością modelu Publikacji i subskrypcji nie jest:",
+            options: [
+                "Niedostępność",
+                "Skalowalność",
+                "Niezawodność",
+                "Efektywność",
+                "Bezpieczeństwo",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Elementy infrastruktury przesyłania wiadomości to:",
+            options: [
+                "Nadawca i odbiorca, kolejki lokalne i pośrednie, mechanizmy zarządzania zdarzeniami",
+                "Kolejka nadawcza, pośrednik (broker), kolejka odbiorcza, mechanizm monitoringu",
+                "Kolejka nadawcza, pośrednik (broker), kolejka odbiorcza, mechanizm monitoringu, mechanizm bezpieczeństwa, nadawca, odbiorca",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Rodzaj heterogeniczności występującej podczas integracji systemów, której nie rozwiązuje Web Service:",
+            options: [
+                "heterogeniczność prędkości transmisji danych",
+                "heterogeniczność synchronizacji",
+                "heterogeniczność protokołów",
+                "Heterogeniczność użytkowników",
+                "heterogeniczność warstw pośrednich",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Standardy architektury SOA:",
+            options: [
+                "UDDI, XML, SOAP, ORB, WSDL, ESB",
+                "ESB, UDDI, WSDL, SOAP, XML",
+                "CORBA, RPC, JDBC, ODBC",
+                "JSON, CSV, YAML, TSV",
+                "REST, HTML, CSS, JavaScript",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Co to jest XTP?",
+            options: [
+                "Extreme Transaction Processing",
+                "XML Processing Toolkit",
+                "Extended Performance Tuning",
+                "Xtreme Programming Toolset",
+                "External Protocol Transfer",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Wymagane elementy wiadomości SOAP to:",
+            options: [
+                "koperta zawierająca ciało (body) i opcjonalnie nagłówek (header)",
+                "Nagłówek, stopka, metadane",
+                "Adres URL, treść, stopka",
+                "Sygnatura cyfrowa, nagłówek, treść",
+                "Plik XML, nagłówek, sygnatura",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Działanie serwera UDDI polega na:",
+            options: [
+                "Rejestracji usług sieciowych i udostępniania klientom połączenia do usług",
+                "Analizie danych przechowywanych w bazach danych i generowaniu raportów",
+                "Bezpośrednim wykonaniu transakcji finansowych między różnymi usługami",
+                "Obsłudze strumieni wideo na żądanie dla użytkowników",
+                "Przechowywaniu plików multimedialnych i ich dystrybucji do użytkowników końcowych",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Do publikacji Web Service w Javie konieczne jest:",
+            options: [
+                "umieszczenie serwisu na serwerze J2EE",
+                "Implementacja serwisu z użyciem tylko klasy Main bez żadnych adnotacji",
+                "Użycie adnotacji @Entity zamiast @WebService",
+                "Wymaganie, aby wszystkie metody serwisu były statyczne",
+                "Włączenie serwisu jako część aplikacji mobilnej Android bez żadnych dodatkowych kroków",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Jaka architektura EDA umożliwia wyszukiwanie wzorców w zbiorach danych?",
+            options: ["CEP", "PSP", "ESP", "SEP", "żadna"],
+            correct: 0,
+        },
+        {
+            question: "Czym jest usługa PaaS w chmurach obliczeniowych?",
+            options: [
+                "Repozytorium plików dostępnych na żądanie",
+                "Gotową platformą do budowy aplikacji chmurowych",
+                "Usługą bazy danych",
+                "Warstwą monitoringu i zarządzania aplikacjami w chmurze",
+                "Warstwą bezpieczeństwa danych",
+            ],
+            correct: 1,
+        },
+        {
+            question: "RMI jest specyfikacją spełniającą standard:",
+            options: [
+                "Zdalnego wywoływania procedur i jednocześnie standard CORBA",
+                "Standard komunikacji za pomocą protokołu SOAP",
+                "Standard Common Object Request Broker Architecture",
+                "Standard usługi REST",
+                "Standard RPC",
+            ],
+            correct: 4,
+        },
+        {
+            question: "Klasa usługi Web Service w Javie musi mieć:",
+            options: [
+                "posiadać metodę oznaczoną adnotacją @Endpoint",
+                "musi implementować dowolny interfejs",
+                "mieć adnotację @SOAPBinding",
+                "mieć adnotację @WebService i @WebMethod",
+                "metody oznaczone adnotacją @WebMethod",
+            ],
+            correct: 3,
+        },
+        {
+            question:
+                "Jaka architektura integracyjna jest najlepsza za względu na konieczność zapewnienia łatwego dołączenia kolejnych systemów i odporności na awarie:",
+            options: [
+                "architektura sterowana zdarzeniami",
+                "hub and spoke",
+                "architektura punkt-punkt",
+                "architektura pipeline (rurociągu)",
+                "architektura XDR",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Czym jest usługa Platform-as-a-service w Cloud Computing?",
+            options: [
+                "zestawem zawierającym mechanizmy tworzenia aplikacji, interfejsów, baz danych, magazynów plików",
+                "usługami monitoringu i eksportu danych",
+                "aplikacją z bazą danych na żądanie",
+                "zdalnym zasobem, który łączy wiele zasobów takich jak serwisy i dane zlokalizowane w tej sieci lub innych tworząc proces biznesowy",
+                "całą maszyną z wybranym systemem operacyjnym, którą możemy wynająć",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Jaki typ wiadomości standardowo nie występuje w JMS?",
+            options: [
+                "wiadomość tekstowa",
+                "wiadomość w postaci ciągu wartości prostych, np. typu int",
+                "wiadomość w postaci obiektu",
+                "wiadomość w postaci mapy geograficznej",
+                "wiadomość binarna",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Element binding w WSDL służy do:",
+            options: [
+                "definicji wiadomości wejściowych i wyjściowych związanych z operacją",
+                "łączenia wiadomości z ich typami",
+                "wiązania adresu fizycznego usługi",
+                "definicji nowych typów",
+                "łączenia operacji z protokołem transportowym",
+            ],
+            correct: 4,
+        },
+        {
+            question:
+                "W jaki sposób reprezentowany jest w aplikacji klienckiej korzystającej z RMI zdalny obiekt?",
+            options: [
+                "Jako obiekt klasy RMISecurityManager",
+                "Jako obiekt klasy definiującej zdalną usługę",
+                "poprzez obiekt interfejsu zdalnej usługi",
+                "obiekt klasy binding",
+                "jako obiekt rmiregistry",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Funkcje ESB to:",
+            options: [
+                "pośredniczenie pomiędzy magistralami usług w dwóch przedsiębiorstwach",
+                "łączenie domen z obsługą przekazywania informacji o zdarzeniach pomiędzy nimi",
+                "tworzenie nowych usług sieciowych od podstaw i propagowanie ich w sieciowy",
+                "prowadzenie rejestru usług sieciowych",
+                "mapowanie serwisów, routingu, transformacje protokołów, transformacje wiadomości",
+            ],
+            correct: 4,
+        },
+        {
+            question: "Koncepcje (style) integracji to:",
+            options: [
+                "wprowadzanie procesów biznesowych obejmujących wiele przedsiębiorstw",
+                "wymiana danych poprzez krótkie wiadomości tekstowe",
+                "portale informacyjne, współdzielone funkcje biznesowe, współdzielone dane",
+                "portale wiedzy, łączenie sieci komputerowych, wprowadzanie standardów",
+                "dzielenie rozwiązań jednolitych na wyspowe",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Fragment FK000046201100234500 reprezentuje plik:",
+            options: [
+                "binarny",
+                "z danymi w zapisie szesnastkowym",
+                "płaski bez delimitera",
+                "płaski z delimeterem",
+                "hierarchiczny bez delimetera",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Jakiego mechanizmu nie wykorzystuje się przy współdzieleniu funkcji biznesowych?",
+            options: [
+                "Usługi WebService",
+                "Architektury SOA",
+                "Zdalnego wywołania procedur",
+                "RMI",
+                "Transferu danych",
+            ],
+            correct: 4,
+        },
+        {
+            question:
+                "Co jest problemem podczas integracji poprzez dzielenie baz danych?",
+            options: [
+                "aplikacje o krytycznym znaczeniu muszą mieć własne bazy danych",
+                "trudny proces separacji użytkowników",
+                "różnice formatów danych obsługiwanych przez integrowane strony",
+                "różne języki programowania w których są programowane aplikacje klienckie",
+                "zbyt małe moce obliczeniowe jednostek klienckich",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Na czym polega model publikacji-subskrybcji?",
+            options: [
+                "Przesyłaniu odpowiedzi na odebrane wiadomości",
+                "Publikacji na temat, na którym oczekują subskrybencji",
+                "Powielaniu i dystrybucji wiadomości do wszystkich klientów systemu wiadomości",
+                "Publikacji na kolejkę, z której pobierają sobie subskrybenci - model pushl",
+                "Publikacji na kolejkę, z której pobierają sobie subskrybenci - model pull",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Czym jest system informatyczny?",
+            options: [
+                "Zbiór powiązanych ze sobą elementów, którego funkcją nie jest przetwarzanie danych przy użyciu techniki komputerowej",
+                "Zbiór powiązanych ze sobą elementów, którego funkcją jest przetwarzanie danych przy użyciu techniki komputerowej",
+                "Zbiór nie powiązanych ze sobą elementów, którego funkcją jest przetwarzanie informacji przy użyciu techniki komputerowej",
+                "Zbiór powiązanych ze sobą elementów, którego funkcją jest przetwarzanie informacji przy użyciu techniki komputerowej",
+                "Zbiór nie powiązanych ze sobą elementów, którego funkcją jest przetwarzanie danych przy użyciu techniki komputerowej",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Transfer danych to:",
+            options: [
+                "wymiana danych pomiędzy systemami poprzez pliki",
+                "wprowadzenie danych z klawiatury i dystrybucja do wielu aplikacji",
+                "przesyłanie danych poprzez sieć WIFI",
+                "udostępnianie wspólnej bazy danych",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Czym jest system informatyczny?",
+            options: [
+                "Do części systemu informatycznego możemy zaliczyć: oprogramowanie i obsługujących je ludzi",
+                "Zbiór powiązanych elementów, którego funkcją jest przetwarzanie danych przy użyciu techniki komputerowej",
+                "Do części systemu informatycznego możemy zaliczyć: Komputery i oprogramowanie",
+                "Zbiór nie powiązanych elementów, którego funkcja jest przetwarzanie danych przy użyciu techniki komputerowej",
+                "Do części systemu informatycznego możemy zaliczyć: serwery i komputery użytkowników",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Czego nie można powiedzieć o EAI?",
+            options: [
+                "EAI wykorzystuje indywidualnie zbudowane interfejsy do komunikacji pomiędzy aplikacjami",
+                "Rozwiązuje problem integracji i współdzielenia funkcjonalności na poziomie procesu biznesowego",
+                "Jest to pojęcie opisujące integrację aplikacji",
+                "EAI zwykle nie wykorzystuje uniwersalnego podejścia do integracji systemów, a wymaga indywidualnych rozwiązań",
+                "EAI stosuje komercyjne narzędzia do wykonania wymiany danych pomiędzy aplikacjami",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Czego nie można powiedzieć o EAI?",
+            options: [
+                "EAI to architektura wywodząca się z SOA i służy do analizy zdarzeń",
+                "zapewnia integrację horyzontalną",
+                "SOA i EAI mogą posłużyć do zintegrowania aplikacji",
+                "SOA to skrót oznaczający architekturę zorientowaną na usługi",
+                "zapewnia integrację wertykalną",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Jeżeli chcemy uzyskać pojedyncze punkty modyfikacji dla wielu aplikacji jednocześnie to można zastosować:",
+            options: [
+                "Kopiowanie funkcjonalności z jednej aplikacji do drugiej",
+                "Protokół SOAP",
+                "Współdzielenie funkcji biznesowych",
+                "Zbudować aplikację w języku obiektowym",
+                "Komunikację za pomocą gniazdek",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Czego nie robi lub czym nie jest broker wiadomości?",
+            options: [
+                "Zajmuje się transportem wiadomości od dostawcy do subskrybenta oraz niezbędnymi transformacjami",
+                "Jest centralnym komponentem, odpowiedzialnym za bezpieczne dostarczanie wiadomości",
+                "Generuje wiadomości domyślne jeśli nie zostały wysłane przez dostawcę",
+                "Posiada logiczne porty do odbierania i wysyłania wiadomości",
+                "Jest implementacją routingu oraz architektury oś i szprychy (hub and spoke)",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Do czego służy portal internetowy w kontekście integracji?",
+            options: [
+                "Do wyświetlania wiadomości prasowych",
+                "Do integracji informacji",
+                "Do współdzielenia danych przez różne systemy",
+                "Do konwersji danych pomiędzy różnymi formatami",
+                "Do obsługi poczty elektronicznej",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Jaki jest element główny wiadomości SOAP?",
+            options: [
+                "Element ciała",
+                "Element koperty",
+                "Element <Fault>",
+                "Element nagłówka",
+                "Deklaracja XML",
+            ],
+            correct: 1,
+        },
+        {
+            question:
+                "Do czego służy poziom jakości usług równy 2 w systemach wiadomości MQTT?",
+            options: [
+                "Do zapewnienia, że wiadomość dotrze dokładnie raz",
+                "Do zapewnienia szyfrowego połączenia podczas przesyłania wiadomości",
+                "Do zapewnienia oczyszczania kolejek w brokerze",
+                "Do zapewnienia, że wiadomość dotrze przynajmniej raz",
+                "Do zapewnienia, że wiadomość dotrze najwyżej raz",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Czym różnią się usługi SOAP i REST?",
+            options: [
+                'Za pomocą usług REST tworzy się aplikację sieciową typu "monolit"',
+                "Budową wiadomości przesyłanych pomiędzy usługą i jej klientem",
+                "Do budowy procesów biznesowych wykorzystuje się usługi REST, a nie SOAP",
+                "Do udostępniania zasobów wykorzystuje się usługi SOAP, a REST nie",
+                "Usługa REST ma ściśle zdefiniowane standardy",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Jakie są rodzaje usług sieciowych?",
+            options: [
+                "MQ, REST i WebService",
+                "MQ, FP API, WebService - SOAP",
+                "MQ, FP API, REST",
+                "FP API, REST i WebService",
+                "REST i WebService",
+            ],
+            correct: 4,
+        },
+        {
+            question: "Do czego służy JNDI w przypadku JMS?",
+            options: [
+                "Wyszukiwania obiektów kolejek i fabryk kolejek",
+                "Łączenia klienta i tematu w modelu publikacji i subskrybcji",
+                "Wprowadzania wspólnego nazewnictwa kolejek",
+                "Łączenia klienta i kolejki wiadomości",
+                "Wprowadzania wspólnego nazewnictwa tematów - topic",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Na czym polega poziom izolacji baz danych o nazwie snapshot?",
+            options: [
+                "Wykonywana jest kopia fragmentu bazy, na której pracuje transakcja",
+                "Wszystkie transakcje wykonują się szeregowo",
+                "Łapane są wszystkie wyjątki transakcji",
+                "Transakcje mogą odczytywać dane zatwierdzone",
+                "Transakcje wykonują się zgodnie z ich priorytetami",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Czym jest namiastka w RPC?",
+            options: [
+                "Lokalna reprezentacją zdalnej usługi",
+                "Tak nazywa się aplikacja kliencka",
+                "Jest to szkielet na podstawie którego buduje się zdalną usługę",
+                "Taki element nie występuje w RPC",
+                "Jest to funkcja sieciowa wywoływana przez zdalną procedurę",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Do czego służy element Message w pliku WSDL?",
+            options: [
+                "Do określania komunikatów dla użytkownika, m.in. komunikatów o błędach",
+                "Do określania typów stosowanych danych",
+                "Do określania danych przekazywanych do metody zdalnej metody",
+                "Do określania sposobu komunikacji z punktem docelowym - end point",
+                "Do określania wiązania udostepnianych metod z protokołem komunikacyjnym",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Który warunek integracja danych poprzez współdzielenie bazy danych spełnia na pewno?",
+            options: [
+                "Współdzielona baza danych jest bardzo dobry rozwiązaniem integracji danych ponieważ można w niej umieścić i współdzielić dane ze wszystkich firmowych baz danych",
+                "Dane nie są rozmieszczane redundantnie",
+                "Współdzielenie bazy danych pomiędzy oddziałami firmy oddalonymi geograficznie nie wpłynie na działanie aplikacji w poszczególnych oddziałach",
+                "Dane w bazach danych gotowych, zakupionych aplikacji możemy współdzielić z innymi",
+                "Baza danych umożliwia współdzielenie danych aplikacjom czasu rzeczywistego",
+            ],
+            correct: 1,
+        },
+        {
+            question:
+                "Po raz pierwszy pojęcie serializacji i deserializacji argumentów, pojęcie interfejsu usługi oraz konsumenta i producenta usługi wprowadzono w specyfikacji:",
+            options: [
+                "Zdalnego wywoływania procedur",
+                "W specyfikacji W3C do HTML",
+                "W standardzie REST",
+                "w standardach WebService",
+                "w specyfikacji CORBA",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "`<INVOICE nr=1><HEADER><BODY><WIDTH>10<\/WIDTH><\/BODY><\/HEADER><\/INVOICE>` to zawartość reprezentująca plik typu:",
+            options: [
+                "Hierarchicznego",
+                "To plik CSS",
+                "HTML-owego",
+                "To plik WSDL",
+                "Płaskiego",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Czemu służy kolejka pośrednia w infrastrukturze przesyłania wiadomości?",
+            options: [
+                "Umożliwia utrwalanie wiadomości i przesyłanie ponowne w przypadku niepowodzenia",
+                "Umożliwia zmiany priorytetów wiadomości",
+                "Jest lokalnym obrazem zdalnej kolejki u nadawcy wiadomości",
+                "Przyspiesza przesyłanie wiadomości",
+                "Służy do filtrowania wiadomości na podstawie QoS",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Do czego służy element Exchange w systemie kolejkowym Rabbit MQ?",
+            options: [
+                "Jest to specjalna kolejka do komunikacji synchronicznej",
+                "Jest to zestaw kolejek, które wymieniają między sobą wiadomości",
+                "Reprezentuje punkt odbierania wiadomości (analogia urzędu pocztowego), który przekierowuje wiadomości do kolejek",
+                "Jest to moduł uwierzytelniania użytkowników",
+                "Jest to zwykła kolejka, która jest zakładana domyślnie",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Czy komunikacja poprzez system wiadomości umożliwia komunikację synchroniczną?",
+            options: [
+                "Można ją zrealizować poprzez identyfikator korelacji wiadomości",
+                "Nie, systemy wiadomości zapewniają luźne parowanie",
+                "Tak, zawsze komunikacja jest synchroniczna",
+                "Nie, systemy wiadomości działają asynchronicznie",
+                "Nie, synchronicznie mogą być przekazywane tylko ACK",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Co to jest replikacja w kontekście baz danych?",
+            options: [
+                "Przenoszenie danych z jednej bazy do drugiej w celu zsynchronizowania ich zawartości",
+                "Powielanie rekordów w tabelach bazy danych w celu podniesienia poziomu bezpieczeństwa",
+                "Usuwanie z bazy danych zbędnych danych",
+                "Na bazach danych nie robi się replikacji",
+                "Robienie backupu danych z bazy danych",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Co nie jest prawdą w przypadku JMS?",
+            options: [
+                "Wykorzystuje obiekt klasy QueueSender do przekazywania wiadomości do kolejek",
+                "Dostawca wiadomości (aplikacja) wykorzystuje sesje z potwierdzaniem lub nie",
+                "Wykorzystuje usługę nazewniczą do wyszukiwania tematów",
+                "Wykorzystuje tematy w modelu pull - pobierania wiadomości z kolejek",
+                "Wykorzystuje kolejki w modelu pull",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Co jest cechą magistrali usług?",
+            options: [
+                "Zapewnia routing wiadomości od klienta do usługi",
+                "Jest systemem produkującym usługi na podstawie zdefiniowanych interfejsów usług",
+                "Umożliwia rejestrację i wyszukiwanie usług",
+                "Magistrala usług nie umożliwia uzupełniania braków wiadomości",
+                "Jest siecią światłowodową umożliwiającą szybką wymianę danych pomiędzy usługami",
+            ],
+            correct: 0,
+        },
+        {
+            question: 'Czym różnią się architektury "oś szprychy" i "rurociąg"?',
+            options: [
+                "Niczym się nie różnią poza tym, że architekturę osi i szprych łatwiej się implementuje",
+                "Architektura rurociągu ma więcej maszyn w osi co daje większe bezpieczeństwo",
+                "Architektura rurociągu polega na wykorzystaniu kanałów do wymiany danych pomiędzy wątkami",
+                "Architektura osi i szprych wymaga liczby interfejsów wymiany danych wyrażonej wzorem N(N-1)/2, gdzie N to liczba integrowanych systemów",
+                'Architektura rurociągu ma "pojedynczy punkt awarii" a architektura osi i szprych nie',
+            ],
+            correct: 1,
+        },
+        {
+            question:
+                "Na jakiej podstawie w pliku płaskim o ustalonej długości rozróżnia się komórki danych?",
+            options: [
+                "Na podstawie liczby znaków",
+                "Na podstawie znaczników XML",
+                "Na podstawie występujących delimiterów",
+                "Na podstawie liczby bajtów w nagłówku",
+                "Nie ma potrzeby rozróżniania komórek",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Co nie jest cechą charakterystyczną systemu wiadomości?",
+            options: [
+                "Brak pewności dostarczenia wiadomości",
+                "Potrafi przetwarzać do kilku tysięcy wiadomości na sekundę",
+                "Wykorzystuje kolejki lub tematy",
+                "Jest często bazą dla magistrali usług",
+                "Możliwość określenia poziomu QoS",
+            ],
+            correct: 0,
+        },
+        {
+            question: "Jaka cecha nie jest typowa dla systemów wiadomości?",
+            options: [
+                "luźne parowanie",
+                "skalowalność",
+                "pojemność",
+                "dostępność",
+                "obsługa niepowodzeń",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Czy metody transferu danych można wykorzystać do współdzielenia funkcjonalności?",
+            options: [
+                "Tak, można zastosować gniazdka, ale wtedy trzeba sobie skonstruować protokół wyzwalania zdalnej funkcji za pomocą odpowiedniego komunikatu",
+                "Tak, poprzez replikacje danych",
+                "Nie, transfer danych dotyczy danych nie współdzielenia funkcjonalności",
+                "Nie, transfer danych to tylko przesyłanie plików",
+                "Nie, transfer danych to tylko przesyłanie danych po gniazdkach",
+            ],
+            correct: 0,
+        },
+        {
+            question: "W jakim wypadku uda się współdzielenie danych?",
+            options: [
+                "Kiedy stosujemy własną bazę danych",
+                "Kiedy do bazy danych zapisujemy wartość binarną",
+                "Kiedy tworzymy aplikację korzystające ze wspólnej bazy danych",
+                "Kiedy chcemy mieć możliwość dostępu do danych w czasie prawie rzeczywistym",
+                "Kiedy stosujemy bazę danych zakupionej aplikacji",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Czym jest integracja informacji?",
+            options: [
+                "Agregacja danych z różnych źródeł i prezentacja użytkownikowi umożliwiająca wyciąganie wniosków",
+                "Wymiana danych pomiędzy integrowanymi systemami",
+                "Tworzenie nowych aplikacji lub modyfikacja istniejących w celu umożliwienia wymiany danych i podziału funkcjonalności",
+                "Wymiana danych pomiędzy hostem i serwerem",
+                "Tworzenie nowych aplikacji lub modyfikacja istniejących w celu umożliwienia wymiany danych i podziału funkcjonalności przy udziale użytkownika",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Podczas tworzenia zdalnego obiektu dostępnego przez RMI musimy pamiętać abu:",
+            options: [
+                "Klasa Java dziedziczyła po klasie Remote",
+                "Każda metoda poza main zgłaszała wyjątek RemoteException",
+                "Nie może mieć metod prywatnych",
+                "Implementować interfejs zdalnego obiektu",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Element pusty wygląda następująco:",
+            options: [
+                "<ElementPusty zawartość=”nic”/>",
+                "<\/ElementPusty zawartość=”nic”>",
+                "<ElementPusty zawartość=”nic”> <\/ElementPusty>",
+                "<ElementPusty><\/ElementPusty>",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Sekcja CDATA w dokumencie XML służy do:",
+            options: [
+                "oznaczenia typu danych tekstowych atrybutu",
+                "oznaczenia typu danych tekstowych elementu",
+                "wyświetlania elementów XML w postaci tekstu bez interpretacji parsera",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Komentarze w pliku XML umieszczamy pomiędzy znakami:",
+            options: [
+                "<? oraz ?>",
+                "<? oraz >",
+                "<!-- oraz --!>",
+                "<!-- oraz -->",
+            ],
+            correct: 3,
+        },
+        {
+            question: "Typy XML Schema globalne:",
+            options: [
+                "to typy, których nie można wykorzystać do tworzenia typów złożonych",
+                "to typy zadeklarowane w elemencie xsd:schema",
+                "to typy złożone bez nazwy",
+            ],
+            correct: 1,
+        },
+        {
+            question:
+                "Wyrażenie <xsd:pattern value=”\\d{2}(-\\d{3})?”/> oznacza:",
+            options: [
+                "wzorzec, do którego pasuje wartość 035-21",
+                "wzorzec, do którego pasuje wartość 21035",
+                "wzorzec, do którego pasuje wartość 21-350",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Tworząc typ prosty z kilkoma określonymi wartościami dopuszczalnymi, np. 0, 10, 20 należy zastosować elementy:",
+            options: [
+                "complexType i restriction",
+                "simpleType i restriction",
+                "simpleType i enumeration",
+                "simpleType, restriction i enumeration",
+            ],
+            correct: 3,
+        },
+        {
+            question:
+                "Składnik wyrażenia regularnego oznaczający znak biały, np. Enter albo Tab to:",
+            options: ["\\d", "\\S", "\\s", "\\D"],
+            correct: 2,
+        },
+        {
+            question: "Wyrażenie w+ w XML Schema oznacza:",
+            options: [
+                "opcjonalne wystąpienie elementu w",
+                "przynajmniej jedno wystąpienie w",
+                "wielokrotne wystąpienie w",
+            ],
+            correct: 1,
+        },
+        {
+            question: "Typy złożone tekstowe w XML Schema:",
+            options: [
+                "mogą mieć atrybuty, nie mają treści i podelementów",
+                "zawierające treść (opcjonalnie atrybuty) bez podelementów",
+                "zawierające podelementy (opcjonalnie atrybuty), bez treści",
+            ],
+            correct: 1,
+        },
+        {
+            question:
+                "Do zdefiniowania w schemacie nieuporządkowanej grupy służy:",
+            options: ["element all", "element choice", "element sequence"],
+            correct: 0,
+        },
+        {
+            question:
+                "Do stworzenia w schemacie elementów występujących alternatywnie służy:",
+            options: ["element all", "element choice", "element sequence"],
+            correct: 1,
+        },
+        {
+            question:
+                "Do stworzenia typu podobnego na bazie typu złożonego nie możemy użyć wyrażenia:",
+            options: [
+                "<xsd:extension base=”dokument”>",
+                "<xsd:restriction base=”dokument”>",
+                "<xsd:inheritance base=”dokument”>",
+            ],
+            correct: 2,
+        },
+        {
+            question:
+                "Jeżeli atrybut zdefiniowany w XML Schema ma mieć jedną dopuszczalną wartość\npowinien mieć dodane wymaganie:",
+            options: ["use=”prohibited”", "use=”required”", "value=”wartość”"],
+            correct: 2,
+        },
+        {
+            question:
+                "Na podstawie fragmentu XML\n<główny xmlns:małe=”http://ja.org/małeznaki” xmlns:duże=”http://ja.org/małeznaki”>\n<małe:bb>\n<\/małe:bb>\n<duże:BB>\n<\/duże:BB>\n<\/główny>\nmożna powiedzieć, że prawdą jest:",
+            options: [
+                "elementy bb i BB należą do tej samej przestrzeni nazw",
+                "elementy bb i BB należą do różnej przestrzeni nazw",
+                "przestrzenie nazw są zdefiniowane błędnie",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Do dołączenia do schematu XML Schema fragmentu schematu z pliku *.xsd, tak by\nprzestrzeń nazw się nie zmieniła stosuje się element:",
+            options: ["xsd:include", "xsd:import", "xsd:load"],
+            correct: 0,
+        },
+        {
+            question: "Element główny deklarujący styl XSL to:",
+            options: [
+                "może być tylko <xsl:stylesheet version=”1.0” xmlns:xsl=”http://www.w3.org/1999/XSL/Transform”>",
+                "<xsl:transform version=”1.0” xmlns:xsl=”http://www.w3.org/1999/XSL/Transform”>",
+                "może być xsl:stylesheet lub xsl:transform",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Wyrażenie XPath produkty/farba oznacza wybór",
+            options: [
+                "wszystkich elementów farba",
+                "wszystkich elementów farba lub elementów produkty",
+                "wszystkich elementów farba, które są dziećmi elementów produkty",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Wyrażenie XPath //farba[@cena=’150’] oznacza:",
+            options: [
+                "wszystkie elementy farba o wartości atrybutu cena = 150",
+                "wszystkie elementy farba z podelementem cena o wartości 150",
+                "pierwszy element farba z podelementem cena o wartości 150",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Do tworzenia plików XML Schema na podstawie kodu języka Java służy:",
+            options: ["biblioteka JAX", "biblioteka JAXB", "biblioteka JAX-WS"],
+            correct: 1,
+        },
+        {
+            question:
+                "Wiadomość SOAP:",
+            options: [
+                "składa się z koperty <envelope>",
+                "składa się z koperty <envelope> z nagłówkiem",
+                "może posiadać element <fault> tylko wewnątrz <body>",
+                "musi posiadać elementy <envelope>, <body>, <header>, <fault>",
+            ],
+            correct: 2,
+        },
+        {
+            question: "Czym jest kontroler w usłudze sieciowej typu REST?",
+            options: [
+                "Mapuje żądania przychodzące od klientów usługi na wywołania metod usługi",
+                "Izoluje usługę od innych usług",
+                'Jest "czuciem" komponentów widoku i zapewnia reakcje na działania użytkownika',
+                "Zajmuje się obsługą zdarzeń GUI",
+                "Reprezentuje dane jednego wiersza z tabeli bazy danych",
+            ],
+            correct: 0,
+        },
+        {
+            question:
+                "Na czym polega poziom izolacji baz danych - Read Committed?",
+            options: [
+                "Transakcje wykonują się równolegle na wzajem zatwierdzając sobie etapy transakcji",
+                "Transakcja ma dostęp do elelemtów bazy danych nie zatwierdzonych przez inne transakcje",
+                "Transakcje wykonują się szeregowo",
+                "Transakcja ma dostęp do elementów bazy danych zatwierdzonych już przez inne transakcje",
+                "Transakcje synchronicznie odczytują te same dane i razem zatwierdzają ich zmiany",
+            ],
+            correct: 3,
+        },
+
+        {
+            "question": "W kontekście Internetu Rzeczy (IoT), do czego odnosi się termin „Przemysł 4.0”?",
+            "options": [
+                "Do systemów operacyjnych działających wyłącznie na komputerach PC.",
+                "Do sieci IPv6 obsługującej tylko cztery rodzaje urządzeń.",
+                "Do czwartej generacji protokołu komunikacyjnego HTTP.",
+                "Do metod ręcznego odczytu danych z czujników analogowych.",
+                "Do przemysłowej wersji IoT."
+            ],
+            "correct": 4
+        },
+        {
+            "question": "Czym charakteryzuje się model publikacji i subskrypcji w systemach wiadomości?",
+            "options": [
+                "Koniecznością pobierania wiadomości z kolejki przez klienta w modelu pull.",
+                "Możliwością wysyłania jednej wiadomości do wielu odbiorców zainteresowanych tematem.",
+                "Silnym powiązaniem producenta i klienta na poziomie formatu danych.",
+                "Brakiem możliwości replikacji tematów pomiędzy klastrami serwerów.",
+                "Wykorzystaniem wyłącznie połączeń punkt-punkt bez udziału brokera."
+            ],
+            "correct": 1
+        },
+        {
+            "question": "W systemach transakcyjnych, co oznacza termin „rollback”?",
+            "options": [
+                "Wycofanie zmian w przypadku braku sukcesu operacji.",
+                "Synchronizację czasu pomiędzy różnymi serwerami baz danych.",
+                "Zatwierdzenie transakcji i trwały zapis danych w bazie.",
+                "Proces zagnieżdżania transakcji wewnątrz innych transakcji.",
+                "Koordynację dostępu do danych dla transakcji równoległych."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Czym jest exchange w brokerze RabbitMQ?",
+            "options": [
+                "Mechanizmem umożliwiającym wymianę certyfikatów przy połączeniu szyfrowanym",
+                "Zbiorem równoległych kolejek",
+                "Punktem przekształcania i wzbogacania wiadomości",
+                "Mechanizmem synchronizacji węzłów klastra",
+                "\"Urzędem pocztowym\" rozdysponowującym napływające wiadomości do kolejek lub tematów"
+            ],
+            "correct": 4
+        },
+        {
+            "question": "Który poziom izolacji transakcji zapewnia, że transakcja widzi swoją lokalną kopię danych?",
+            "options": [
+                "Serializable.",
+                "Read uncommitted.",
+                "Snapshot.",
+                "Read committed.",
+                "Repeatable read."
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Zgodnie z definicją NIST, co jest kluczową cechą chmury obliczeniowej?",
+            "options": [
+                "Stała interakcja z człowiekiem po stronie dostawcy przy każdym zamówieniu.",
+                "Konieczność posiadania własnej serwerowni wewnątrz siedziby firmy.",
+                "Model „pay-per-use” oraz szybkie zamawianie i zwalnianie zasobów.",
+                "Brak możliwości korzystania z heterogenicznych platform klienckich.",
+                "Wyłączne udostępnianie zasobów wewnątrz bezpiecznej ściany ogniowej firmy."
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Jakie wymaganie musi spełnić klasa implementująca zdalny obiekt w technologii Java RMI?",
+            "options": [
+                "Musi dziedziczyć po UnicastRemoteObject i implementować odległy interfejs.",
+                "Wszystkie jej dodatkowe metody będą automatycznie widoczne zdalnie.",
+                "Musi rozszerzać klasę java.rmi.Remote zamiast ją implementować.",
+                "Nie może posiadać jawnie zdefiniowanego konstruktora bezparametrowego.",
+                "Musi być zadeklarowana jako obiekt typu klasy, a nie interfejs."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Jaka jest podstawowa cecha wzorca integracji aplikacji typu Router?",
+            "options": [
+                "Służy wyłącznie do synchronizacji baz danych w czasie rzeczywistym.",
+                "Umożliwia dekompozycję wiadomości i jej wysłanie do wielu odbiorców naraz.",
+                "Zawsze wykorzystuje topologię 1:N tak jak wzorzec pośrednika (broker).",
+                "Wiadomość jest trasowana tylko do jednej, wybranej aplikacji docelowej.",
+                "Wymaga, aby aplikacja źródłowa znała dokładne położenie aplikacji docelowej."
+            ],
+            "correct": 3
+        },
+        {
+            "question": "Do czego służy element Message w pliku WSDL?",
+            "options": [
+                "Do określania typów stosowanych danych",
+                "Do określania danych przekazywanych do metody zdalnej metody",
+                "Do określania komunikatów dla użytkownika, m.in. komunikatów o błędach",
+                "Do określania sposobu komunikacji z punktem docelowym - end point",
+                "Do określania wiązania udostępnianych metod z protokołem komunikacyjnym"
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Jaką przewagę mają usługi SOAP nad usługami REST w środowiskach enterprise?",
+            "options": [
+                "Mają mniejszy próg wejścia i są prostsze w implementacji w JavaScript.",
+                "Są niezależne od warstwy transportowej i posiadają wbudowaną obsługę błędów.",
+                "Zwracają wyniki wyłącznie w lekkich formatach takich jak JSON czy RSS.",
+                "Nie wymagają żadnych narzędzi do interakcji z usługami.",
+                "Zakładają komunikację wyłącznie punkt-punkt bez użycia standardów WS*."
+            ],
+            "correct": 1
+        },
+
+        {
+            "question": "W kontekście Internetu Rzeczy (IoT), do czego odnosi się termin „Przemysł 4.0”?",
+            "options": [
+                "Do systemów operacyjnych działających wyłącznie na komputerach PC.",
+                "Do sieci IPv6 obsługującej tylko cztery rodzaje urządzeń.",
+                "Do czwartej generacji protokołu komunikacyjnego HTTP.",
+                "Do metod ręcznego odczytu danych z czujników analogowych.",
+                "Do przemysłowej wersji IoT."
+            ],
+            "correct": 4
+        },
+        {
+            "question": "Czym charakteryzuje się model publikacji i subskrypcji w systemach wiadomości?",
+            "options": [
+                "Koniecznością pobierania wiadomości z kolejki przez klienta w modelu pull.",
+                "Możliwością wysyłania jednej wiadomości do wielu odbiorców zainteresowanych tematem.",
+                "Silnym powiązaniem producenta i klienta na poziomie formatu danych.",
+                "Brakiem możliwości replikacji tematów pomiędzy klastrami serwerów.",
+                "Wykorzystaniem wyłącznie połączeń punkt-punkt bez udziału brokera."
+            ],
+            "correct": 1
+        },
+        {
+            "question": "W systemach transakcyjnych, co oznacza termin „rollback”?",
+            "options": [
+                "Wycofanie zmian w przypadku braku sukcesu operacji.",
+                "Synchronizację czasu pomiędzy različnymi serwerami baz danych.",
+                "Zatwierdzenie transakcji i trwały zapis danych w bazie.",
+                "Proces zagnieżdżania transakcji wewnątrz innych transakcji.",
+                "Koordynację dostępu do danych dla transakcji równoległych."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Czym jest exchange w brokerze RabbitMQ?",
+            "options": [
+                "Mechanizmem umożliwiającym wymianę certyfikatów przy połączeniu szyfrowanym",
+                "Zbiorem równoległych kolejek",
+                "Punktem przekształcania i wzbogacania wiadomości",
+                "Mechanizmem synchronizacji węzłów klastra",
+                "\"Urzędem pocztowym\" rozdysponowującym napływające wiadomości do kolejek lub tematów"
+            ],
+            "correct": 4
+        },
+        {
+            "question": "Który poziom izolacji transakcji zapewnia, że transakcja widzi swoją lokalną kopię danych?",
+            "options": [
+                "Serializable.",
+                "Read uncommitted.",
+                "Snapshot.",
+                "Read committed.",
+                "Repeatable read."
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Zgodnie z definicją NIST, co jest kluczową cechą chmury obliczeniowej?",
+            "options": [
+                "Stała interakcja z człowiekiem po stronie dostawcy przy każdym zamówieniu.",
+                "Konieczność posiadania własnej serwerowni wewnątrz siedziby firmy.",
+                "Model „pay-per-use” oraz szybkie zamawianie i zwalnianie zasobów.",
+                "Brak możliwości korzystania z heterogenicznych platform klienckich.",
+                "Wyłączne udostępnianie zasobów wewnątrz bezpiecznej ściany ogniowej firmy."
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Jakie wymaganie musi spełnić klasa implementująca zdalny obiekt w technologii Java RMI?",
+            "options": [
+                "Musi dziedziczyć po UnicastRemoteObject i implementować odległy interfejs.",
+                "Wszystkie jej dodatkowe metody będą automatycznie widoczne zdalnie.",
+                "Musi rozszerzać klasę java.rmi.Remote zamiast ją implementować.",
+                "Nie może posiadać jawnie zdefiniowanego konstruktora bezparametrowego.",
+                "Musi być zadeklarowana jako obiekt typu klasy, a nie interfejs."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Jaka jest podstawowa cecha wzorca integracji aplikacji typu Router?",
+            "options": [
+                "Służy wyłącznie do synchronizacji baz danych w czasie rzeczywistym.",
+                "Umożliwia dekompozycję wiadomości i jej wysłanie do wielu odbiorców naraz.",
+                "Zawsze wykorzystuje topologię 1:N tak jak wzorzec pośrednika (broker).",
+                "Wiadomość jest trasowana tylko do jednej, wybranej aplikacji docelowej.",
+                "Wymaga, aby aplikacja źródłowa znała dokładne położenie aplikacji docelowej."
+            ],
+            "correct": 3
+        },
+        {
+            "question": "Do czego służy element Message w pliku WSDL?",
+            "options": [
+                "Do określania typów stosowanych danych",
+                "Do określania danych przekazywanych do metody zdalnej metody",
+                "Do określania komunikatów dla użytkownika, m.in. komunikatów o błędach",
+                "Do określania sposobu komunikacji z punktem docelowym - end point",
+                "Do określania wiązania udostępnianych metod z protokołem komunikacyjnym"
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Jaką przewagę mają usługi SOAP nad usługami REST w środowiskach enterprise?",
+            "options": [
+                "Mają mniejszy próg wejścia i są prostsze w implementacji w JavaScript.",
+                "Są niezależne od warstwy transportowej i posiadają wbudowaną obsługę błędów.",
+                "Zwracają wyniki wyłącznie w lekkich formatach takich jak JSON czy RSS.",
+                "Nie wymagają żadnych narzędzi do interakcji z usługami.",
+                "Zakładają komunikację wyłącznie punkt-punkt bez użycia standardów WS*."
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Który framework udostępnia ponad 50 gotowych adapterów do integracji z zewnętrznymi systemami (np. AMQP, FTP, HTTP, JMS, MQTT)?",
+            "options": [
+                "Spring Boot",
+                "Spring Integration",
+                "Spring Security",
+                "Spring WebFlux"
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Jaki status wymagalności może posiadać segment w strukturze transakcji standardu ANSI X12?",
+            "options": [
+                "Wyłączny (Exclusive) lub współdzielony (Shared)",
+                "Szyfrowany (Encrypted) lub jawny (Plain)",
+                "Tymczasowy (Temporary) lub trwały (Persistent)",
+                "Wymagany (Mandatory), opcjonalny (Optional) lub warunkowy (Conditional)"
+            ],
+            "correct": 3
+        },
+        {
+            "question": "W protokole MQTT poziom jakości usług QoS 2 gwarantuje, że:",
+            "options": [
+                "Wiadomość zostanie odrzucona przez brokera.",
+                "Wiadomość dotrze dokładnie raz.",
+                "Wiadomość dotrze przynajmniej raz.",
+                "Wiadomość dotrze najwyżej raz."
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Którą z cech charakteryzuje się otwartoźródłowy broker wiadomości VMware RabbitMQ?",
+            "options": [
+                "Obsługą wyłącznie jednego, dedykowanego protokołu AMQP.",
+                "Wsparciem dla wielu protokołów (AMQP, MQTT, STOMP) oraz wbudowanym internetowym interfejsem UI do zarządzania.",
+                "Koniecznością pracy tylko na jednym, niezależnym węźle bez możliwości klastrowania.",
+                "Brakiem możliwości elastycznego definiowania routingu wiadomości."
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Który z wymienionych formatów plików zalicza się do grupy plików płaskich (flat files) o ustalonej lub zmiennej długości?",
+            "options": [
+                "YAML",
+                "JSON",
+                "XML",
+                "Pliki tekstowe (np. CSV lub z polami o stałej szerokości)"
+            ],
+            "correct": 3
+        },
+        {
+            "question": "Jak nazywa się model integracji systemów realizowany pomiędzy niezależnymi przedsiębiorstwami?",
+            "options": [
+                "B2C (Business-to-Consumer)",
+                "C2C (Consumer-to-Consumer)",
+                "A2A (Application-to-Application)",
+                "B2B (Business-to-Business)"
+            ],
+            "correct": 3
+        },
+        {
+            "question": "Jakie jest główne ograniczenie korzystania z usługi Database-as-a-service (DaaS) w chmurze?",
+            "options": [
+                "Wymóg posiadania fizycznego serwera bazodanowego lokalnie w firmie.",
+                "Ograniczenie zaawansowanych funkcji, takich jak procedury składowane, oraz ryzyko w sferze prywatności.",
+                "Brak wsparcia dla relacyjnych modeli danych.",
+                "Całkowity brak możliwości wykonywania kopii zapasowych."
+            ],
+            "correct": 1
+        },
+
+        {
+            "question": "W kontekście frameworku Spring Integration, czym jest Message End Point?",
+            "options": [
+                "Interfejsem łączącym logikę aplikacji z infrastrukturą wiadomości.",
+                "Służy wyłącznie do logowania błędów w bazie danych.",
+                "Kanałem, przez który przesyłane są komunikaty.",
+                "Komponentem odpowiedzialnym za szyfrowanie danych."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "W architekturze zorientowanej na usługi (SOA), co jest głównym celem stosowania rejestru usług (Service Registry)?",
+            "options": [
+                "Wykrywanie i lokalizowanie dostępnych usług przez klientów.",
+                "Przechowywanie kopii zapasowych baz danych.",
+                "Monitorowanie obciążenia procesora na serwerze aplikacji.",
+                "Automatyczne generowanie kodu źródłowego w języku Java."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Który wzorzec integracji (EAI) odpowiada za transformację formatu wiadomości z systemu źródłowego na format akceptowany przez system docelowy?",
+            "options": [
+                "Content Filter",
+                "Message Translator",
+                "Splitter",
+                "Aggregator"
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Czym charakteryzuje się integracja oparta na współdzielonej bazie danych (Shared Database)?",
+            "options": [
+                "Wszystkie aplikacje korzystają z tego samego schematu bazy danych, co zapewnia spójność, ale silnie je uzależnia.",
+                "Całkowitym brakiem możliwości stosowania transakcji ACID.",
+                "Koniecznością przesyłania plików tekstowych co godzinę.",
+                "Wykorzystaniem protokołu MQTT do synchronizacji tabel."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "W usłudze JMS (Java Message Service) obiekt typu ConnectionFactory służy bezpośrednio do:",
+            "options": [
+                "Tworzenia obiektów połączeń (Connection) z brokerem wiadomości.",
+                "Definiowania struktury nagłówków wiadomości.",
+                "Automatycznego parsowania plików XML.",
+                "Uruchamiania transakcji rozproszonych XA."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Co oznacza cecha \"luźnego powiązania\" (Loose Coupling) w systemach zorientowanych na wiadomości (MOM)?",
+            "options": [
+                "Aplikacje muszą działać na tym samym serwerze fizycznym.",
+                "Niezależność nadawcy i odbiorcy w czasie, przestrzeni oraz technologii.",
+                "Wymóg stosowania tego samego języka programowania przez wszystkie podsystemy.",
+                "Konieczność synchronicznego oczekiwania na odpowiedź przez nadawcę."
+            ],
+            "correct": 1
+        },
+        {
+            "question": "W technologii Web Services standard SOAP definiuje format wiadomości oparty o:",
+            "options": [
+                "JSON",
+                "YAML",
+                "XML",
+                "Pliki płaskie o stałej długości"
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Co jest głównym zadaniem komponentu typu \"Inbound Channel Adapter\" w Spring Integration?",
+            "options": [
+                "Odbieranie danych ze źródła zewnętrznego i przekształcanie ich w wiadomości Spring Integration.",
+                "Wysyłanie wiadomości na zewnętrzny serwer pocztowy SMTP.",
+                "Szyfrowanie ładunku wiadomości kluczem publicznym.",
+                "Zamykanie aktywnych gniazd sieciowych TCP/IP."
+            ],
+            "correct": 0
+        },
+
+        {
+            "question": "W kontekście frameworku Spring Integration, co jest głównym zadaniem komponentu typu Service Activator?",
+            "options": [
+                "Połączenie kanału wejściowego z metodą zdefiniowaną na obiekcie POJO (np. ziarnie Springa) w celu wykonania logiki biznesowej.",
+                "Automatyczne generowanie bazy danych w pamięci RAM.",
+                "Wymuszenie synchronicznej komunikacji na poziomie protokołu HTTP.",
+                "Szyfrowanie haseł użytkowników przesyłanych w nagłówkach wiadomości."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Który z poniższych protokołów jest uznawany za standard w technologii Java do asynchronicznej wymiany wiadomości korporacyjnych?",
+            "options": [
+                "JMS (Java Message Service)",
+                "RMI (Remote Method Invocation)",
+                "HTTP (Hypertext Transfer Protocol)",
+                "FTP (File Transfer Protocol)"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Jakie jest główne zadanie komponentu typu \"Outbound Channel Adapter\" w architekturze Spring Integration?",
+            "options": [
+                "Przekształcenie wiadomości Spring Integration i wysłanie jej do zewnętrznego systemu lub usługi.",
+                "Cykliczne odpytywanie lokalnego systemu plików w celu wykrycia nowych plików tekstowych.",
+                "Tłumaczenie wyjątków aplikacyjnych na kody błędów bazy danych.",
+                "Wstrzymanie przetwarzania wszystkich komunikatów w przypadku awarii sieci."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "W architekturze REST (Representational State Transfer) operacja pobierania danych zasobu powinna być mapowana na metodę HTTP:",
+            "options": [
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Czym różni się model integracji oparty na przesyłaniu plików (File Transfer) od modelu opartego na zdalnym wywoływaniu procedur (RPC)?",
+            "options": [
+                "File Transfer jest z natury asynchroniczny i zorientowany na dane, podczas gdy RPC jest synchroniczny i zorientowany na zachowanie (metody).",
+                "File Transfer wymaga stałego połączenia sieciowego o bardzo niskich opóźnieniach, w przeciwieństwie do RPC.",
+                "W modelu File Transfer dane są przesyłane wyłącznie w postaci binarnej, a w RPC wyłącznie jako tekst XML.",
+                "RPC nie pozwala na przekazywanie żadnych parametrów ani struktur danych."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "W architekturze zorientowanej na usługi (SOA) pojęcie \"kontraktu usługi\" (Service Contract) odnosi się do:",
+            "options": [
+                "Formalnego opisu interfejsu usługi, jej operacji, typów danych oraz reguł wywołania (np. za pomocą pliku WSDL).",
+                "Umowy prawnej podpisywanej z dostawcą sprzętu serwerowego.",
+                "Algorytmu szyfrowania klucza symetrycznego w warstwie sieciowej.",
+                "Konfiguracji puli połączeń do relacyjnej bazy danych."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Co jest główną wadą architektury punkt-punkt (Point-to-Point) przy dużej liczbie integrowanych aplikacji (tzw. konfiguracja spaghetti)?",
+            "options": [
+                "Liczba wymaganych połączeń rośnie wykładniczo, co drastycznie zwiększa koszty utrzymania i modyfikacji systemu.",
+                "Całkowity brak wsparcia dla protokołu TCP/IP.",
+                "Konieczność stosowania wyłącznie systemów operacyjnych z rodziny Linux.",
+                "Brak możliwości przesyłania danych w formacie tekstowym."
+            ],
+            "correct": 0
+        },
+        {
+            "question": "W kontekście integracji systemów skrót EAI oznacza:",
+            "options": [
+                "Enterprise Application Integration",
+                "Extended Artificial Intelligence",
+                "Electronic Access Interface",
+                "Ethernet Application Infrastructure"
+            ],
+            "correct": 0
+        }
+
+
+    ];
+
+    document.getElementById("total-q-count").innerText = allQuestions.length;
+
+    let currentSessionQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let hasAnswered = false;
+
+    function shuffle(array) {
+        let currentIndex = array.length,
+            randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex],
+                array[currentIndex],
+            ];
+        }
+        return array;
+    }
+
+    document.getElementById("start-btn").addEventListener("click", startQuiz);
+    document
+        .getElementById("next-btn")
+        .addEventListener("click", nextQuestion);
+    document
+        .getElementById("restart-btn")
+        .addEventListener("click", startQuiz);
+
+    function startQuiz() {
+        score = 0;
+        currentQuestionIndex = 0;
+
+        let shuffledAll = shuffle([...allQuestions]);
+        currentSessionQuestions = shuffledAll.slice(0, 20);
+
+        document.getElementById("start-screen").classList.add("hidden");
+        document.getElementById("result-screen").classList.add("hidden");
+        document.getElementById("quiz-screen").classList.remove("hidden");
+
+        showQuestion();
+    }
+
+    function showQuestion() {
+        hasAnswered = false;
+        document.getElementById("next-btn").classList.add("hidden");
+
+        const feedbackEl = document.getElementById("feedback-message");
+        feedbackEl.className = "feedback";
+        feedbackEl.innerText = "";
+
+        const q = currentSessionQuestions[currentQuestionIndex];
+
+        const progressPercent =
+            (currentQuestionIndex / currentSessionQuestions.length) * 100;
+        document.getElementById("progress-bar").style.width =
+            progressPercent + "%";
+        document.getElementById("progress-text").innerText =
+            `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
+
+        const qTextEl = document.getElementById("question-text");
+        qTextEl.textContent = q.question;
+
+        const optionsContainer = document.getElementById("options-container");
+        optionsContainer.innerHTML = "";
+
+        let optionsWithIndex = q.options.map((opt, index) => ({
+            text: opt,
+            originalIndex: index,
+        }));
+        optionsWithIndex = shuffle(optionsWithIndex);
+
+        optionsWithIndex.forEach((optObj) => {
+            const optDiv = document.createElement("div");
+            optDiv.className = "option";
+            optDiv.textContent = optObj.text;
+            optDiv.dataset.isCorrect = optObj.originalIndex === q.correct;
+
+            optDiv.addEventListener("click", function () {
+                if (hasAnswered) return;
+                hasAnswered = true;
+
+                const isCorrect = this.dataset.isCorrect === "true";
+
+                if (isCorrect) {
+                    this.classList.add("correct");
+                    score++;
+                    feedbackEl.innerText = "Świetnie! Poprawna odpowiedź.";
+                    feedbackEl.classList.add("correct");
+                } else {
+                    this.classList.add("incorrect");
+                    feedbackEl.innerText = "Niestety, zła odpowiedź.";
+                    feedbackEl.classList.add("incorrect");
+                }
+
+                document.querySelectorAll(".option").forEach((div) => {
+                    div.style.pointerEvents = "none";
+                    if (div.dataset.isCorrect === "true") {
+                        div.classList.add("correct");
+                    }
+                });
+
+                document.getElementById("next-btn").classList.remove("hidden");
+
+                if (currentQuestionIndex === currentSessionQuestions.length - 1) {
+                    document.getElementById("next-btn").innerText =
+                        "Zakończ i pokaż wynik";
+                } else {
+                    document.getElementById("next-btn").innerText =
+                        "Następne pytanie";
+                }
+            });
+            optionsContainer.appendChild(optDiv);
+        });
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentSessionQuestions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-screen").classList.add("hidden");
+        document.getElementById("result-screen").classList.remove("hidden");
+
+        const percentage = Math.round(
+            (score / currentSessionQuestions.length) * 100,
+        );
+        document.getElementById("score").innerText =
+            `${score} / ${currentSessionQuestions.length} (${percentage}%)`;
+    }
+</script>
+</body>
+</html>
