@@ -1194,17 +1194,6 @@ const allQuestions = [
         "correct": 2
     },
     {
-        "question": "Jakie wymaganie musi spełnić klasa implementująca zdalny obiekt w technologii Java RMI?",
-        "options": [
-            "Musi dziedziczyć po UnicastRemoteObject i implementować odległy interfejs.",
-            "Wszystkie jej dodatkowe metody będą automatycznie widoczne zdalnie.",
-            "Musi rozszerzać klasę java.rmi.Remote zamiast ją implementować.",
-            "Nie może posiadać jawnie zdefiniowanego konstruktora bezparametrowego.",
-            "Musi być zadeklarowana jako obiekt typu klasy, a nie interfejs."
-        ],
-        "correct": 0
-    },
-    {
         "question": "Do czego służy element Message w pliku WSDL?",
         "options": [
             "Do określania typów stosowanych danych",
