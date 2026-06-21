@@ -1172,17 +1172,6 @@ const allQuestions = [
         "correct": 2
     },
     {
-        "question": "Zgodnie z definicją NIST, co jest kluczową cechą chmury obliczeniowej?",
-        "options": [
-            "Stała interakcja z człowiekiem po stronie dostawcy przy każdym zamówieniu.",
-            "Konieczność posiadania własnej serwerowni wewnątrz siedziby firmy.",
-            "Model „pay-per-use” oraz szybkie zamawianie i zwalnianie zasobów.",
-            "Brak możliwości korzystania z heterogenicznych platform klienckich.",
-            "Wyłączne udostępnianie zasobów wewnątrz bezpiecznej ściany ogniowej firmy."
-        ],
-        "correct": 2
-    },
-    {
         "question": "Do czego służy element Message w pliku WSDL?",
         "options": [
             "Do określania typów stosowanych danych",
@@ -1190,17 +1179,6 @@ const allQuestions = [
             "Do określania komunikatów dla użytkownika, m.in. komunikatów o błędach",
             "Do określania sposobu komunikacji z punktem docelowym - end point",
             "Do określania wiązania udostępnianych metod z protokołem komunikacyjnym"
-        ],
-        "correct": 1
-    },
-    {
-        "question": "Jaką przewagę mają usługi SOAP nad usługami REST w środowiskach enterprise?",
-        "options": [
-            "Mają mniejszy próg wejścia i są prostsze w implementacji w JavaScript.",
-            "Są niezależne od warstwy transportowej i posiadają wbudowaną obsługę błędów.",
-            "Zwracają wyniki wyłącznie w lekkich formatach takich jak JSON czy RSS.",
-            "Nie wymagają żadnych narzędzi do interakcji z usługami.",
-            "Zakładają komunikację wyłącznie punkt-punkt bez użycia standardów WS*."
         ],
         "correct": 1
     },
