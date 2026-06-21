@@ -1094,17 +1094,6 @@ const allQuestions = [
         "correct": 4
     },
     {
-        "question": "Który poziom izolacji transakcji zapewnia, że transakcja widzi swoją lokalną kopię danych?",
-        "options": [
-            "Serializable.",
-            "Read uncommitted.",
-            "Snapshot.",
-            "Read committed.",
-            "Repeatable read."
-        ],
-        "correct": 2
-    },
-    {
         "question": "Zgodnie z definicją NIST, co jest kluczową cechą chmury obliczeniowej?",
         "options": [
             "Stała interakcja z człowiekiem po stronie dostawcy przy każdym zamówieniu.",
