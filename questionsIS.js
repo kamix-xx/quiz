@@ -1137,18 +1137,6 @@ const allQuestions = [
         ],
         "correct": 1
     },
-
-    {
-        "question": "W kontekście Internetu Rzeczy (IoT), do czego odnosi się termin „Przemysł 4.0”?",
-        "options": [
-            "Do systemów operacyjnych działających wyłącznie na komputerach PC.",
-            "Do sieci IPv6 obsługującej tylko cztery rodzaje urządzeń.",
-            "Do czwartej generacji protokołu komunikacyjnego HTTP.",
-            "Do metod ręcznego odczytu danych z czujników analogowych.",
-            "Do przemysłowej wersji IoT."
-        ],
-        "correct": 4
-    },
     {
         "question": "Czym jest exchange w brokerze RabbitMQ?",
         "options": [
@@ -1170,17 +1158,6 @@ const allQuestions = [
             "Repeatable read."
         ],
         "correct": 2
-    },
-    {
-        "question": "Do czego służy element Message w pliku WSDL?",
-        "options": [
-            "Do określania typów stosowanych danych",
-            "Do określania danych przekazywanych do metody zdalnej metody",
-            "Do określania komunikatów dla użytkownika, m.in. komunikatów o błędach",
-            "Do określania sposobu komunikacji z punktem docelowym - end point",
-            "Do określania wiązania udostępnianych metod z protokołem komunikacyjnym"
-        ],
-        "correct": 1
     },
     {
         "question": "Który framework udostępnia ponad 50 gotowych adapterów do integracji z zewnętrznymi systemami (np. AMQP, FTP, HTTP, JMS, MQTT)?",
