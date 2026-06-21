@@ -234,11 +234,12 @@
         <p class="intro-text">
             Przygotuj się do egzaminu! Z naszej puli
             <strong><span id="total-q-count"></span> pytań</strong> aplikacja
-            wylosuje za każdym razem <strong>20 unikalnych zagadnień</strong>.
-            Odpowiedzi również są tasowane na nowo za każdym podejściem.
-            Powodzenia!
+            wybiera partiami po <strong>20 unikalnych zagadnień</strong>, dopóki nie przejdziesz przez całą pulę.
+            Odpowiedzi również są tasowane na nowo za każdym podejściem. <br><br>
+            <span id="pool-info" style="color: var(--primary); font-weight: bold;"></span>
         </p>
         <button class="btn" id="start-btn">Rozpocznij Quiz</button>
+        <button class="btn" id="reset-pool-btn" style="background-color: var(--text-muted); margin-top: 10px;">Resetuj całą pulę pytań</button>
     </div>
 
     <div id="quiz-screen" class="hidden">
@@ -259,8 +260,10 @@
         <p class="intro-text">Oto Twój wynik z tej sesji:</p>
         <div class="score" id="score"></div>
         <button class="btn" id="restart-btn">
-            Zagraj ponownie (losuje nowe 20 pytań)
+            Następna sesja (kolejne 20 pytań z puli)
         </button>
+        <br>
+        <span id="pool-info2" style="color: #c10000; font-weight: bold;"></span>
     </div>
 </div>
 <script src="questionsIS.js"></script>
@@ -273,34 +276,76 @@
     let score = 0;
     let hasAnswered = false;
 
+    // Funkcja tasująca
     function shuffle(array) {
-        let currentIndex = array.length,
-            randomIndex;
+        let currentIndex = array.length, randomIndex;
         while (currentIndex !== 0) {
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex],
-                array[currentIndex],
-            ];
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
         }
         return array;
     }
 
+    // Inicjalizacja lub pobranie puli indeksów z localStorage
+    function getQuestionPool() {
+        let pool = localStorage.getItem("quiz_question_pool");
+        if (!pool) {
+            // Jeśli nie ma puli, twórz tablicę indeksów [0, 1, 2, ..., N] i tasuj ją całą
+            let indices = Array.from({ length: allQuestions.length }, (_, i) => i);
+            pool = shuffle(indices);
+            localStorage.setItem("quiz_question_pool", JSON.stringify(pool));
+        } else {
+            pool = JSON.parse(pool);
+        }
+        return pool;
+    }
+
+    // Aktualizacja tekstu informacyjnego w menu głównym
+    function updatePoolInfo() {
+        const pool = getQuestionPool();
+        const mess = `W puli pozostało jeszcze ${pool.length} pytań, których nie widziałeś.`;
+        document.getElementById("pool-info").innerText = mess;
+        document.getElementById("pool-info2").innerText = mess;
+
+    }
+
+    // Resetowanie ręczne całej puli
+    document.getElementById("reset-pool-btn").addEventListener("click", () => {
+        localStorage.removeItem("quiz_question_pool");
+        updatePoolInfo();
+        alert("Pula została zresetowana i przetasowana na nowo!");
+    });
+
     document.getElementById("start-btn").addEventListener("click", startQuiz);
-    document
-        .getElementById("next-btn")
-        .addEventListener("click", nextQuestion);
-    document
-        .getElementById("restart-btn")
-        .addEventListener("click", startQuiz);
+    document.getElementById("next-btn").addEventListener("click", nextQuestion);
+    document.getElementById("restart-btn").addEventListener("click", startQuiz);
+
+    // Wywołanie przy starcie strony
+    updatePoolInfo();
 
     function startQuiz() {
         score = 0;
         currentQuestionIndex = 0;
 
-        let shuffledAll = shuffle([...allQuestions]);
-        currentSessionQuestions = shuffledAll.slice(0, 20);
+        let pool = getQuestionPool();
+
+        // Jeśli pula jest pusta (przeszliśmy przez wszystkie), generujemy nową
+        if (pool.length === 0) {
+            let indices = Array.from({ length: allQuestions.length }, (_, i) => i);
+            pool = shuffle(indices);
+            alert("Gratulacje! Przeszedłeś przez wszystkie pytania. Pula została przetasowana na nowo!");
+        }
+
+        // Bierzemy maksymalnie 20 pytań z puli
+        let sessionIndices = pool.slice(0, 20);
+        
+        // Mapujemy wybrane indeksy na faktyczne obiekty pytań
+        currentSessionQuestions = sessionIndices.map(index => allQuestions[index]);
+
+        // Usuwamy wybrane pytania z głównej puli w localStorage
+        pool = pool.slice(sessionIndices.length);
+        localStorage.setItem("quiz_question_pool", JSON.stringify(pool));
 
         document.getElementById("start-screen").classList.add("hidden");
         document.getElementById("result-screen").classList.add("hidden");
@@ -319,12 +364,9 @@
 
         const q = currentSessionQuestions[currentQuestionIndex];
 
-        const progressPercent =
-            (currentQuestionIndex / currentSessionQuestions.length) * 100;
-        document.getElementById("progress-bar").style.width =
-            progressPercent + "%";
-        document.getElementById("progress-text").innerText =
-            `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
+        const progressPercent = (currentQuestionIndex / currentSessionQuestions.length) * 100;
+        document.getElementById("progress-bar").style.width = progressPercent + "%";
+        document.getElementById("progress-text").innerText = `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
 
         const qTextEl = document.getElementById("question-text");
         qTextEl.textContent = q.question;
@@ -371,11 +413,9 @@
                 document.getElementById("next-btn").classList.remove("hidden");
 
                 if (currentQuestionIndex === currentSessionQuestions.length - 1) {
-                    document.getElementById("next-btn").innerText =
-                        "Zakończ i pokaż wynik";
+                    document.getElementById("next-btn").innerText = "Zakończ i pokaż wynik";
                 } else {
-                    document.getElementById("next-btn").innerText =
-                        "Następne pytanie";
+                    document.getElementById("next-btn").innerText = "Następne pytanie";
                 }
             });
             optionsContainer.appendChild(optDiv);
@@ -395,11 +435,11 @@
         document.getElementById("quiz-screen").classList.add("hidden");
         document.getElementById("result-screen").classList.remove("hidden");
 
-        const percentage = Math.round(
-            (score / currentSessionQuestions.length) * 100,
-        );
-        document.getElementById("score").innerText =
-            `${score} / ${currentSessionQuestions.length} (${percentage}%)`;
+        const percentage = Math.round((score / currentSessionQuestions.length) * 100);
+        document.getElementById("score").innerText = `${score} / ${currentSessionQuestions.length} (${percentage}%)`;
+        
+        // Zaktualizuj info o pozostałej puli w tle na ekranie startowym
+        updatePoolInfo();
     }
 </script>
 </body>
