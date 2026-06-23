@@ -810,12 +810,12 @@ const allQuestions = [
     {
         "question": "Wskaż nieprawidłowe stwierdzenie dotyczące MongoDB",
         "options": [
-            "A. Jedynym wymaganiem jest to, że wszystkie dokumenty muszą mieć unikalny _id.",
-            "B. Wszystkie metody operują na kolekcji i przyjmują parametry jako obiekty JavaScript, które określają szczegóły operacji.",
-            "C. MongoDB nie wymaga definiowania schematu dla kolekcji",
-            "D. W MongoDB używa się złączeń, aby połączyć kolekcje i otrzymać wynik z wielu kolekcji"
+            "Jedynym wymaganiem jest to, że wszystkie dokumenty muszą mieć unikalny _id.",
+            "Wszystkie metody operują na kolekcji i przyjmują parametry jako obiekty JavaScript, które określają szczegóły operacji.",
+            "MongoDB nie wymaga definiowania schematu dla kolekcji",
+            "W MongoDB używa się złączeń, aby połączyć kolekcje i otrzymać wynik z wielu kolekcji"
         ],
-        "correct": [1, 2, 3],
+        "correct": [1, 3],
         "explanation": "MongoDB jako nierelacyjna baza dokumentowa celowo nie obsługuje klasycznych relacyjnych operacji złączeń tabel (JOIN). Relacje realizuje się poprzez osadzanie dokumentów lub agregacje za pomocą `$lookup`."
     },
     {
@@ -841,7 +841,7 @@ const allQuestions = [
         "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
     },
     {
-        "question": "[PK] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
+        "question": "[PK 3/5] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
         "options": [
             "Playwright jest płatny i lepiej wspierany przez producenta",
             "Playwright wspiera tylko Chrome, więc jest szybszy",
@@ -852,7 +852,7 @@ const allQuestions = [
         "explanation": "Strona 454",
     },
     {
-        "question": "[PK] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
+        "question": "[PK 2/5] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
         "options": [
             "container.querySelector('.btn-delete')",
             "screen.getByTestId('delete-button')",
@@ -872,5 +872,29 @@ const allQuestions = [
         ],
         "correct": [2],
         "explanation": "Strona 228: Brak wywołania next() ani res.send → żądanie wisi i kończy się timeoutem",
+    },
+    {
+        "question": "[PK 2/6] Twoja trasa to: app.get('/users/:id', handler). " +
+            "\nKlient wysyła GET users/42?include=posts. " +
+            "\nCo zawiera req.params i req.query w handlerze?",
+        "options": [
+            "`req.params = { id: '42', include: 'posts' }, req.query = {}`",
+            "`req.params = { id: '42' }, req.query = { include: 'posts' }`",
+            "`req.params = { id: 42 }, req.query = { include: 'posts' }` – wartości jako liczby",
+            "`req.params = { id: '42', include: 'posts' }, req.query = include: 'posts' }` – wszędzie"
+        ],
+        "correct": [1],
+        "explanation": "Strona 254 (to pytanie): `Wskazówka: parametry ścieżki (:id) vs query string (?include=) to dwa OSOBNE źródła`, oba muszą być stringami",
+    },
+    {
+        "question": "[PK 3/6] ",
+        "options": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct": [2],
+        "explanation": "",
     }
 ]
