@@ -2,13 +2,13 @@ const allQuestions = [
     {
         "question": "Co będzie wartością stałej `myFunction`?\nconst myFunction = () => ({ value: 'test' })",
         "options": [
-            "A) wartość w formacie JSON",
-            "B) wartość w formacie JSX",
-            "C) wartość 'test' zawarta w zmiennej `value`",
-            "D) obiekt"
+            "wartość w formacie JSON",
+            "wartość w formacie JSX",
+            "wartość 'test' zawarta w zmiennej `value`",
+            "obiekt"
         ],
         "correct": [3],
-        "explanation": "Otoczenie klamer nawiasami okrągłymi `({ ... })` w jawny sposób nakazuje silnikowi JavaScript zinterpretowanie zawartości jako literału obiektu, a nie bloku kodu funkcji. Funkcja zwraca obiekt."
+        "explanation": "Gemini tak mówi: Otoczenie klamer nawiasami okrągłymi `({ ... })` w jawny sposób nakazuje silnikowi JavaScript zinterpretowanie zawartości jako literału obiektu, a nie bloku kodu funkcji. Funkcja zwraca obiekt."
     },
     {
         "question": "Silniki szablonów, które można użyć w szkielecie Express:",
@@ -35,13 +35,13 @@ const allQuestions = [
     {
         "question": "Wskaż cechy Virtual DOM:",
         "options": [
-            "A) bezpośrednio modyfikuje HTML",
-            "B) szybko się aktualizuje",
-            "C) tworzy nowy DOM, jeśli zostanie zaktualizowany",
-            "D) występuje duże marnotrawstwo pamięci"
+            "bezpośrednio modyfikuje HTML",
+            "szybko się aktualizuje",
+            "tworzy nowy DOM, jeśli zostanie zaktualizowany",
+            "występuje duże marnotrawstwo pamięci"
         ],
         "correct": [1],
-        "explanation": "Virtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
+        "explanation": "Ma sens, nie próbujcie nawet szukać `virtual DOM` w prezentacji xD; Virtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
     },
     {
         "question": "Czym jest 'useState' w poniższej konstrukcji?\nconst [state, setState] = useState()",
