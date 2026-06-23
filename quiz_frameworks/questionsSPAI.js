@@ -57,13 +57,13 @@ const allQuestions = [
     {
         "question": "Wskaż nieprawdziwe stwierdzenia opisujące platformę Node:",
         "options": [
-            "A) domyślnie jest jednowątkowa",
-            "B) jest środowiskiem wykonawczym JavaScript",
-            "C) powstała w celu ułatwienia programowania synchronicznego",
-            "D) jest środowiskiem wieloplatformowym"
+            "domyślnie jest jednowątkowa",
+            "jest środowiskiem wykonawczym JavaScript",
+            "powstała w celu ułatwienia programowania synchronicznego",
+            "jest środowiskiem wieloplatformowym"
         ],
         "correct": [2],
-        "explanation": "Platforma Node.js została zaprojektowana od podstaw z myślą o asynchronicznym, nieblokującym wejściu/wyjściu (I/O) sterowanym zdarzeniami, a nie w celu ułatwienia programowania synchronicznego."
+        "explanation": "Slajd 38-39; Platforma Node.js została zaprojektowana od podstaw z myślą o asynchronicznym, nieblokującym wejściu/wyjściu (I/O) sterowanym zdarzeniami, a nie w celu ułatwienia programowania synchronicznego."
     },
     {
         "question": "Wybierz prawidłowe określenia. Plik `package.json`:",
@@ -157,14 +157,14 @@ const allQuestions = [
     {
         "question": "Które sformułowania odnośnie MongoDB są nieprawdziwe?",
         "options": [
-            "A) MongoDB przechowuje dane w dokumentach i kolekcjach",
-            "B) MongoDB to baza nierelacyjna",
-            "C) językiem MongoDB jest JavaScript",
-            "D) dokumenty w kolekcji nie posiadają unikalnych identyfikatorów",
-            "E) MongoDB przechowuje dane w rekordach i tabelach"
+            "MongoDB przechowuje dane w dokumentach i kolekcjach",
+            "MongoDB to baza nierelacyjna",
+            "językiem MongoDB jest JavaScript",
+            "dokumenty w kolekcji nie posiadają unikalnych identyfikatorów",
+            "MongoDB przechowuje dane w rekordach i tabelach"
         ],
         "correct": [2, 3, 4],
-        "explanation": "MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
+        "explanation": "Slajd 7 (język); MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
     },
     {
         "question": "W skład stosu MERN wchodzą następujące technologie:",
@@ -230,7 +230,7 @@ const allQuestions = [
             "props"
         ],
         "correct": [3],
-        "explanation": "Slajd 28; Do przekazywania danych oraz konfiguracji z komponentu nadrzędnego do komponentu potomnego służą właściwości nazywane skrótowo `props` (właściwości są niemodyfikowalne z perspektywy komponentu odbierającego)."
+        "explanation": "Slajd 28, 36; Do przekazywania danych oraz konfiguracji z komponentu nadrzędnego do komponentu potomnego służą właściwości nazywane skrótowo `props` (właściwości są niemodyfikowalne z perspektywy komponentu odbierającego)."
     },
     {
         "question": "Jaka liczba elementów może być zwrócona przez prawidłowy komponent Reacta?",
@@ -334,10 +334,10 @@ const allQuestions = [
     {
         "question": "Biblioteka React została opracowana przez firmę:",
         "options": [
-            "A) Google",
-            "B) Twitter",
-            "C) Facebook",
-            "D) Instagram"
+            "Google",
+            "Twitter",
+            "Facebook",
+            "Instagram"
         ],
         "correct": [2],
         "explanation": "Slajd 44; React został stworzony przez Jordana Walke, inżyniera oprogramowania pracującego dla firmy Facebook (obecnie Meta), i został po raz pierwszy wdrożony w kanale aktualności (News Feed) tej platformy."
@@ -400,13 +400,13 @@ const allQuestions = [
     {
         "question": "W jaki sposób można zmodyfikować tzw. propsy w React?",
         "options": [
-            "a) używając trybu STRICT",
-            "b) używając destrukturyzacji",
-            "c) nie można tego zrobić",
-            "d) używając hooka useState"
+            "używając trybu STRICT",
+            "używając destrukturyzacji",
+            "nie można tego zrobić",
+            "używając hooka useState"
         ],
         "correct": [2],
-        "explanation": "W architekturze React dane przekazywane jako właściwości (`props`) są z założenia ściśle niemodyfikowalne (read-only / immutable) dla komponentu, który je otrzymuje. Komponent nie może zmieniać swoich własnych propsów."
+        "explanation": "Slajd 46; W architekturze React dane przekazywane jako właściwości (`props`) są z założenia ściśle niemodyfikowalne (read-only / immutable) dla komponentu, który je otrzymuje. Komponent nie może zmieniać swoich własnych propsów."
     },
     {
         "question": "Który poziom dojrzałości REST API wg modelu Richardsona reprezentują adresy i czasowniki:\nPOST http://localhost:56263/api/pictures\nGET http://localhost:56263/api/pictures/1",
@@ -723,13 +723,13 @@ const allQuestions = [
     {
         "question": "Którego z poniższych elementów należy użyć do uzyskania dostępu do funkcji fetch() z elementu h1 w JSX?",
         "options": [
-            "A. <h1>{fetch()}</h1>",
-            "B. <h1>${fetch}</h1>",
-            "C. <h1>(fetch)</h1>",
-            "D. <h1>${fetch{}}</h1>"
+            "<h1>{fetch()}</h1>",
+            "<h1>${fetch}</h1>",
+            "<h1>(fetch)</h1>",
+            "<h1>${fetch{}}</h1>"
         ],
         "correct": [0],
-        "explanation": "Wywołanie i wstrzyknięcie wyniku dowolnej funkcji JavaScript w strukturze kodu JSX odbywa się przy pomocy standardowych klamer osadzających: `<h1>{fetch()}</h1>`."
+        "explanation": "Wywołanie i wstrzyknięcie wyniku dowolnej funkcji JavaScript w strukturze kodu JSX odbywa się przy pomocy standardowych klamer osadzających: <h1>{fetch()}</h1>."
     },
     {
         "question": "Który z poniższych NIE jest obiektem JS?",
@@ -778,10 +778,10 @@ const allQuestions = [
     {
         "question": "W jakim formacie przechowywane są dane w bazie MongoDB",
         "options": [
-            "A. JSON",
-            "B. YML",
-            "C. BSON",
-            "D. XML"
+            "JSON",
+            "YML",
+            "BSON",
+            "XML"
         ],
         "correct": [2],
         "explanation": "Wewnętrznie silnik MongoDB serializuje i przechowuje dokumenty w binarnym formacie o nazwie `BSON` (Binary JSON), który rozszerza JSON o dodatkowe typy danych, takie jak Date czy ObjectId."
