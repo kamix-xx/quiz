@@ -423,7 +423,7 @@ const allQuestions = [
             "3"
         ],
         "correct": [2],
-        "explanation": "Nie znalazłem tego wgl w prezentacji :( https://cycl.pl/posts/rest-api-mdd/Model Richardsona definiuje Poziom 2 jako jednoczesne wykorzystanie dedykowanych adresów URI dla konkretnych zasobów (z Poziomu 1) oraz właściwych czasowników/metod protokołu HTTP (np. GET, POST) do precyzowania typu operacji."
+        "explanation": "Nie znalazłem tego wgl w prezentacji (jest w bonusowej jednak) https://cycl.pl/posts/rest-api-mdd/Model Richardsona definiuje Poziom 2 jako jednoczesne wykorzystanie dedykowanych adresów URI dla konkretnych zasobów (z Poziomu 1) oraz właściwych czasowników/metod protokołu HTTP (np. GET, POST) do precyzowania typu operacji."
     },
     {
         "question": "Jakie elementy zawiera projekt Reacta?",
@@ -636,13 +636,13 @@ const allQuestions = [
     {
         "question": "Jaka jest poprawna składnia zapisu wyrażenia w JSX?",
         "options": [
-            "A. { expression }",
-            "B. {{ expression }}",
-            "C. _expression",
-            "D. [expression]"
+            "{ expression }",
+            "{{ expression }}",
+            "_expression",
+            "[expression]"
         ],
         "correct": [0],
-        "explanation": "Wewnątrz drzewa szablonów JSX ewaluację dowolnego poprawnego wyrażenia języka JavaScript lub podstawienie zmiennej realizuje się poprzez osadzenie kodu w pojedynczych klamrach `{ ... }`."
+        "explanation": "Bo tak; Wewnątrz drzewa szablonów JSX ewaluację dowolnego poprawnego wyrażenia języka JavaScript lub podstawienie zmiennej realizuje się poprzez osadzenie kodu w pojedynczych klamrach `{ ... }`."
     },
     {
         "question": "Jaka jest rola middleware CORS (Cross-Origin Resource Sharing)?",
@@ -674,12 +674,12 @@ const allQuestions = [
     {
         "question": "Komponenty stanowe, Hooki - wybierz prawidłowe:",
         "options": [
-            "A. Komponenty ze stanem definiuje się przy użyciu klasy lub poprzez zastosowanie w komponentach funkcyjnych hooków",
-            "B. Funkcja useState - stosowana do tworzenia danych stanu, jej argumentem jest początkowa wartość właściwości danych stanu",
-            "C. Funkcja ta zwraca właściwość, za pomocą której można odczytać bieżącą wartość danych stanu oraz funkcję, która zmienia wartość tych danych stanu oraz wyzwala aktualizację aplikacji"
+            "Komponenty ze stanem definiuje się przy użyciu klasy lub poprzez zastosowanie w komponentach funkcyjnych hooków",
+            "Funkcja useState - stosowana do tworzenia danych stanu, jej argumentem jest początkowa wartość właściwości danych stanu",
+            "Funkcja ta zwraca właściwość, za pomocą której można odczytać bieżącą wartość danych stanu oraz funkcję, która zmienia wartość tych danych stanu oraz wyzwala aktualizację aplikacji"
         ],
         "correct": [0, 1, 2],
-        "explanation": "Wszystkie z podanych zdań są całkowicie poprawne i dokładnie definiują mechanizm działania stanowości komponentów oraz zasadę działania hooka `useState`."
+        "explanation": "Strony: 394, 341 (+ cos o hookach: 389, 391, 392); Wszystkie z podanych zdań są całkowicie poprawne i dokładnie definiują mechanizm działania stanowości komponentów oraz zasadę działania hooka `useState`."
     },
     {
         "question": "Która z metod HTTP zwraca listę metod, które są dostępne na danym zasobie?",
@@ -722,7 +722,7 @@ const allQuestions = [
             "Console",
             "Node Inspector"
         ],
-        "correct": [1],
+        "correct": [1, 3],
         "explanation": "CHUJ WIE O CO CHODZI; `Node Inspector` udostępnia graficzny interfejs (GUI), zintegrowany z narzędziami Chrome DevTools, pozwalający na wygodne debugowanie kodu Node.js w przeglądarce."
     },
     {
@@ -734,7 +734,7 @@ const allQuestions = [
             "<h1>${fetch{}}</h1>"
         ],
         "correct": [0],
-        "explanation": "Wywołanie i wstrzyknięcie wyniku dowolnej funkcji JavaScript w strukturze kodu JSX odbywa się przy pomocy standardowych klamer osadzających: <h1>{fetch()}</h1>."
+        "explanation": "Wywołanie i wstrzyknięcie wyniku dowolnej funkcji JavaScript w strukturze kodu JSX odbywa się przy pomocy standardowych klamer osadzających: &#10094;h1>{fetch()}&#10094;/h1>."
     },
     {
         "question": "Który z poniższych NIE jest obiektem JS?",
@@ -810,7 +810,7 @@ const allQuestions = [
             "C. MongoDB nie wymaga definiowania schematu dla kolekcji",
             "D. W MongoDB używa się złączeń, aby połączyć kolekcje i otrzymać wynik z wielu kolekcji"
         ],
-        "correct": [1, 2],
+        "correct": [1, 2, 3],
         "explanation": "MongoDB jako nierelacyjna baza dokumentowa celowo nie obsługuje klasycznych relacyjnych operacji złączeń tabel (JOIN). Relacje realizuje się poprzez osadzanie dokumentów lub agregacje za pomocą `$lookup`."
     },
     {
