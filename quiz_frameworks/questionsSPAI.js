@@ -145,14 +145,14 @@ const allQuestions = [
     {
         "question": "Wskaż prawidłowe stwierdzenia dotyczące formatu JSON:",
         "options": [
-            "A) odpowiedź w formacie JSON ma znacznie większą liczbę znaków niż XML i w związku z tym powoduje większy ruch sieciowy i dłuższy czas transferu danych",
-            "B) nie sprawdza się w opisie i serializacji danych strukturalnych",
-            "C) obsługuje typy strukturalne 'object' i 'array'",
-            "D) lekki, tekstowy, przyjazny format dla języka JavaScript",
-            "E) używa tagów do budowy struktury"
+            "odpowiedź w formacie JSON ma znacznie większą liczbę znaków niż XML i w związku z tym powoduje większy ruch sieciowy i dłuższy czas transferu danych",
+            "nie sprawdza się w opisie i serializacji danych strukturalnych",
+            "obsługuje typy strukturalne 'object' i 'array'",
+            "lekki, tekstowy, przyjazny format dla języka JavaScript",
+            "używa tagów do budowy struktury"
         ],
         "correct": [2, 3],
-        "explanation": "JSON to lekki, czytelny dla człowieka format wymiany danych oparty na podzbiorze notacji obiektowej JavaScriptu. Obsługuje zagnieżdżone obiekty oraz tablice. Jest znacznie bardziej zwięzły od formatu XML i nie korzysta z tagów."
+        "explanation": "Na logike; Slajd 29; JSON to lekki, czytelny dla człowieka format wymiany danych oparty na podzbiorze notacji obiektowej JavaScriptu. Obsługuje zagnieżdżone obiekty oraz tablice. Jest znacznie bardziej zwięzły od formatu XML i nie korzysta z tagów."
     },
     {
         "question": "Które sformułowania odnośnie MongoDB są nieprawdziwe?",
@@ -598,7 +598,7 @@ const allQuestions = [
             "D. obiektu ObjectId"
         ],
         "correct": [3],
-        "explanation": "Domyślnym typem unikalnego klucza głównego generowanego automatycznie dla każdego nowo wstawianego dokumentu w bazie danych MongoDB (w polu `_id`) jest specjalny, 12-bajtowy typ danych `ObjectId`."
+        "explanation": "Na logike; Slajd 12; MongoDB używa specjalnego obiektu ObjectId dla klucza głównego."
     },
     {
         "question": "Do znajdowania potencjalnych miejsc wystąpienia błędów, identyfikowania obszarów, które stwarzają ryzyko wystąpienia błędów lub wrażliwych konstrukcji służy:",
@@ -734,13 +734,13 @@ const allQuestions = [
     {
         "question": "Który z poniższych NIE jest obiektem JS?",
         "options": [
-            "A. const obj = {name = \"Jan}",
-            "B. const obj = {name: \"Jan\"}",
-            "C. const obj = {}",
-            "D. const obj = new Object()"
+            "const obj = {name = \"Jan}",
+            "const obj = {name: \"Jan\"}",
+            "const obj = {}",
+            "const obj = new Object()"
         ],
         "correct": [0],
-        "explanation": "Zapis w podpunkcie A używa znaku równości `=` wewnątrz deklaracji literału obiektu, co powoduje krytyczny błąd składniowy. Do mapowania par klucz-wartość w obiektach JS służy dwukropek `:`."
+        "explanation": "Slajd 30; Znak równości `=` wewnątrz deklaracji literału obiektu  powoduje krytyczny błąd składniowy. Do mapowania par klucz-wartość w obiektach JS służy dwukropek `:`."
     },
     {
         "question": "Na którym poziomie Richardsona jest dokumentacja API",
