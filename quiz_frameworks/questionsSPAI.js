@@ -224,13 +224,13 @@ const allQuestions = [
     {
         "question": "Co należy użyć, aby przekazać dane z zewnątrz do komponentu?",
         "options": [
-            "A) `setState`",
-            "B) funkcji 'render' z argumentami",
-            "C) 'BrowserRouter'",
-            "D) props"
+            "`setState`",
+            "funkcji 'render' z argumentami",
+            "'BrowserRouter'",
+            "props"
         ],
         "correct": [3],
-        "explanation": "Do przekazywania danych oraz konfiguracji z komponentu nadrzędnego do komponentu potomnego służą właściwości nazywane skrótowo `props` (właściwości są niemodyfikowalne z perspektywy komponentu odbierającego)."
+        "explanation": "Slajd 28; Do przekazywania danych oraz konfiguracji z komponentu nadrzędnego do komponentu potomnego służą właściwości nazywane skrótowo `props` (właściwości są niemodyfikowalne z perspektywy komponentu odbierającego)."
     },
     {
         "question": "Jaka liczba elementów może być zwrócona przez prawidłowy komponent Reacta?",
@@ -389,13 +389,13 @@ const allQuestions = [
     {
         "question": "Dobrą praktyką REST API, mówiącą, że każde wywołanie REST-owego API powinno zmieniać dany zasób maksymalnie jeden raz, nawet gdy jest wykonane wielokrotnie, jest:",
         "options": [
-            "a) idempotentność",
-            "b) wersjonowanie",
-            "c) stosowanie paginacji",
-            "d) stosowanie metod HTTP zgodnie z przeznaczeniem"
+            "idempotentność",
+            "wersjonowanie",
+            "stosowanie paginacji",
+            "stosowanie metod HTTP zgodnie z przeznaczeniem"
         ],
         "correct": [0],
-        "explanation": "Może jeszcze byś chciał, żeby było w prezentacji co? Idempotentność gwarantuje, że wielokrotne powtórzenie identycznego żądania (np. za pomocą metod GET, PUT, DELETE) wywoła dokładnie taki sam skutek stanowy systemu jak wykonanie go tylko jeden raz."
+        "explanation": "`idempotentność` - spróbuj znaleźć to słowo w prezentacji; Może jeszcze byś chciał, żeby było w prezentacji co? Idempotentność gwarantuje, że wielokrotne powtórzenie identycznego żądania (np. za pomocą metod GET, PUT, DELETE) wywoła dokładnie taki sam skutek stanowy systemu jak wykonanie go tylko jeden raz."
     },
     {
         "question": "W jaki sposób można zmodyfikować tzw. propsy w React?",
