@@ -140,7 +140,7 @@ const allQuestions = [
             "`return (<button class=\"btn btn-warning\">Naciśnij</button>)`"
         ],
         "correct": [0, 2],
-        "explanation": "Komponent JSX musi zawsze zwracać pojedynczy element nadrzędny (wariant B nie posiada wrappera). Ponadto w JSX słowo `class` jest zarezerwowane, dlatego do definiowania klas CSS poprawnie używa się atrybutu `className` (wariant D jest błędny syntaktycznie)."
+        "explanation": "Gemini: Komponent JSX musi zawsze zwracać pojedynczy element nadrzędny (wariant B nie posiada wrappera). Ponadto w JSX słowo `class` jest zarezerwowane, dlatego do definiowania klas CSS poprawnie używa się atrybutu `className` (wariant D jest błędny syntaktycznie)."
     },
     {
         "question": "Wskaż prawidłowe stwierdzenia dotyczące formatu JSON:",
@@ -186,7 +186,7 @@ const allQuestions = [
             "D) [4, 9, 16]"
         ],
         "correct": [0],
-        "explanation": "Metoda `map` przechodzi po kolei przez każdy element tablicy i aplikuje do niego funkcję transformującą. Każda wartość zostaje pomnożona przez 2, dając nową tablicę: `[2*2, 3*2, 4*2] = [4, 6, 8]`."
+        "explanation": "Nie ma wyjaśnienia ale jest przykład na stronie 52. Metoda `map` przechodzi po kolei przez każdy element tablicy i aplikuje do niego funkcję transformującą. Każda wartość zostaje pomnożona przez 2, dając nową tablicę: `[2*2, 3*2, 4*2] = [4, 6, 8]`."
     },
     {
         "question": "Wskaż szablon ciągu tekstowego:",
@@ -257,13 +257,13 @@ const allQuestions = [
     {
         "question": "Wskaż wynik działania kodu:\n[1, 2, 3].map(x => x * x * x)",
         "options": [
-            "A) [1, 8, 27]",
-            "B) [3, 6, 9]",
-            "C) [1, 4, 9]",
-            "D) [1, 4, 6]"
+            "[1, 8, 27]",
+            "[3, 6, 9]",
+            "[1, 4, 9]",
+            "[1, 4, 6]"
         ],
         "correct": [0],
-        "explanation": "Metoda `map` podnosi każdy element tablicy do trzeciej potęgi (mnoży element trzykrotnie przez samego siebie): `1^3 = 1`, `2^3 = 8`, `3^3 = 27`, dając wynik `[1, 8, 27]`."
+        "explanation": "Nie ma wyjaśnienia ale jest przykład na stronie 52. Metoda `map` przechodzi po kolei przez każdy element tablicy, w tym przypadku podnosi każdy element tablicy do trzeciej potęgi (mnoży element trzykrotnie przez samego siebie): `1^3 = 1`, `2^3 = 8`, `3^3 = 27`, dając wynik `[1, 8, 27]`."
     },
     {
         "question": "Wskaż niepoprawne stwierdzenie:",
@@ -465,20 +465,20 @@ const allQuestions = [
     },
     {
         "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:" +
-            "\nhttp://localhost:3000/test?first=hello&second=world\n" +
+            "\n\nhttp://localhost:3000/test?first=hello&second=world\n" +
             "const express = require('express');\n" +
             "const app = express();\n" +
             "app.get('/', (req, res, next) => {\n" +
-            "req.message = req.query.first\n" +
-            "next()\n" +
+            "\treq.message = req.query.first\n" +
+            "\tnext()\n" +
             "})\n" +
             "app.get('/test', (req, res, next) => {\n" +
-            "req.message = req.query.second\n" +
-            "next()\n" +
+            "\treq.message = req.query.second\n" +
+            "\tnext()\n" +
             "})\n" +
             "app.post('/test', (req, res, next) => {\n" +
-            "req.message = req.query.first + ' ' + req.query.second\n" +
-            "next()\n" +
+            "\treq.message = req.query.first + ' ' + req.query.second\n" +
+            "\tnext()\n" +
             "})\n" +
             "app.use((req, res) => res.send(req.message))\n" +
             "app.listen(3000)\n",
@@ -508,20 +508,20 @@ const allQuestions = [
             "const express = require('express');\n" +
             "const app = express();\n" +
             "app.get('/', (req, res, next) => {\n" +
-            "req.message = req.query.first\n" +
-            "next()\n" +
+            "\treq.message = req.query.first\n" +
+            "\tnext()\n" +
             "})\n" +
             "app.get('/test1', (req, res, next) => {\n" +
-            "req.message = req.query.second\n" +
-            "next()\n" +
+            "\treq.message = req.query.second\n" +
+            "\tnext()\n" +
             "})\n" +
             "app.get('/test2', (req, res, next) => {\n" +
-            "req.message = req.message + ' ' + req.query.first\n" +
-            "next()\n" +
+            "\treq.message = req.message + ' ' + req.query.first\n" +
+            "\tnext()\n" +
             "})\n" +
             "app.all('*', (req, res, next) => {\n" +
-            "req.message = req.message + ' ' + req.query.second\n" +
-            "next()\n" +
+            "\treq.message = req.message + ' ' + req.query.second\n" +
+            "\tnext()\n" +
             "})",
         "options": [
             "world",
