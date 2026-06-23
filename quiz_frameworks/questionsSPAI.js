@@ -681,7 +681,7 @@ const allQuestions = [
             "C. Console",
             "D. Node Inspector"
         ],
-        "correct": [4],
+        "correct": [3],
         "explanation": "`Node Inspector` udostępnia graficzny interfejs (GUI), zintegrowany z narzędziami Chrome DevTools, pozwalający na wygodne debugowanie kodu Node.js w przeglądarce."
     },
     {
