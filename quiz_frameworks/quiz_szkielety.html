@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>💀 Quiz - Szkieletory 💀</title>
+    <link rel="icon" type="image/x-icon" href="skeleton.svg">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --text-muted: #6b7280;
+            --option-bg: #f9fafb;
+            --option-border: #e5e7eb;
+            --option-hover: #eef2ff;
+            --option-hover-border: #c7d2fe;
+        }
+
+        body {
+            font-family: "Inter",
+            system-ui,
+            -apple-system,
+            sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+            0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: var(--text);
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-text {
+            font-size: 1.15em;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .progress {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            background: var(--option-border);
+            height: 10px;
+            border-radius: 5px;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .question {
+            font-size: 1.35em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .option {
+            display: block;
+            background: var(--option-bg);
+            margin: 12px 0;
+            padding: 18px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1em;
+            border: 2px solid var(--option-border);
+            line-height: 1.45;
+            white-space: pre-wrap;
+            color: var(--text);
+        }
+
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--option-hover-border);
+            transform: translateY(-2px);
+        }
+
+        .option.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .option.incorrect {
+            background: #fef2f2;
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 18px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-top: 35px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px -1px rgba(79, 70, 229, 0.3);
+        }
+
+        .score-container {
+            text-align: center;
+        }
+
+        .score {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 25px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1.1em;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question {
+                font-size: 1.2em;
+            }
+
+            .option {
+                font-size: 1.05em;
+                padding: 15px 20px;
+            }
+
+            .btn {
+                padding: 15px 20px;
+            }
+        }
+
+        .explanation-container {
+            margin-top: 15px;
+            padding: 16px 20px;
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            color: #1e3a8a;
+            border-radius: 0 12px 12px 0;
+            font-size: 1.05em;
+            line-height: 1.5;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .explanation-container.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container" id="quiz-container">
+    <div id="start-screen">
+        <h1>Quiz: 💀 Szkielety programistyczne w aplikacjach internetowych 🦴</h1>
+        <p class="intro-text">
+            Przygotuj się do egzaminu! Z naszej puli
+            <strong><span id="total-q-count"></span> pytań</strong> aplikacjach
+            wybiera partiami po <strong>20 unikalnych zagadnień</strong>, dopóki nie przejdziesz przez całą pulę.
+            Odpowiedzi również są tasowane na nowo za każdym podejściem. <br><br>
+            <span id="pool-info" style="color: var(--primary); font-weight: bold;"></span>
+        </p>
+        <button class="btn" id="start-btn">Rozpocznij Quiz</button>
+        <button class="btn" id="reset-pool-btn" style="background-color: var(--text-muted); margin-top: 10px;">
+            Resetuj całą pulę pytań
+        </button>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
+        <div class="progress">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <span id="progress-text">1 / 20</span>
+        </div>
+        <div class="question" id="question-text"></div>
+        <div id="options-container"></div>
+        <div id="feedback-message" class="feedback"></div>
+        <div id="explanation-text" class="explanation-container"></div>
+        <button class="btn hidden" id="next-btn">Następne pytanie</button>
+    </div>
+
+    <div id="result-screen" class="hidden score-container">
+        <h1>Koniec Quizu!</h1>
+        <p class="intro-text">Oto Twój wynik z tej sesji:</p>
+        <div class="score" id="score"></div>
+        <button class="btn" id="restart-btn">
+            Następna sesja (kolejne 20 pytań z puli)
+        </button>
+        <br>
+        <span id="pool-info2" style="color: #c10000; font-weight: bold;"></span>
+    </div>
+</div>
+<script src="questionsSPAI.js"></script>
+<script>
+
+    document.getElementById("total-q-count").innerText = allQuestions.length;
+
+    let currentSessionQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let hasAnswered = false;
+
+    // Funkcja tasująca
+    function shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    // Inicjalizacja lub pobranie puli indeksów z localStorage
+    function getQuestionPool() {
+        let pool = localStorage.getItem("quiz_question_pool");
+        if (!pool) {
+            // Jeśli nie ma puli, twórz tablicę indeksów [0, 1, 2, ..., N] i tasuj ją całą
+            let indices = Array.from({length: allQuestions.length}, (_, i) => i);
+            pool = shuffle(indices);
+            localStorage.setItem("quiz_question_pool", JSON.stringify(pool));
+        } else {
+            pool = JSON.parse(pool);
+        }
+        return pool;
+    }
+
+    // Aktualizacja tekstu informacyjnego w menu głównym
+    function updatePoolInfo() {
+        const pool = getQuestionPool();
+        const mess = `W puli pozostało jeszcze ${pool.length} pytań, których nie widziałeś.`;
+        document.getElementById("pool-info").innerText = mess;
+        document.getElementById("pool-info2").innerText = mess;
+
+    }
+
+    // Resetowanie ręczne całej puli
+    document.getElementById("reset-pool-btn").addEventListener("click", () => {
+        localStorage.removeItem("quiz_question_pool");
+        updatePoolInfo();
+        alert("Pula została zresetowana i przetasowana na nowo!");
+    });
+
+    document.getElementById("start-btn").addEventListener("click", startQuiz);
+    document.getElementById("next-btn").addEventListener("click", nextQuestion);
+    document.getElementById("restart-btn").addEventListener("click", startQuiz);
+
+    // Wywołanie przy starcie strony
+    updatePoolInfo();
+
+    function startQuiz() {
+        score = 0;
+        currentQuestionIndex = 0;
+
+        let pool = getQuestionPool();
+
+        // Jeśli pula jest pusta (przeszliśmy przez wszystkie), generujemy nową
+        if (pool.length === 0) {
+            let indices = Array.from({length: allQuestions.length}, (_, i) => i);
+            pool = shuffle(indices);
+            alert("Gratulacje! Przeszedłeś przez wszystkie pytania. Pula została przetasowana na nowo!");
+        }
+
+        // Bierzemy maksymalnie 20 pytań z puli
+        let sessionIndices = pool.slice(0, 20);
+
+        // Mapujemy wybrane indeksy na faktyczne obiekty pytań
+        currentSessionQuestions = sessionIndices.map(index => allQuestions[index]);
+
+        // Usuwamy wybrane pytania z głównej puli w localStorage
+        pool = pool.slice(sessionIndices.length);
+        localStorage.setItem("quiz_question_pool", JSON.stringify(pool));
+
+        document.getElementById("start-screen").classList.add("hidden");
+        document.getElementById("result-screen").classList.add("hidden");
+        document.getElementById("quiz-screen").classList.remove("hidden");
+
+        showQuestion();
+    }
+
+    function showQuestion() {
+        hasAnswered = false;
+        document.getElementById("next-btn").classList.add("hidden");
+
+        const feedbackEl = document.getElementById("feedback-message");
+        feedbackEl.className = "feedback";
+        feedbackEl.innerText = "";
+
+        const explEl = document.getElementById("explanation-text");
+        explEl.classList.remove("visible");
+        explEl.innerText = "";
+
+        const q = currentSessionQuestions[currentQuestionIndex];
+
+        const progressPercent = (currentQuestionIndex / currentSessionQuestions.length) * 100;
+        document.getElementById("progress-bar").style.width = progressPercent + "%";
+        document.getElementById("progress-text").innerText = `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
+
+        const qTextEl = document.getElementById("question-text");
+        qTextEl.textContent = q.question;
+
+        const optionsContainer = document.getElementById("options-container");
+        optionsContainer.innerHTML = "";
+
+        let optionsWithIndex = q.options.map((opt, index) => ({
+            text: opt,
+            originalIndex: index,
+        }));
+        optionsWithIndex = shuffle(optionsWithIndex);
+
+        optionsWithIndex.forEach((optObj) => {
+            const optDiv = document.createElement("div");
+            optDiv.className = "option";
+            optDiv.textContent = optObj.text;
+            optDiv.dataset.isCorrect = q.correct.includes(optObj.originalIndex);
+
+            optDiv.addEventListener("click", function () {
+                if (hasAnswered) return;
+                hasAnswered = true;
+
+                const isCorrect = this.dataset.isCorrect === "true";
+
+                if (isCorrect) {
+                    this.classList.add("correct");
+                    score++;
+                    feedbackEl.innerText = "Świetnie! Poprawna odpowiedź.";
+                    feedbackEl.classList.add("correct");
+                } else {
+                    this.classList.add("incorrect");
+                    feedbackEl.innerText = "Niestety, zła odpowiedź.";
+                    feedbackEl.classList.add("incorrect");
+                }
+
+                if (q.explanation) {
+                    explEl.innerHTML = `<strong>Wyjaśnienie:</strong><br>${q.explanation}`;
+                    explEl.classList.add("visible");
+                }
+
+                document.querySelectorAll(".option").forEach((div) => {
+                    div.style.pointerEvents = "none";
+                    if (div.dataset.isCorrect === "true") {
+                        div.classList.add("correct");
+                    }
+                });
+
+                document.getElementById("next-btn").classList.remove("hidden");
+
+                if (currentQuestionIndex === currentSessionQuestions.length - 1) {
+                    document.getElementById("next-btn").innerText = "Zakończ i pokaż wynik";
+                } else {
+                    document.getElementById("next-btn").innerText = "Następne pytanie";
+                }
+            });
+            optionsContainer.appendChild(optDiv);
+        });
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentSessionQuestions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-screen").classList.add("hidden");
+        document.getElementById("result-screen").classList.remove("hidden");
+
+        const percentage = Math.round((score / currentSessionQuestions.length) * 100);
+        document.getElementById("score").innerText = `${score} / ${currentSessionQuestions.length} (${percentage}%)`;
+
+        // Zaktualizuj info o pozostałej puli w tle na ekranie startowym
+        updatePoolInfo();
+    }
+</script>
+</body>
+</html>
