@@ -251,13 +251,13 @@ const allQuestions = [
     {
         "question": "Która z poniższych metod żąda od serwera zaakceptowania danych zawartych w żądaniu modyfikacji istniejącego obiektu identyfikowanego przez URI?",
         "options": [
-            "A) PUT",
-            "B) GET",
-            "C) DELETE",
-            "D) POST"
+            "PUT",
+            "GET",
+            "DELETE",
+            "POST"
         ],
         "correct": [0],
-        "explanation": "Metoda `PUT` służy do aktualizacji lub całkowitego zastąpienia zasobu pod określonym adresem URI przesyłanym ładunkiem. `POST` służy głównie do tworzenia nowych podzasobów."
+        "explanation": "Strona 240; POST - utworzenie nowego zasobu, PUT - pełne nadpisanie, GET pobranie, DELETE - usunięcie"
     },
     {
         "question": "Wskaż wynik działania kodu:\n[1, 2, 3].map(x => x * x * x)",
@@ -317,13 +317,14 @@ const allQuestions = [
     {
         "question": "Wskaż prawdziwe stwierdzenia dotyczące szkieletu Express:",
         "options": [
-            "A. Express odchodzi od wbudowanych komponentów na rzecz konfigurowalnej warstwy pośredniczącej",
-            "B. Express to szkielet działający po stronie serwera",
-            "C. Express w porównaniu do Node upraszcza proces budowania aplikacji internetowej",
-            "D. Mocno obciążone witryny oparte na szkielecie Express cechują się niską wydajnością"
+            "Express odchodzi od wbudowanych komponentów na rzecz konfigurowalnej warstwy pośredniczącej",
+            "Express to szkielet działający po stronie serwera",
+            "Express w porównaniu do Node upraszcza proces budowania aplikacji internetowej",
+            "Mocno obciążone witryny oparte na szkielecie Express cechują się niską wydajnością"
         ],
         "correct": [0, 1, 2],
-        "explanation": "Express to minimalistyczny framework backendowy (serwerowy), który rezygnuje ze sztywnych wbudowanych funkcjonalności na rzecz elastycznych funkcji middleware. Zapewnia wysoką wydajność, co czyni punkt D fałszywym."
+        "explanation": "Strona 41-42 1:1 poprawne; Mocno obciążone witryny utworzone z użyciem Expressa\n" +
+            "cechują się WYSOKĄ wydajnością"
     },
     {
         "question": "Wywołanie oprogramowania pośredniczącego odbywa się za pomocą metody:",
@@ -625,7 +626,7 @@ const allQuestions = [
             "D. każde wywołanie REST-owego API powinno zmieniać dany zasób maksymalnie jeden raz, nawet gdy jest wykonywane wielokrotnie"
         ],
         "correct": [3],
-        "explanation": "Oczywiście, że nie ma tego w prezentacji; Idempotentność gwarantuje, że końcowy efekt powtarzania tego samego żądania na serwerze nie wpłynie na zmianę stanu aplikacji w sposób inny niż pierwsze poprawne wykonanie."
+        "explanation": "Oczywiście, że nie ma tego w prezentacji (dobra jest w tej ekstra - 493); Idempotentność gwarantuje, że końcowy efekt powtarzania tego samego żądania na serwerze nie wpłynie na zmianę stanu aplikacji w sposób inny niż pierwsze poprawne wykonanie."
     },
     {
         "question": "Jaka biblioteka do wykonywania testów jest najczęściej kojarzona z Reactem?",
@@ -661,15 +662,20 @@ const allQuestions = [
         "explanation": "Strona 266; Polityka CORS to mechanizm bezpieczeństwa przeglądarek internetowych. Wykorzystanie middleware CORS na serwerze pozwala określić w nagłówkach odpowiedzi, jakie zewnętrzne domeny (Origins) mają prawo odpytywać dany serwer."
     },
     {
-        "question": "Jaki będzie wynik poniższego kodu?\nlet sum = 0\nconst a = [1,2,3]\na.forEach(getSum)\nconsole.log(sum)\nfunction getSum(elem){ sum += elem }",
+        "question": "Jaki będzie wynik poniższego kodu?\n" +
+            "\nlet sum = 0" +
+            "\nconst a = [1,2,3]" +
+            "\na.forEach(getSum)" +
+            "\nconsole.log(sum)" +
+            "\nfunction getSum(elem){ sum += elem }",
         "options": [
-            "A) 2",
-            "B) 1",
-            "C) 0",
-            "D) 6"
+            "2",
+            "1",
+            "0",
+            "6"
         ],
         "correct": [3],
-        "explanation": "Metoda `forEach` wykonuje przekazaną funkcję dla każdego elementu tablicy. Zmienna `sum` akumuluje wartości: `0 + 1 + 2 + 3 = 6`."
+        "explanation": "Na logike, strona 114 (useless foreach xd); Metoda `forEach` wykonuje przekazaną funkcję dla każdego elementu tablicy. Zmienna `sum` akumuluje wartości: `0 + 1 + 2 + 3 = 6`."
     },
     {
         "question": "Komponenty stanowe, Hooki - wybierz prawidłowe:",
@@ -794,13 +800,13 @@ const allQuestions = [
     {
         "question": "W REST API punkty końcowe powinny być zgrupowane jako ...",
         "options": [
-            "A. żadna odpowiedź nie jest prawidłowa",
-            "B. rzeczowniki w liczbie pojedynczej wokół danych i obiektów",
-            "C. rzeczowniki w liczbie mnogiej wokół danych i obiektów",
-            "D. czasowniki wokół danych i obiektów"
+            "żadna odpowiedź nie jest prawidłowa",
+            "rzeczowniki w liczbie pojedynczej wokół danych i obiektów",
+            "rzeczowniki w liczbie mnogiej wokół danych i obiektów",
+            "czasowniki wokół danych i obiektów"
         ],
         "correct": [2],
-        "explanation": "Powszechnie przyjętą, kluczową dobrą praktyką projektowania RESTful API jest reprezentowanie zasobów za pomocą rzeczowników sformatowanych w liczbie mnogiej (np. `/users`, `/books`)."
+        "explanation": "Strona 486 I guess? (customers); Powszechnie przyjętą, kluczową dobrą praktyką projektowania RESTful API jest reprezentowanie zasobów za pomocą rzeczowników sformatowanych w liczbie mnogiej (np. `/users`, `/books`)."
     },
     {
         "question": "Wskaż nieprawidłowe stwierdzenie dotyczące MongoDB",
@@ -825,7 +831,7 @@ const allQuestions = [
         "explanation": "API (Application Programming Interface) jest ze swojej definicji interfejsem programistycznym przeznaczonym dla maszyn i oprogramowania, a nie interfejsem użytkownika (UI) przeznaczonym do interakcji z człowiekiem."
     },
     {
-        "question": "Wskaż złą praktykę podczas konstruowania punktu końcowego URL?",
+        "question": "Wskaż złą praktykę podczas konstruowania punktu końcowego URL",
         "options": [
             "A. DELETE /surveys/123",
             "B. POST /surveys/123",
@@ -833,7 +839,7 @@ const allQuestions = [
             "D. PUT /surveys/123"
         ],
         "correct": [1],
-        "explanation": "Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
+        "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
     },
     {
         "question": "[Wykład] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
@@ -844,7 +850,7 @@ const allQuestions = [
             "Playwright nie wymaga Node.js, działa bezpośrednio w przeglądarce"
         ],
         "correct": [2],
-        "explanation": "Strona 454"
+        "explanation": "Strona 454",
     },
     {
         "question": "[Wykład] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
@@ -855,6 +861,6 @@ const allQuestions = [
             "wrapper.find(Button).at(1)"
         ],
         "correct": [2],
-        "explanation": "Strona 448: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane"
+        "explanation": "Strona 448: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane",
     }
 ]
