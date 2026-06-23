@@ -841,15 +841,17 @@ const allQuestions = [
         "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
     },
     {
-        "question": "[PK 1/5] ",
+        "question": "[PK 1/5 Który z poniższych testów to test JEDNOSTKOWY (unit)?] ",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "Test sprawdzający, czy formularz logowania wysyła żądanie HTTP do /api/auth, baza" +
+            "zapisuje sesję, a użytkownik zostaje przekierowany na /dashboard",
+            "Test sprawdzający, czy funkcja calculateDiscount(price, percent) zwraca poprawną" +
+            "wartość dla price=100 i percent=20",
+            "Test uruchamiający Playwright, otwierający przeglądarkę i klikający przez całą ścieżkę zakupu produktu w sklepie",
+            "Test sprawdzający, czy aplikacja React po renderowaniu i interakcji z formularzem zwraca poprawne odpowiedzi z backendu Express"
         ],
-        "correct": [2],
-        "explanation": "",
+        "correct": [1],
+        "explanation": "Gemini",
     },
     {
         "question": "[PK 2/5] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
@@ -874,26 +876,28 @@ const allQuestions = [
         "explanation": "Strona 454",
     },
     {
-        "question": "[PK 4/5] ",
+        "question": "[PK 4/5 Zespół używa Husky + lint-staged.\nCo się stanie po uruchomieniu git commit?] ",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "Wszystkie pliki projektu zostaną sprawdzone przez ESLint i Prettier",
+            "Tylko pliki w staging area zostaną sprawdzone; jeśli format niepoprawny, lint-staged" +
+            "je naprawi i doda do commita; jeśli błąd ESLint - commit przerwany",
+            "Husky wyśle kod do CI do sprawdzenia, a commit zostanie automatycznie zaakceptowany",
+            "Pliki zostaną tylko sformatowane przez Prettier, ESLint będzie pominięty"
         ],
-        "correct": [2],
-        "explanation": "",
+        "correct": [1],
+        "explanation": "Wskazówka: dlaczego 'staged' w nazwie lint-staged?",
     },
     {
-        "question": "[PK 5/5] ",
+        "question": "[PK 5/5 Użytkownicy pewnej aplikacji skarżą się, że 'kliknięcie przycisku reaguje powoli'." +
+            "\nKtórą metrykę Web Vitals należy sprawdzić w pierwszej kolejności?] ",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "LCP (Largest Contentful Paint) – czas do narysowania głównego elementu",
+            "CLS (Cumulative Layout Shift) – suma przesunięć layoutu",
+            "INP (Interaction to Next Paint) – czas reakcji na interakcję\n",
+            "FCP (First Contentful Paint) – czas do pierwszego renderu"
         ],
         "correct": [2],
-        "explanation": "",
+        "explanation": "Wskazówka: która metryka mierzy 'jak szybko strona reaguje' na akcje?",
     },
     {
         "question": "[PK 1/6] Co się stanie, jeśli middleware NIE wywoła ani next(), ani res.send/res.json/res.end?",
@@ -920,47 +924,55 @@ const allQuestions = [
         "explanation": "Strona 254 (to pytanie): `Wskazówka: parametry ścieżki (:id) vs query string (?include=) to dwa OSOBNE źródła`, oba muszą być stringami",
     },
     {
-        "question": "[PK 3/6] ",
+        "question": "[PK 3/6] Klient wysyła POST /api/login z body JSON: { \"email\": \"a@b.pl\" }\ni nagłówkiem Content-Type: application/json." +
+            "\nJakie middleware MUSI być zarejestrowane PRZED tym handlerem, by req.body było zdefiniowane?",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "`app.use(express.urlencoded({ extended: true }))`",
+            "`app.use(express.json())`",
+            "`app.use(bodyParser()) // bez argumentów`",
+            "Nic nie trzeba – Express parsuje body automatycznie"
         ],
-        "correct": [2],
-        "explanation": "",
+        "correct": [1],
+        "explanation": "Wskazówka: Content-Type określa FORMAT – dla każdego formatu inny parser",
     },
     {
-        "question": "[PK 4/6] ",
+        "question": "[PK 4/6] W Express 4 mamy handler:" +
+            "\n`app.get('/data', async (req, res) => {\n" +
+            "\tconst result = await fetchFromAPI() // rzuca błąd!\n" +
+            "\tres.json(result)\n" +
+            "})\n`",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "Express automatycznie złapie błąd i wyśle 500",
+            "Żądanie zawiśnie (timeout), w konsoli pojawi się 'UnhandledPromiseRejection",
+            "Express przekaże błąd do najbliższego `app.use((err,req,res,next)=>...)`",
+            "Aplikacja od razu się zatrzyma (crash)"
         ],
-        "correct": [2],
-        "explanation": "",
+        "correct": [1],
+        "explanation": "Wskazówka: różnica między Express 4 (klasyczny) a Express 5 (od 2024) jest tu kluczowa",
     },
     {
-        "question": "[PK 5/6] ",
+        "question": "[PK 5/6] Implementujesz logowanie z JWT. Wysyłasz access token przez\n" +
+            "Authorization header, a refresh token zapisujesz w cookie BEZ flag httpOnly i sameSite. " +
+            "Klient (React SPA) zapisuje też access token w localStorage „dla wygody\"." +
+            "\n\nKtóre z poniższych jest NAJWIĘKSZYM zagrożeniem?",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "Brute-force ataki – bez rate limiting hacker zgadnie hasło",
+            "Każdy atak XSS na stronie pozwala wykraść OBA tokeny i przejąć konto na 7 dni",
+            "JWT się przedawni i user będzie musiał się przelogować\n",
+            "Cookie zajmuje za dużo miejsca w przeglądarce"
         ],
-        "correct": [2],
-        "explanation": "",
+        "correct": [1],
+        "explanation": "Wskazówka: pomyśl co może zrobić atakujący który wstrzyknął &#10094;script> na stronie",
     },
     {
-        "question": "[PK 6/6] ",
+        "question": "[PK 6/6] Które z poniższych jest WBUDOWANE w Express (od wersji 4.16) i NIE wymaga osobnej instalacji z npm?",
         "options": [
-            "",
-            "",
-            "",
-            ""
+            "express.cors() – middleware do obsługi CORS",
+            "express.json() – parser body o Content-Type: application/json",
+            "express.helmet() – nagłówki bezpieczeństwa HTTP",
+            "express.morgan() – logger żądań HTTP"
         ],
-        "correct": [2],
-        "explanation": "",
+        "correct": [1],
+        "explanation": "Strona 231; Wskazówka: zastanów się które z tych są częścią CORE Express, a które wymagają npm install",
     }
 ]
