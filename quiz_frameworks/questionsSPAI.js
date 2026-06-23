@@ -173,13 +173,13 @@ const allQuestions = [
     {
         "question": "W skład stosu MERN wchodzą następujące technologie:",
         "options": [
-            "A) MongoDB, Express, React, Node",
-            "B) Microsoft SQL, Exit, Redux, Node",
-            "C) MSSQL, Electron, Ruby on Rails, Node",
-            "D) MySQL, Elixir, Router, Node"
+            "MongoDB, Express, React, Node",
+            "Microsoft SQL, Exit, Redux, Node",
+            "MSSQL, Electron, Ruby on Rails, Node",
+            "MySQL, Elixir, Router, Node"
         ],
         "correct": [0],
-        "explanation": "Akronim MERN odnosi się bezpośrednio do pełnego zestawu technologii JavaScript służącego do budowy aplikacji webowych: M - MongoDB, E - Express.js, R - React.js, N - Node.js."
+        "explanation": "Strona 160; zestaw javascriptowego pojeba:: M - MongoDB, E - Express.js, R - React.js, N - Node.js."
     },
     {
         "question": "Wskaż wynik działania kodu:\n[2, 3, 4].map(x => x * 2)",
@@ -401,7 +401,7 @@ const allQuestions = [
             "stosowanie metod HTTP zgodnie z przeznaczeniem"
         ],
         "correct": [0],
-        "explanation": "`idempotentność` - spróbuj znaleźć to słowo w prezentacji; Może jeszcze byś chciał, żeby było w prezentacji co? Idempotentność gwarantuje, że wielokrotne powtórzenie identycznego żądania (np. za pomocą metod GET, PUT, DELETE) wywoła dokładnie taki sam skutek stanowy systemu jak wykonanie go tylko jeden raz."
+        "explanation": "`idempotentność` - spróbuj znaleźć to słowo w prezentacji (jest w tej bonusowej jakby co - 493 stronka); Idempotentność gwarantuje, że wielokrotne powtórzenie identycznego żądania (np. za pomocą metod GET, PUT, DELETE) wywoła dokładnie taki sam skutek stanowy systemu jak wykonanie go tylko jeden raz."
     },
     {
         "question": "W jaki sposób można zmodyfikować tzw. propsy w React?",
@@ -439,13 +439,18 @@ const allQuestions = [
     {
         "question": "Kody odpowiedzi HTTP, które można zaobserwować w momencie, gdy stara zawartość została zastąpiona i przekierowana do nowej, rozpoczynają się od cyfry:",
         "options": [
-            "a) 4",
-            "b) 2",
-            "c) 3",
-            "d) 5"
+            "4",
+            "2",
+            "3",
+            "5"
         ],
         "correct": [2],
-        "explanation": "Klasa kodów stanu HTTP rozpoczynająca się od cyfry 3 (kody 3xx, np. 301 Moved Permanently, 302 Found) odpowiada w specyfikacji protokołu za obsługę wszelkiego rodzaju przekierowań (redirection)."
+        "explanation": "Strona 14;  \n" +
+            "• Informacyjny: 1xx\n" +
+            "• Powodzenie: 2xx\n" +
+            "• Przekierowanie: 3xx\n" +
+            "• Błąd klienta: 4xx\n" +
+            "• Błąd serwera: 5xx"
     },
     {
         "question": "Czym jest biblioteka Puppeteer?",
@@ -496,17 +501,6 @@ const allQuestions = [
         ],
         "correct": [0],
         "explanation": "Dla ścieżki `/test` żądanie omija pierwszy blok `app.get('/')`. Wchodzi do `app.get('/test')`, gdzie przypisuje do `req.message` wartość `req.query.second` (czyli 'world'). Następnie `next()` przekazuje sterowanie do końcowego middleware wysyłającego wartość `req.message`."
-    },
-    {
-        "question": "Jaki będzie wynik wykonania tego samego kodu, gdy w polu adresu przeglądarki wpiszemy:\nhttp://localhost:3000/?first=hello&second=world",
-        "options": [
-            "a) world",
-            "b) first=hello&second=world",
-            "c) hello world",
-            "d) hello"
-        ],
-        "correct": [3],
-        "explanation": "Żądanie kierowane na adres bazowy `/` uruchamia wyłącznie obsługę z bloku `app.get('/')`. Tam przypisywana jest wartość `req.query.first` ('hello'), a kolejne bloki `/test` są pomijane, aż do wykonania funkcji wysyłającej odpowiedź."
     },
     {
         "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:" +
@@ -690,13 +684,13 @@ const allQuestions = [
     {
         "question": "Która z metod HTTP zwraca listę metod, które są dostępne na danym zasobie?",
         "options": [
-            "A. PATCH",
-            "B. OPTIONS",
-            "C. GET",
-            "D. HEAD"
+            "PATCH",
+            "OPTIONS",
+            "GET",
+            "HEAD"
         ],
         "correct": [1],
-        "explanation": "Metoda `OPTIONS` służy do odpytywania serwera o parametry komunikacyjne oraz dozwolone metody HTTP (`Allow`) dostępne dla wskazanego punktu końcowego zasobu."
+        "explanation": "Strona 240; Metoda `OPTIONS` służy do odpytywania serwera o parametry komunikacyjne oraz dozwolone metody HTTP (`Allow`) dostępne dla wskazanego punktu końcowego zasobu."
     },
     {
         "question": "Która(e) metoda HTTP tworzy nowy zasób (jeśli on jeszcze nie istnieje) na podstawie ładunku podanego w treści żądania?",
@@ -767,13 +761,13 @@ const allQuestions = [
     {
         "question": "Najniższy poziom Reacta:",
         "options": [
-            "A. Elementy",
-            "B. Komponenty",
-            "C. Props",
-            "D. Stan"
+            "Elementy",
+            "Komponenty",
+            "Props",
+            "Stan"
         ],
         "correct": [0],
-        "explanation": "Najmniejszymi atomami i podstawowymi cegiełkami budującymi aplikację w React są Elementy Reacta (zwykłe obiekty JS opisujące to, co ma pojawić się na ekranie). Komponenty składają się z elementów."
+        "explanation": "Gemini i tyle: Najmniejszymi atomami i podstawowymi cegiełkami budującymi aplikację w React są Elementy Reacta (zwykłe obiekty JS opisujące to, co ma pojawić się na ekranie). Komponenty składają się z elementów."
     },
     {
         "question": "W jaki sposób pobrać pierwszy element z tablicy 'cars' przy użyciu destrukturyzacji tablicy?",
