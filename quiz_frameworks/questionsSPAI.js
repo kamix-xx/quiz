@@ -323,13 +323,13 @@ const allQuestions = [
     {
         "question": "Wywołanie oprogramowania pośredniczącego odbywa się za pomocą metody:",
         "options": [
-            "A) `app.get`",
-            "B) `app.post`",
-            "C) `app.use`",
-            "D) `app.listen`"
+            "`app.get`",
+            "`app.post`",
+            "`app.use`",
+            "`app.listen`"
         ],
         "correct": [2],
-        "explanation": "W frameworku Express globalna rejestracja i montowanie funkcji oprogramowania pośredniczącego (middleware) dla wszystkich bądź wybranych ścieżek żądań odbywa się za pomocą metody `app.use()`."
+        "explanation": "Slajd 6; W frameworku Express globalna rejestracja i montowanie funkcji oprogramowania pośredniczącego (middleware) dla wszystkich bądź wybranych ścieżek żądań odbywa się za pomocą metody `app.use()`."
     },
     {
         "question": "Biblioteka React została opracowana przez firmę:",
@@ -592,10 +592,10 @@ const allQuestions = [
     {
         "question": "Dla klucza głównego MongoDB używa:",
         "options": [
-            "A. wartości INT",
-            "B. typu Array",
-            "C. łańcucha STRING",
-            "D. obiektu ObjectId"
+            "wartości INT",
+            "typu Array",
+            "łańcucha STRING",
+            "obiektu ObjectId"
         ],
         "correct": [3],
         "explanation": "Na logike; Slajd 12; MongoDB używa specjalnego obiektu ObjectId dla klucza głównego."
@@ -701,13 +701,13 @@ const allQuestions = [
     {
         "question": "Które polecenie służy do uruchomienia serwera MongoDB?",
         "options": [
-            "A. mongod",
-            "B. mongo",
-            "C. mongosh",
-            "D. mongoserver"
+            "mongod",
+            "mongo",
+            "mongosh",
+            "mongoserver"
         ],
         "correct": [0],
-        "explanation": "Główny proces demona systemowego bazy danych pełniący funkcję serwera MongoDB uruchamia się w systemie operacyjnym za pomocą pliku wykonywalnego/polecenia `mongod`."
+        "explanation": "Slajd 18; Główny proces demona systemowego bazy danych pełniący funkcję serwera MongoDB uruchamia się w systemie operacyjnym za pomocą pliku wykonywalnego/polecenia `mongod`."
     },
     {
         "question": "Które z poniższych jest opartym na GUI narzędziem do debugowania w Node.js?",
