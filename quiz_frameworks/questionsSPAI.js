@@ -378,13 +378,13 @@ const allQuestions = [
     {
         "question": "Wskaż niepoprawne stwierdzenie dotyczące platformy Node:",
         "options": [
-            "A) Jest językiem programowania, a także frameworkiem",
-            "B) Jest platformą open-source",
-            "C) Jest to platforma działająca jako serwer www",
-            "D) Wykonuje kod JavaScript poza przeglądarką"
+            "Jest językiem programowania, a także frameworkiem",
+            "Jest platformą open-source",
+            "Jest to platforma działająca jako serwer www",
+            "Wykonuje kod JavaScript poza przeglądarką"
         ],
         "correct": [0],
-        "explanation": "Node.js nie jest nowym, odrębnym językiem programowania ani klasycznym frameworkiem aplikacyjnym. Jest to środowisko uruchomieniowe (runtime environment) pozwalające wykonywać kod JS poza przeglądarką."
+        "explanation": "Na logike imo; Gemini: Node.js nie jest nowym, odrębnym językiem programowania ani klasycznym frameworkiem aplikacyjnym. Jest to środowisko uruchomieniowe (runtime environment) pozwalające wykonywać kod JS poza przeglądarką."
     },
     {
         "question": "Dobrą praktyką REST API, mówiącą, że każde wywołanie REST-owego API powinno zmieniać dany zasób maksymalnie jeden raz, nawet gdy jest wykonane wielokrotnie, jest:",
@@ -444,13 +444,13 @@ const allQuestions = [
     {
         "question": "Czym jest biblioteka Puppeteer?",
         "options": [
-            "a) Sterowalną wersją przeglądarki Chrome działającą bez renderowania GUI",
-            "b) Interaktywne środowisko Node i przeglądarki, umożliwiające pisanie kodu w JavaScript",
-            "c) Narzędzie do analizy kodu do identyfikacji potencjalnych miejsc wystąpienia błędów",
-            "d) Narzędzie do tworzenia prostego serwera www"
+            "Sterowalną wersją przeglądarki Chrome działającą bez renderowania GUI",
+            "Interaktywne środowisko Node i przeglądarki, umożliwiające pisanie kodu w JavaScript",
+            "Narzędzie do analizy kodu do identyfikacji potencjalnych miejsc wystąpienia błędów",
+            "Narzędzie do tworzenia prostego serwera www"
         ],
         "correct": [0],
-        "explanation": "Puppeteer to oficjalna biblioteka dla Node.js udostępniająca wysokopoziomowe API do zdalnego sterowania przeglądarkami Chromium/Chrome w trybie bezinterfejsowym (headless mode)."
+        "explanation": "Kurcze nie ma wprost, ale slajd 16; Puppeteer to oficjalna biblioteka dla Node.js udostępniająca wysokopoziomowe API do zdalnego sterowania przeglądarkami Chromium/Chrome w trybie bezinterfejsowym (headless mode)."
     },
     {
         "question": "Za pomocą jakiego słowa kluczowego w JavaScript deklaruje się zmienne?",
@@ -840,5 +840,16 @@ const allQuestions = [
         ],
         "correct": [1],
         "explanation": "Slajd 16"
+    },
+    {
+        "question": "[Wykład] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
+        "options": [
+            "container.querySelector('.btn-delete')",
+            "screen.getByTestId('delete-button')",
+            "screen.getByRole('button', { name: /usuń/i })",
+            "wrapper.find(Button).at(1)"
+        ],
+        "correct": [2],
+        "explanation": "Slajd 10: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane"
     }
 ]
