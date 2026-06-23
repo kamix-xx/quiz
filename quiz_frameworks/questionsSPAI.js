@@ -268,13 +268,13 @@ const allQuestions = [
     {
         "question": "Wskaż niepoprawne stwierdzenie:",
         "options": [
-            "A) 'async' i 'await' wspomagają wykonywanie operacji asynchronicznych",
-            "B) `async` i `await` można dodawać do stałych i zmiennych",
-            "C) 'async' informuje JavaScript, że funkcja korzysta z obietnic",
-            "D) `await` jest używane podczas wywołania funkcji"
+            "'async' i 'await' wspomagają wykonywanie operacji asynchronicznych",
+            "`async` i `await` można dodawać do stałych i zmiennych",
+            "'async' informuje JavaScript, że funkcja korzysta z obietnic",
+            "`await` jest używane podczas wywołania funkcji"
         ],
         "correct": [1],
-        "explanation": "Słowa kluczowe `async` oraz `await` są konstrukcjami składniowymi zarezerwowanymi i stosowanymi wyłącznie w odniesieniu do definicji i wywołań funkcji, nie można ich przypisywać bezpośrednio do deklaracji zwykłych zmiennych bądź stałych."
+        "explanation": "Slajd 66 elegancko rozpisane 1:1; Słowa kluczowe `async` oraz `await` są konstrukcjami składniowymi zarezerwowanymi i stosowanymi wyłącznie w odniesieniu do definicji i wywołań funkcji, nie można ich przypisywać bezpośrednio do deklaracji zwykłych zmiennych bądź stałych."
     },
     {
         "question": "Wskaż nieprawdziwe stwierdzenie opisujące platformę Node:",
@@ -455,13 +455,13 @@ const allQuestions = [
     {
         "question": "Za pomocą jakiego słowa kluczowego w JavaScript deklaruje się zmienne?",
         "options": [
-            "a) int",
-            "b) new",
-            "c) let",
-            "d) set"
+            "int",
+            "new",
+            "let",
+            "set"
         ],
         "correct": [2],
-        "explanation": "W nowoczesnym standardzie JavaScript (od ES6 wzwyż) podstawowymi słowami kluczowymi do bezpiecznej deklaracji zmiennych o zasięgu blokowym są `let` oraz `const`."
+        "explanation": "Na logike; W nowoczesnym standardzie JavaScript (od ES6 wzwyż) podstawowymi słowami kluczowymi do bezpiecznej deklaracji zmiennych o zasięgu blokowym są `let` oraz `const`."
     },
     {
         "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:" +
