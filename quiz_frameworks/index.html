@@ -193,6 +193,75 @@
             display: block;
         }
 
+        /* Nowe style dla checkboxów i stanów odpowiedzi */
+        .option {
+            display: flex !important;
+            align-items: center;
+        }
+
+        .option.selected {
+            background: #eef2ff;
+            border-color: var(--primary);
+        }
+
+        .option.correct-answer {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .option.wrong-answer {
+            background: #fef2f2;
+            border-color: var(--danger);
+            color: #991b1b;
+            opacity: 0.8;
+        }
+
+        .checkbox-indicator {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #c7c7cc;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option.selected .checkbox-indicator {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .option.selected .checkbox-indicator::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .option.correct-answer .checkbox-indicator {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .option.correct-answer .checkbox-indicator::after {
+            content: "✓";
+            color: white;
+        }
+
+        .option.wrong-answer .checkbox-indicator {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .option.wrong-answer .checkbox-indicator::after {
+            content: "✕";
+            color: white;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -273,19 +342,21 @@
         <div id="options-container"></div>
         <div id="feedback-message" class="feedback"></div>
         <div id="explanation-text" class="explanation-container"></div>
+        <button class="btn" id="check-btn" disabled>Zaznacz odpowiedź, aby sprawdzić</button>
         <button class="btn hidden" id="next-btn">Następne pytanie</button>
     </div>
+</div>
 
-    <div id="result-screen" class="hidden score-container">
-        <h1>Koniec Quizu!</h1>
-        <p class="intro-text">Oto Twój wynik z tej sesji:</p>
-        <div class="score" id="score"></div>
-        <button class="btn" id="restart-btn">
-            Następna sesja (kolejne 20 pytań z puli)
-        </button>
-        <br>
-        <span id="pool-info2" style="color: #c10000; font-weight: bold;"></span>
-    </div>
+<div id="result-screen" class="hidden score-container">
+    <h1>Koniec Quizu!</h1>
+    <p class="intro-text">Oto Twój wynik z tej sesji:</p>
+    <div class="score" id="score"></div>
+    <button class="btn" id="restart-btn">
+        Następna sesja (kolejne 20 pytań z puli)
+    </button>
+    <br>
+    <span id="pool-info2" style="color: #c10000; font-weight: bold;"></span>
+</div>
 </div>
 <script src="questionsSPAI.js"></script>
 <script>
@@ -295,7 +366,8 @@
     let currentSessionQuestions = [];
     let currentQuestionIndex = 0;
     let score = 0;
-    let hasAnswered = false;
+    let selectedOptions = new Set(); // Przechowuje zaznaczone indeksy
+    let isQuestionChecked = false;   // Flaga czy sprawdzono już odpowiedź
 
     // Funkcja tasująca
     function shuffle(array) {
@@ -339,6 +411,7 @@
     });
 
     document.getElementById("start-btn").addEventListener("click", startQuiz);
+    document.getElementById("check-btn").addEventListener("click", checkAnswer);
     document.getElementById("next-btn").addEventListener("click", nextQuestion);
     document.getElementById("restart-btn").addEventListener("click", startQuiz);
 
@@ -376,8 +449,14 @@
     }
 
     function showQuestion() {
-        hasAnswered = false;
+        isQuestionChecked = false;
+        selectedOptions.clear();
+
+        document.getElementById("check-btn").classList.remove("hidden");
+        document.getElementById("check-btn").disabled = true;
+        document.getElementById("check-btn").innerText = "Sprawdź odpowiedź";
         document.getElementById("next-btn").classList.add("hidden");
+        document.getElementById("next-btn").innerText = "Następne pytanie";
 
         const feedbackEl = document.getElementById("feedback-message");
         feedbackEl.className = "feedback";
@@ -393,8 +472,7 @@
         document.getElementById("progress-bar").style.width = progressPercent + "%";
         document.getElementById("progress-text").innerText = `${currentQuestionIndex + 1} / ${currentSessionQuestions.length}`;
 
-        const qTextEl = document.getElementById("question-text");
-        qTextEl.textContent = q.question;
+        document.getElementById("question-text").textContent = q.question;
 
         const optionsContainer = document.getElementById("options-container");
         optionsContainer.innerHTML = "";
@@ -408,49 +486,95 @@
         optionsWithIndex.forEach((optObj) => {
             const optDiv = document.createElement("div");
             optDiv.className = "option";
-            optDiv.textContent = optObj.text;
-            optDiv.dataset.isCorrect = q.correct.includes(optObj.originalIndex);
+            optDiv.dataset.originalIndex = optObj.originalIndex;
+
+            // Kontener na checkbox (kwadracik)
+            const indicator = document.createElement("div");
+            indicator.className = "checkbox-indicator";
+            optDiv.appendChild(indicator);
+
+            // Tekst odpowiedzi
+            const textSpan = document.createElement("span");
+            textSpan.textContent = optObj.text;
+            optDiv.appendChild(textSpan);
 
             optDiv.addEventListener("click", function () {
-                if (hasAnswered) return;
-                hasAnswered = true;
+                if (isQuestionChecked) return;
 
-                const isCorrect = this.dataset.isCorrect === "true";
-
-                if (isCorrect) {
-                    this.classList.add("correct");
-                    score++;
-                    feedbackEl.innerText = "Świetnie! Poprawna odpowiedź.";
-                    feedbackEl.classList.add("correct");
+                if (selectedOptions.has(optObj.originalIndex)) {
+                    selectedOptions.delete(optObj.originalIndex);
+                    this.classList.remove("selected");
                 } else {
-                    this.classList.add("incorrect");
-                    feedbackEl.innerText = "Niestety, zła odpowiedź.";
-                    feedbackEl.classList.add("incorrect");
+                    selectedOptions.add(optObj.originalIndex);
+                    this.classList.add("selected");
                 }
 
-                if (q.explanation) {
-                    explEl.innerHTML = `<strong>Wyjaśnienie:</strong><br>${q.explanation}`;
-                    explEl.classList.add("visible");
-                }
-
-                document.querySelectorAll(".option").forEach((div) => {
-                    div.style.pointerEvents = "none";
-                    if (div.dataset.isCorrect === "true") {
-                        div.classList.add("correct");
-                    }
-                });
-
-                document.getElementById("next-btn").classList.remove("hidden");
-
-                if (currentQuestionIndex === currentSessionQuestions.length - 1) {
-                    document.getElementById("next-btn").innerText = "Zakończ i pokaż wynik";
-                } else {
-                    document.getElementById("next-btn").innerText = "Następne pytanie";
-                }
+                // Aktywuj przycisk sprawdzania tylko gdy zaznaczono minimum 1 opcję
+                document.getElementById("check-btn").disabled = (selectedOptions.size === 0);
             });
             optionsContainer.appendChild(optDiv);
         });
     }
+
+    function checkAnswer() {
+        isQuestionChecked = true;
+        document.getElementById("check-btn").classList.add("hidden");
+        document.getElementById("next-btn").classList.remove("hidden");
+
+        const q = currentSessionQuestions[currentQuestionIndex];
+        const correctSet = new Set(q.correct);
+
+        // Weryfikacja czy użytkownik zaznaczył dokładnie te same opcje, które są poprawne
+        let isPerfect = true;
+        if (selectedOptions.size !== correctSet.size) {
+            isPerfect = false;
+        } else {
+            for (let selected of selectedOptions) {
+                if (!correctSet.has(selected)) {
+                    isPerfect = false;
+                    break;
+                }
+            }
+        }
+
+        // Pokolorowanie wariantów
+        document.querySelectorAll(".option").forEach((optDiv) => {
+            const originalIndex = parseInt(optDiv.dataset.originalIndex);
+            const isSelected = selectedOptions.has(originalIndex);
+            const isActuallyCorrect = correctSet.has(originalIndex);
+
+            optDiv.classList.remove("selected");
+            optDiv.style.pointerEvents = "none"; // Zablokowanie dalszych kliknięć
+
+            if (isActuallyCorrect) {
+                optDiv.classList.add("correct-answer");
+            } else if (isSelected && !isActuallyCorrect) {
+                optDiv.classList.add("wrong-answer");
+            }
+        });
+
+        const feedbackEl = document.getElementById("feedback-message");
+        const explEl = document.getElementById("explanation-text");
+
+        if (isPerfect) {
+            score++;
+            feedbackEl.innerText = "Świetnie! Poprawna odpowiedź.";
+            feedbackEl.className = "feedback correct";
+        } else {
+            feedbackEl.innerText = "Niestety, odpowiedź nie jest w pełni poprawna. Prawidłowe opcje zaznaczono na zielono.";
+            feedbackEl.className = "feedback incorrect";
+        }
+
+        if (q.explanation) {
+            explEl.innerHTML = `<strong>Wyjaśnienie:</strong><br>${q.explanation}`;
+            explEl.classList.add("visible");
+        }
+
+        if (currentQuestionIndex === currentSessionQuestions.length - 1) {
+            document.getElementById("next-btn").innerText = "Zakończ i pokaż wynik";
+        }
+    }
+
 
     function nextQuestion() {
         currentQuestionIndex++;
