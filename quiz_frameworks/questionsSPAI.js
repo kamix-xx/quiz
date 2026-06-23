@@ -123,21 +123,21 @@ const allQuestions = [
     {
         "question": "Wskaż prawidłowe określenia dla REST:",
         "options": [
-            "A) API utworzone wg zasad REST nazywane jest RESTful API",
-            "B) REST jest protokołem",
-            "C) REST jest standardem",
-            "D) REST jest zbiorem dobrych praktyk tworzenia architektury rozproszonych aplikacji"
+            "API utworzone wg zasad REST nazywane jest RESTful API",
+            "REST jest protokołem",
+            "REST jest standardem",
+            "REST jest zbiorem dobrych praktyk tworzenia architektury rozproszonych aplikacji"
         ],
         "correct": [0, 3],
-        "explanation": "REST (Representational State Transfer) nie jest protokołem ani sztywnym standardem technicznym. To styl architektoniczny oraz zbiór reguł i dobrych praktyk projektowania usług sieciowych. Implementujące go interfejsy nazywa się RESTful API."
+        "explanation": "Slajd 14;REST (Representational State Transfer) nie jest protokołem ani sztywnym standardem technicznym. To styl architektoniczny oraz zbiór reguł i dobrych praktyk projektowania usług sieciowych. Implementujące go interfejsy nazywa się RESTful API."
     },
     {
-        "question": "Ktore fragmenty kodu JSX są prawidłowe?",
+        "question": "Które fragmenty kodu JSX są prawidłowe?",
         "options": [
-            "A) `return (<div><div>Pierwszy element</div><div>Drugi element</div></div>)`",
-            "B) `return (<div>Pierwszy element</div><div>Drugi element</div>)`",
-            "C) `return (<table><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>)`",
-            "D) `return (<button class=\"btn btn-warning\">Naciśnij</button>)`"
+            "`return (<div><div>Pierwszy element</div><div>Drugi element</div></div>)`",
+            "`return (<div>Pierwszy element</div><div>Drugi element</div>)`",
+            "`return (<table><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>)`",
+            "`return (<button class=\"btn btn-warning\">Naciśnij</button>)`"
         ],
         "correct": [0, 2],
         "explanation": "Komponent JSX musi zawsze zwracać pojedynczy element nadrzędny (wariant B nie posiada wrappera). Ponadto w JSX słowo `class` jest zarezerwowane, dlatego do definiowania klas CSS poprawnie używa się atrybutu `className` (wariant D jest błędny syntaktycznie)."
@@ -340,7 +340,7 @@ const allQuestions = [
             "D) Instagram"
         ],
         "correct": [2],
-        "explanation": "React został stworzony przez Jordana Walke, inżyniera oprogramowania pracującego dla firmy Facebook (obecnie Meta), i został po raz pierwszy wdrożony w kanale aktualności (News Feed) tej platformy."
+        "explanation": "Slajd 44; React został stworzony przez Jordana Walke, inżyniera oprogramowania pracującego dla firmy Facebook (obecnie Meta), i został po raz pierwszy wdrożony w kanale aktualności (News Feed) tej platformy."
     },
     {
         "question": "W React programowanie odbywa się za pomocą:",
@@ -395,7 +395,7 @@ const allQuestions = [
             "d) stosowanie metod HTTP zgodnie z przeznaczeniem"
         ],
         "correct": [0],
-        "explanation": "Idempotentność gwarantuje, że wielokrotne powtórzenie identycznego żądania (np. za pomocą metod GET, PUT, DELETE) wywoła dokładnie taki sam skutek stanowy systemu jak wykonanie go tylko jeden raz."
+        "explanation": "Może jeszcze byś chciał, żeby było w prezentacji co? Idempotentność gwarantuje, że wielokrotne powtórzenie identycznego żądania (np. za pomocą metod GET, PUT, DELETE) wywoła dokładnie taki sam skutek stanowy systemu jak wykonanie go tylko jeden raz."
     },
     {
         "question": "W jaki sposób można zmodyfikować tzw. propsy w React?",
@@ -464,12 +464,29 @@ const allQuestions = [
         "explanation": "W nowoczesnym standardzie JavaScript (od ES6 wzwyż) podstawowymi słowami kluczowymi do bezpiecznej deklaracji zmiennych o zasięgu blokowym są `let` oraz `const`."
     },
     {
-        "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:\nhttp://localhost:3000/test?first=hello&second=world\n\n(Analiza middleware z obiektem req.message)",
+        "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:" +
+            "\nhttp://localhost:3000/test?first=hello&second=world\n" +
+            "const express = require('express');\n" +
+            "const app = express();\n" +
+            "app.get('/', (req, res, next) => {\n" +
+            "req.message = req.query.first\n" +
+            "next()\n" +
+            "})\n" +
+            "app.get('/test', (req, res, next) => {\n" +
+            "req.message = req.query.second\n" +
+            "next()\n" +
+            "})\n" +
+            "app.post('/test', (req, res, next) => {\n" +
+            "req.message = req.query.first + ' ' + req.query.second\n" +
+            "next()\n" +
+            "})\n" +
+            "app.use((req, res) => res.send(req.message))\n" +
+            "app.listen(3000)\n",
         "options": [
-            "a) world",
-            "b) first=hello&second=world",
-            "c) hello world",
-            "d) hello"
+            "world",
+            "first=hello&second=world",
+            "hello world",
+            "hello"
         ],
         "correct": [0],
         "explanation": "Dla ścieżki `/test` żądanie omija pierwszy blok `app.get('/')`. Wchodzi do `app.get('/test')`, gdzie przypisuje do `req.message` wartość `req.query.second` (czyli 'world'). Następnie `next()` przekazuje sterowanie do końcowego middleware wysyłającego wartość `req.message`."
@@ -486,15 +503,34 @@ const allQuestions = [
         "explanation": "Żądanie kierowane na adres bazowy `/` uruchamia wyłącznie obsługę z bloku `app.get('/')`. Tam przypisywana jest wartość `req.query.first` ('hello'), a kolejne bloki `/test` są pomijane, aż do wykonania funkcji wysyłającej odpowiedź."
     },
     {
-        "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:\nlocalhost:3000/?first=hello&second=world\n\n(Analiza kaskadowego przetwarzania z modyfikacją ciągu req.message)",
+        "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:" +
+            "\nlocalhost:3000/?first=hello&second=world\n" +
+            "const express = require('express');\n" +
+            "const app = express();\n" +
+            "app.get('/', (req, res, next) => {\n" +
+            "req.message = req.query.first\n" +
+            "next()\n" +
+            "})\n" +
+            "app.get('/test1', (req, res, next) => {\n" +
+            "req.message = req.query.second\n" +
+            "next()\n" +
+            "})\n" +
+            "app.get('/test2', (req, res, next) => {\n" +
+            "req.message = req.message + ' ' + req.query.first\n" +
+            "next()\n" +
+            "})\n" +
+            "app.all('*', (req, res, next) => {\n" +
+            "req.message = req.message + ' ' + req.query.second\n" +
+            "next()\n" +
+            "})",
         "options": [
-            "a) world",
-            "b) first hello&second=world",
-            "c) hello world",
-            "d) hello"
+            "world",
+            "first hello&second=world",
+            "hello world",
+            "hello"
         ],
         "correct": [2],
-        "explanation": "Żądanie trafia na `/`. Blok pierwszy inicjuje `req.message` jako 'hello'. Bloki `/test1` oraz `/test2` zostają pominięte przez routing. Następnie globalna reguła `app.all('*')` przechwytuje żądanie, wykonując operację dodania spacji oraz parametru `second` ('world'), co skutkuje wartością 'hello world'."
+        "explanation": "nwm dziwne to; Żądanie trafia na `/`. Blok pierwszy inicjuje `req.message` jako 'hello'. Bloki `/test1` oraz `/test2` zostają pominięte przez routing. Następnie globalna reguła `app.all('*')` przechwytuje żądanie, wykonując operację dodania spacji oraz parametru `second` ('world'), co skutkuje wartością 'hello world'."
     },
     {
         "question": "/cars/get - jaki to poziom REST API?",
@@ -534,13 +570,13 @@ const allQuestions = [
     {
         "question": "Co powinno znaleźć się wewnątrz nawiasów metody Array.map()?",
         "options": [
-            "A) nazwa drugiej tablicy, której elementach będzie następowało iterowane",
-            "B) ciąg znaków określający co funkcja będzie wykonywała",
-            "C) liczba określająca ile razy będzie wywoływana funkcja map",
-            "D) funkcja zwrotna (ang. callback), która jest wywoływana raz dla każdego elementu tablicy"
+            "nazwa drugiej tablicy, której elementach będzie następowało iterowane",
+            "ciąg znaków określający co funkcja będzie wykonywała",
+            "liczba określająca ile razy będzie wywoływana funkcja map",
+            "funkcja zwrotna (ang. callback), która jest wywoływana raz dla każdego elementu tablicy"
         ],
         "correct": [3],
-        "explanation": "Metoda `Array.prototype.map()` przyjmuje jako swój główny i wymagany argument funkcję wywołania zwrotnego (callback), która jest aplikowana do każdego elementu tablicy."
+        "explanation": "Slajd 158, Gemini. Metoda `Array.prototype.map()` przyjmuje jako swój główny i wymagany argument funkcję wywołania zwrotnego (callback), która jest aplikowana do każdego elementu tablicy."
     },
     {
         "question": "Czym jest REPL (ang. Read-Eval-Print-Loop)?",
@@ -584,7 +620,7 @@ const allQuestions = [
             "D. każde wywołanie REST-owego API powinno zmieniać dany zasób maksymalnie jeden raz, nawet gdy jest wykonywane wielokrotnie"
         ],
         "correct": [3],
-        "explanation": "Idempotentność gwarantuje, że końcowy efekt powtarzania tego samego żądania na serwerze nie wpłynie na zmianę stanu aplikacji w sposób inny niż pierwsze poprawne wykonanie."
+        "explanation": "Oczywiście, że nie ma tego w prezentacji; Idempotentność gwarantuje, że końcowy efekt powtarzania tego samego żądania na serwerze nie wpłynie na zmianę stanu aplikacji w sposób inny niż pierwsze poprawne wykonanie."
     },
     {
         "question": "Jaka biblioteka do wykonywania testów jest najczęściej kojarzona z Reactem?",
@@ -611,13 +647,13 @@ const allQuestions = [
     {
         "question": "Jaka jest rola middleware CORS (Cross-Origin Resource Sharing)?",
         "options": [
-            "A. parsowania ciała żądania HTTP.",
-            "B. do obsługi błędów na etapie rozwijania/debugowania aplikacji.",
-            "C. do uwierzytelniania za pomocą OAuth, OpenID i wielu innych.",
-            "D. włączenia mechanizmu pozwalającego serwerowi wskazać inne źródła niż jego własne."
+            "parsowania ciała żądania HTTP.",
+            "do obsługi błędów na etapie rozwijania/debugowania aplikacji.",
+            "do uwierzytelniania za pomocą OAuth, OpenID i wielu innych.",
+            "włączenia mechanizmu pozwalającego serwerowi wskazać inne źródła niż jego własne."
         ],
         "correct": [3],
-        "explanation": "Polityka CORS to mechanizm bezpieczeństwa przeglądarek internetowych. Wykorzystanie middleware CORS na serwerze pozwala określić w nagłówkach odpowiedzi, jakie zewnętrzne domeny (Origins) mają prawo odpytywać dany serwer."
+        "explanation": "Slajd 43; Polityka CORS to mechanizm bezpieczeństwa przeglądarek internetowych. Wykorzystanie middleware CORS na serwerze pozwala określić w nagłówkach odpowiedzi, jakie zewnętrzne domeny (Origins) mają prawo odpytywać dany serwer."
     },
     {
         "question": "Jaki będzie wynik poniższego kodu?\nlet sum = 0\nconst a = [1,2,3]\na.forEach(getSum)\nconsole.log(sum)\nfunction getSum(elem){ sum += elem }",
@@ -793,5 +829,16 @@ const allQuestions = [
         ],
         "correct": [1],
         "explanation": "Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
+    },
+    {
+        "question": "[Wykład] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
+        "options": [
+            "Playwright jest płatny i lepiej wspierany przez producenta",
+            "Playwright wspiera tylko Chrome, więc jest szybszy",
+            "Playwright obsługuje wiele przeglądarek (Chromium, Firefox, WebKit), ma auto-wait, codegen i trace viewer",
+            "Playwright nie wymaga Node.js, działa bezpośrednio w przeglądarce"
+        ],
+        "correct": [1],
+        "explanation": "Slajd 16"
     }
 ]
