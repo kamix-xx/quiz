@@ -769,7 +769,7 @@ const allQuestions = [
             "C. MongoDB nie wymaga definiowania schematu dla kolekcji",
             "D. W MongoDB używa się złączeń, aby połączyć kolekcje i otrzymać wynik z wielu kolekcji"
         ],
-        "correct": [2],
+        "correct": [1, 2],
         "explanation": "MongoDB jako nierelacyjna baza dokumentowa celowo nie obsługuje klasycznych relacyjnych operacji złączeń tabel (JOIN). Relacje realizuje się poprzez osadzanie dokumentów lub agregacje za pomocą `$lookup`."
     },
     {
