@@ -191,13 +191,13 @@ const allQuestions = [
     {
         "question": "Wskaż szablon ciągu tekstowego:",
         "options": [
-            "A) Połowa liczby 20 wynosi ${20/2}",
-            "B) {Połowa liczby 20 wynosi ${20/2}}",
-            "C) `Połowa liczby 20 wynosi ${20/2}`",
-            "D) \"Połowa liczby 20 wynosi ${20/2}\""
+            "Połowa liczby 20 wynosi ${20/2}",
+            "{Połowa liczby 20 wynosi ${20/2}}",
+            "`Połowa liczby 20 wynosi ${20/2}`",
+            "\"Połowa liczby 20 wynosi ${20/2}\""
         ],
         "correct": [2],
-        "explanation": "Szablony ciągów tekstowych (Template Literals) w standardzie ES6 są definiowane i ograniczane wyłącznie za pomocą znaków grawisu (tzw. backticków ` `). Tylko w nich działa interpolacja `${expression}`."
+        "explanation": "Sljad 10 - grawis; Znak $; Szablony ciągów tekstowych (Template Literals) w standardzie ES6 są definiowane i ograniczane wyłącznie za pomocą znaków grawisu (tzw. backticków ` `). Tylko w nich działa interpolacja `${expression}`."
     },
     {
         "question": "Jakie są rodzaje komponentów w React?",
@@ -290,13 +290,13 @@ const allQuestions = [
     {
         "question": "Wskaż sformułowanie nieprawidłowe. Plik `package.json`:",
         "options": [
-            "A) jest narzędziem do automatycznego restartowania programu po wprowadzeniu zmian w kodzie",
-            "B) można utworzyć \"ręcznie\"",
-            "C) zawiera informacje o projekcie: wersja, opis, autorzy itd. oraz o zależnościach, jakie zostały wykorzystane do stworzenia projektu",
-            "D) można utworzyć za pomocą polecenia 'npm init'"
+            "jest narzędziem do automatycznego restartowania programu po wprowadzeniu zmian w kodzie",
+            "można utworzyć ręcznie",
+            "zawiera informacje o projekcie: wersja, opis, autorzy itd. oraz o zależnościach, jakie zostały wykorzystane do stworzenia projektu",
+            "można utworzyć za pomocą polecenia 'npm init'"
         ],
-        "correct": [0],
-        "explanation": "Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
+        "correct": [1, 2, 3],
+        "explanation": "Slajd 54; Gemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
     },
     {
         "question": "Którre stwierdzenie dotyczące szkieletu programistycznego Express nie jest prawdziwe:",
@@ -354,12 +354,12 @@ const allQuestions = [
         "explanation": "Główną filozofią projektową biblioteki React jest komponentowość (Component-Based Development) — budowanie interfejsu z niezależnych, izolowanych komponentów wielokrotnego użytku."
     },
     {
-        "question": "Wykonywane jest renderowanie listy przy użyciu metody map z języka JavaScript. Jaki element jest wymagany podczas renderowania każdego elementu listy?",
+        "question": "Wykonywane jest renderowanie listy przy użyciu metody map z języka JavaScript.\nJaki element jest wymagany podczas renderowania każdego elementu listy?",
         "options": [
-            "A) id",
-            "B) index",
-            "C) key",
-            "D) data"
+            "id",
+            "index",
+            "key",
+            "data"
         ],
         "correct": [2],
         "explanation": "React wymaga, aby każdy element zwracany dynamicznie wewnątrz pętli/listy posiadał unikalny unikatowy atrybut tekstowy `key`. Pozwala to algorytmowi Virtual DOM poprawnie identyfikować zmienione pozycje."
@@ -411,13 +411,13 @@ const allQuestions = [
     {
         "question": "Który poziom dojrzałości REST API wg modelu Richardsona reprezentują adresy i czasowniki:\nPOST http://localhost:56263/api/pictures\nGET http://localhost:56263/api/pictures/1",
         "options": [
-            "a) 0",
-            "b) 1",
-            "c) 2",
-            "d) 3"
+            "0",
+            "1",
+            "2",
+            "3"
         ],
         "correct": [2],
-        "explanation": "Model Richardsona definiuje Poziom 2 jako jednoczesne wykorzystanie dedykowanych adresów URI dla konkretnych zasobów (z Poziomu 1) oraz właściwych czasowników/metod protokołu HTTP (np. GET, POST) do precyzowania typu operacji."
+        "explanation": "Nie znalazłem tego wgl w prezentacji :( https://cycl.pl/posts/rest-api-mdd/Model Richardsona definiuje Poziom 2 jako jednoczesne wykorzystanie dedykowanych adresów URI dla konkretnych zasobów (z Poziomu 1) oraz właściwych czasowników/metod protokołu HTTP (np. GET, POST) do precyzowania typu operacji."
     },
     {
         "question": "Jakie elementy zawiera projekt Reacta?",
