@@ -841,15 +841,15 @@ const allQuestions = [
         "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
     },
     {
-        "question": "[PK 3/5] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
+        "question": "[PK 1/5] ",
         "options": [
-            "Playwright jest płatny i lepiej wspierany przez producenta",
-            "Playwright wspiera tylko Chrome, więc jest szybszy",
-            "Playwright obsługuje wiele przeglądarek (Chromium, Firefox, WebKit), ma auto-wait, codegen i trace viewer",
-            "Playwright nie wymaga Node.js, działa bezpośrednio w przeglądarce"
+            "",
+            "",
+            "",
+            ""
         ],
         "correct": [2],
-        "explanation": "Strona 454",
+        "explanation": "",
     },
     {
         "question": "[PK 2/5] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
@@ -861,6 +861,39 @@ const allQuestions = [
         ],
         "correct": [2],
         "explanation": "Strona 448: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane",
+    },
+    {
+        "question": "[PK 3/5] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
+        "options": [
+            "Playwright jest płatny i lepiej wspierany przez producenta",
+            "Playwright wspiera tylko Chrome, więc jest szybszy",
+            "Playwright obsługuje wiele przeglądarek (Chromium, Firefox, WebKit), ma auto-wait, codegen i trace viewer",
+            "Playwright nie wymaga Node.js, działa bezpośrednio w przeglądarce"
+        ],
+        "correct": [2],
+        "explanation": "Strona 454",
+    },
+    {
+        "question": "[PK 4/5] ",
+        "options": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct": [2],
+        "explanation": "",
+    },
+    {
+        "question": "[PK 5/5] ",
+        "options": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct": [2],
+        "explanation": "",
     },
     {
         "question": "[PK 1/6] Co się stanie, jeśli middleware NIE wywoła ani next(), ani res.send/res.json/res.end?",
@@ -888,6 +921,39 @@ const allQuestions = [
     },
     {
         "question": "[PK 3/6] ",
+        "options": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct": [2],
+        "explanation": "",
+    },
+    {
+        "question": "[PK 4/6] ",
+        "options": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct": [2],
+        "explanation": "",
+    },
+    {
+        "question": "[PK 5/6] ",
+        "options": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "correct": [2],
+        "explanation": "",
+    },
+    {
+        "question": "[PK 6/6] ",
         "options": [
             "",
             "",
