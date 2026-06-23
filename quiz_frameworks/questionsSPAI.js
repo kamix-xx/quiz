@@ -30,7 +30,11 @@ const allQuestions = [
             "przekształca kod JavaScript korzystający z najnowszych możliwości języka na kod, który będzie wykonywany w starszych przeglądarkach"
         ],
         "correct": [0, 1, 2],
-        "explanation": "Strona 228; Funkcje oprogramowania pośredniczącego (middleware) posiadają dostęp do obiektów żądania (req), odpowiedzi (res) oraz kolejnej funkcji (next). Mogą modyfikować parametry, kończyć cykl wysyłając odpowiedź lub przekazać sterowanie dalej. Punkt D odnosi się do transpilatora Babel, a nie middleware."
+        "explanation": "Strona 228; " +
+            "Funkcje oprogramowania pośredniczącego (middleware) posiadają dostęp do obiektów żądania (req), " +
+            "odpowiedzi (res) oraz kolejnej funkcji (next). Mogą modyfikować parametry, " +
+            "kończyć cykl wysyłając odpowiedź lub przekazać sterowanie dalej. " +
+            "Punkt D odnosi się do transpilatora Babel, a nie middleware."
     },
     {
         "question": "Wskaż cechy Virtual DOM:",
@@ -90,24 +94,24 @@ const allQuestions = [
     {
         "question": "Wskaż polecenie, które uruchomi kod zawarty w pliku hello.js:",
         "options": [
-            "A) `npm hello.js`",
-            "B) `node hello`",
-            "C) `npm hello`",
-            "D) `npx hello.js`"
+            "`npm hello.js`",
+            "`node hello`",
+            "`npm hello`",
+            "`npx hello.js`"
         ],
         "correct": [1],
-        "explanation": "Do uruchomienia pliku skryptu za pomocą środowiska Node.js stosuje się polecenie `node` wraz z nazwą pliku. Rozszerzenie `.js` można przy tym opuścić."
+        "explanation": "strona 51; Do uruchomienia pliku skryptu za pomocą środowiska Node.js stosuje się polecenie `node` wraz z nazwą pliku. Rozszerzenie `.js` można przy tym opuścić."
     },
     {
         "question": "W instrukcji:\nimport React, { Component } from \"react\"",
         "options": [
-            "A) React jest możliwością nazwaną",
-            "B) Component jest domyślną możliwością nazwaną",
-            "C) React jest domyślną możliwością nazwaną",
-            "D) Component jest możliwością nazwaną"
+            "React jest możliwością nazwaną",
+            "Component jest domyślną możliwością nazwaną",
+            "React jest domyślną możliwością nazwaną",
+            "Component jest możliwością nazwaną"
         ],
         "correct": [2, 3],
-        "explanation": "W składni modułów ES6 element importowany poza klamrami (`React`) stanowi import domyślny (`export default`), natomiast elementy ujęte w klamry (`{ Component }`) to importy nazwane (`export const/class...`)."
+        "explanation": "Dokładnie ten przykład: strona 136, ogólnie: 132-140; W składni modułów ES6 element importowany poza klamrami (`React`) stanowi import domyślny (`export default`), natomiast elementy ujęte w klamry (`{ Component }`) to importy nazwane (`export const/class...`)."
     },
     {
         "question": "Hooki w React:",
@@ -213,13 +217,14 @@ const allQuestions = [
     {
         "question": "Punktem wejścia do aplikacji React jest:",
         "options": [
-            "A) index.js",
-            "B) App.js",
-            "C) registerServiceWorker.js",
-            "D) main.js"
+            "index.js",
+            "App.js",
+            "registerServiceWorker.js",
+            "main.js",
+            "main.jsx"
         ],
-        "correct": [0],
-        "explanation": "Domyślnym punktem startowym aplikacji, w którym następuje pobranie głównego kontenera HTML i zamontowanie drzewa komponentów za pomocą modułu ReactDOM, jest plik `index.js` (lub odpowiednio `main.jsx` w nowszych konfiguracjach z Vite)."
+        "correct": [0, 4],
+        "explanation": "Strona 235 (server.js/index.js),  344 (main.jsx); Domyślnym punktem startowym aplikacji, w którym następuje pobranie głównego kontenera HTML i zamontowanie drzewa komponentów za pomocą modułu ReactDOM, jest plik `index.js` (lub odpowiednio `main.jsx` w nowszych konfiguracjach z Vite)."
     },
     {
         "question": "Co należy użyć, aby przekazać dane z zewnątrz do komponentu?",
@@ -546,15 +551,15 @@ const allQuestions = [
     {
         "question": "Babel, JSX wybierz prawidłowe zdania:",
         "options": [
-            "A) Babel przekształca treści JSX",
-            "B) przekształca kod JavaScript korzystający z najnowszych możliwości języka na kod, który będzie wykonywany w starszych przeglądarkach",
-            "C) Format ten nie obsługuje całego standardu HTML",
-            "D) JSX - Format ten nie obsługuje całego standardu HTML",
-            "E) Różnica pomiędzy HTML, a JSX - atrybuty HTML takie jak class są zapisywane w JSX jako className",
-            "F) Pliki JSX są przekształcane przez Babel na wywołania API React, dzięki czemu każdy element HTML jest przekształcany na wywołanie metody React.createElement"
+            "Babel przekształca treści JSX",
+            "przekształca kod JavaScript korzystający z najnowszych możliwości języka na kod, który będzie wykonywany w starszych przeglądarkach",
+            "JSX - Format ten nie obsługuje całego standardu HTML",
+            "Różnica pomiędzy HTML, a JSX - atrybuty HTML takie jak class są zapisywane w JSX jako className",
+            /*"Format ten nie obsługuje całego standardu HTML",*/
+            "Pliki JSX są przekształcane przez Babel na wywołania API React, dzięki czemu każdy element HTML jest przekształcany na wywołanie metody React.createElement"
         ],
-        "correct": [0, 1, 3, 4, 5],
-        "explanation": "Prawdziwe są zdania opisujące kompilację kodu przez Babel (A, B, F) oraz specyfikę i różnice syntaktyczne formatu JSX w stosunku do czystego standardu HTML (D, E)."
+        "correct": [0, 1, 2, 3],
+        "explanation": "Strona 357-358; Prawdziwe są zdania opisujące kompilację kodu przez Babel (A, B, F) oraz specyfikę i różnice syntaktyczne formatu JSX w stosunku do czystego standardu HTML (D, E)."
     },
     {
         "question": "Błąd serwera:",
@@ -581,13 +586,13 @@ const allQuestions = [
     {
         "question": "Czym jest REPL (ang. Read-Eval-Print-Loop)?",
         "options": [
-            "A) Wbudowany debugger Node",
-            "B) Platforma testowa ogólnego przeznaczenia",
-            "C) Interaktywne środowisko Node i przeglądarki umożliwiające pisanie kodu w JavaScript",
-            "D) Narzędzie do automatycznej analizy pokrycia testami"
+            "Wbudowany debugger Node",
+            "Platforma testowa ogólnego przeznaczenia",
+            "Interaktywne środowisko Node i przeglądarki umożliwiające pisanie kodu w JavaScript",
+            "Narzędzie do automatycznej analizy pokrycia testami"
         ],
         "correct": [2],
-        "explanation": "REPL to proste, interaktywne środowisko powłoki wiersza poleceń wbudowane w Node.js, które na bieżąco w cyklu odczytuje wpisany kod użytkownika, ewaluuje go i natychmiastowo drukuje wynik."
+        "explanation": "Strona 468; REPL to proste, interaktywne środowisko powłoki wiersza poleceń wbudowane w Node.js, które na bieżąco w cyklu odczytuje wpisany kod użytkownika, ewaluuje go i natychmiastowo drukuje wynik."
     },
     {
         "question": "Dla klucza głównego MongoDB używa:",
@@ -767,13 +772,13 @@ const allQuestions = [
     {
         "question": "W jaki sposób pobrać pierwszy element z tablicy 'cars' przy użyciu destrukturyzacji tablicy?",
         "options": [
-            "A. const first = ['fiat','mazda', 'hunday']",
-            "B. const [] = ['fiat','mazda', 'hunday']",
-            "C. const {_first} = ['fiat', 'mazda', 'hunday']",
-            "D. const [first] = ['fiat', 'mazda', 'hunday']"
+            "const first = ['fiat','mazda', 'hunday']",
+            "const [] = ['fiat','mazda', 'hunday']",
+            "const {_first} = ['fiat', 'mazda', 'hunday']",
+            "const [first] = ['fiat', 'mazda', 'hunday']"
         ],
         "correct": [3],
-        "explanation": "Składnia destrukturyzacji tablic posługuje się nawiasami kwadratowymi po lewej stronie przypisania. Deklaracja `const [first] = ...` powoduje automatyczne wyciągnięcie elementu o indeksie 0."
+        "explanation": "Strona 108; Coś jak indeksy, ale numerowane od 1 i słownie xD; Składnia destrukturyzacji tablic posługuje się nawiasami kwadratowymi po lewej stronie przypisania. Deklaracja `const [first] = ...` powoduje automatyczne wyciągnięcie elementu o indeksie 0."
     },
     {
         "question": "W jakim formacie przechowywane są dane w bazie MongoDB",
