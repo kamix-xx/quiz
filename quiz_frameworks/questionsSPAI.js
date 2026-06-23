@@ -24,13 +24,13 @@ const allQuestions = [
     {
         "question": "Oprogramowanie pośredniczące w Express realizuje następujące zadania:",
         "options": [
-            "A) może wywoływać kolejne funkcje oprogramowania pośredniczącego",
-            "B) może dokonywać zmian w obiektach żądania i odpowiedzi",
-            "C) może kończyć cykl żądanie-odpowiedź",
-            "D) przekształca kod JavaScript korzystający z najnowszych możliwości języka na kod, który będzie wykonywany w starszych przeglądarkach"
+            "może wywoływać kolejne funkcje oprogramowania pośredniczącego",
+            "może dokonywać zmian w obiektach żądania i odpowiedzi",
+            "może kończyć cykl żądanie-odpowiedź",
+            "przekształca kod JavaScript korzystający z najnowszych możliwości języka na kod, który będzie wykonywany w starszych przeglądarkach"
         ],
         "correct": [0, 1, 2],
-        "explanation": "Funkcje oprogramowania pośredniczącego (middleware) posiadają dostęp do obiektów żądania (req), odpowiedzi (res) oraz kolejnej funkcji (next). Mogą modyfikować parametry, kończyć cykl wysyłając odpowiedź lub przekazać sterowanie dalej. Punkt D odnosi się do transpilatora Babel, a nie middleware."
+        "explanation": "Strona 228; Funkcje oprogramowania pośredniczącego (middleware) posiadają dostęp do obiektów żądania (req), odpowiedzi (res) oraz kolejnej funkcji (next). Mogą modyfikować parametry, kończyć cykl wysyłając odpowiedź lub przekazać sterowanie dalej. Punkt D odnosi się do transpilatora Babel, a nie middleware."
     },
     {
         "question": "Wskaż cechy Virtual DOM:",
@@ -41,7 +41,7 @@ const allQuestions = [
             "występuje duże marnotrawstwo pamięci"
         ],
         "correct": [1],
-        "explanation": "Slajd 25; Ma sens, nawet jest w prezentacji, ale oczywiście kurwa `wirtualny` a nie `virtual`; \nVirtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
+        "explanation": "Strona 25; Ma sens, nawet jest w prezentacji, ale oczywiście kurwa `wirtualny` a nie `virtual`; \nVirtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
     },
     {
         "question": "Czym jest 'useState' w poniższej konstrukcji?\nconst [state, setState] = useState()",
@@ -63,7 +63,7 @@ const allQuestions = [
             "jest środowiskiem wieloplatformowym"
         ],
         "correct": [2],
-        "explanation": "Slajd 38-39; Platforma Node.js została zaprojektowana od podstaw z myślą o asynchronicznym, nieblokującym wejściu/wyjściu (I/O) sterowanym zdarzeniami, a nie w celu ułatwienia programowania synchronicznego."
+        "explanation": "Strona 38-39; Platforma Node.js została zaprojektowana od podstaw z myślą o asynchronicznym, nieblokującym wejściu/wyjściu (I/O) sterowanym zdarzeniami, a nie w celu ułatwienia programowania synchronicznego."
     },
     {
         "question": "Wybierz prawidłowe określenia. Plik `package.json`:",
@@ -129,7 +129,7 @@ const allQuestions = [
             "REST jest zbiorem dobrych praktyk tworzenia architektury rozproszonych aplikacji"
         ],
         "correct": [0, 3],
-        "explanation": "Slajd 14;REST (Representational State Transfer) nie jest protokołem ani sztywnym standardem technicznym. To styl architektoniczny oraz zbiór reguł i dobrych praktyk projektowania usług sieciowych. Implementujące go interfejsy nazywa się RESTful API."
+        "explanation": "Strona 70; REST (Representational State Transfer) nie jest protokołem ani sztywnym standardem technicznym. To styl architektoniczny oraz zbiór reguł i dobrych praktyk projektowania usług sieciowych. Implementujące go interfejsy nazywa się RESTful API."
     },
     {
         "question": "Które fragmenty kodu JSX są prawidłowe?",
@@ -152,7 +152,7 @@ const allQuestions = [
             "używa tagów do budowy struktury"
         ],
         "correct": [2, 3],
-        "explanation": "Na logike; Slajd 29; JSON to lekki, czytelny dla człowieka format wymiany danych oparty na podzbiorze notacji obiektowej JavaScriptu. Obsługuje zagnieżdżone obiekty oraz tablice. Jest znacznie bardziej zwięzły od formatu XML i nie korzysta z tagów."
+        "explanation": "Na logike; Strona 116; JSON to lekki, czytelny dla człowieka format wymiany danych oparty na podzbiorze notacji obiektowej JavaScriptu. Obsługuje zagnieżdżone obiekty oraz tablice. Jest znacznie bardziej zwięzły od formatu XML i nie korzysta z tagów."
     },
     {
         "question": "Które sformułowania odnośnie MongoDB są nieprawdziwe?",
@@ -164,7 +164,7 @@ const allQuestions = [
             "MongoDB przechowuje dane w rekordach i tabelach"
         ],
         "correct": [2, 3, 4],
-        "explanation": "Slajd 7 (język); MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
+        "explanation": "Strona 166 (język); MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
     },
     {
         "question": "W skład stosu MERN wchodzą następujące technologie:",
@@ -230,7 +230,7 @@ const allQuestions = [
             "props"
         ],
         "correct": [3],
-        "explanation": "Slajd 28, 36; Do przekazywania danych oraz konfiguracji z komponentu nadrzędnego do komponentu potomnego służą właściwości nazywane skrótowo `props` (właściwości są niemodyfikowalne z perspektywy komponentu odbierającego)."
+        "explanation": "Strona 366, 374; Do przekazywania danych oraz konfiguracji z komponentu nadrzędnego do komponentu potomnego służą właściwości nazywane skrótowo `props` (właściwości są niemodyfikowalne z perspektywy komponentu odbierającego)."
     },
     {
         "question": "Jaka liczba elementów może być zwrócona przez prawidłowy komponent Reacta?",
@@ -274,7 +274,7 @@ const allQuestions = [
             "`await` jest używane podczas wywołania funkcji"
         ],
         "correct": [1],
-        "explanation": "Slajd 66 elegancko rozpisane 1:1; Słowa kluczowe `async` oraz `await` są konstrukcjami składniowymi zarezerwowanymi i stosowanymi wyłącznie w odniesieniu do definicji i wywołań funkcji, nie można ich przypisywać bezpośrednio do deklaracji zwykłych zmiennych bądź stałych."
+        "explanation": "Strona 153 elegancko rozpisane 1:1; Słowa kluczowe `async` oraz `await` są konstrukcjami składniowymi zarezerwowanymi i stosowanymi wyłącznie w odniesieniu do definicji i wywołań funkcji, nie można ich przypisywać bezpośrednio do deklaracji zwykłych zmiennych bądź stałych."
     },
     {
         "question": "Wskaż nieprawdziwe stwierdzenie opisujące platformę Node:",
@@ -296,7 +296,7 @@ const allQuestions = [
             "można utworzyć za pomocą polecenia 'npm init'"
         ],
         "correct": [0],
-        "explanation": "Slajd 54; Gemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
+        "explanation": "Strona 54; Gemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
     },
     {
         "question": "Którre stwierdzenie dotyczące szkieletu programistycznego Express nie jest prawdziwe:",
@@ -329,7 +329,7 @@ const allQuestions = [
             "`app.listen`"
         ],
         "correct": [2],
-        "explanation": "Slajd 6; W frameworku Express globalna rejestracja i montowanie funkcji oprogramowania pośredniczącego (middleware) dla wszystkich bądź wybranych ścieżek żądań odbywa się za pomocą metody `app.use()`."
+        "explanation": "strona 229; W frameworku Express globalna rejestracja i montowanie funkcji oprogramowania pośredniczącego (middleware) dla wszystkich bądź wybranych ścieżek żądań odbywa się za pomocą metody `app.use()`."
     },
     {
         "question": "Biblioteka React została opracowana przez firmę:",
@@ -340,7 +340,7 @@ const allQuestions = [
             "Instagram"
         ],
         "correct": [2],
-        "explanation": "Slajd 44; React został stworzony przez Jordana Walke, inżyniera oprogramowania pracującego dla firmy Facebook (obecnie Meta), i został po raz pierwszy wdrożony w kanale aktualności (News Feed) tej platformy."
+        "explanation": "Strona 44; React został stworzony przez Jordana Walke, inżyniera oprogramowania pracującego dla firmy Facebook (obecnie Meta), i został po raz pierwszy wdrożony w kanale aktualności (News Feed) tej platformy."
     },
     {
         "question": "W React programowanie odbywa się za pomocą:",
@@ -406,7 +406,7 @@ const allQuestions = [
             "używając hooka useState"
         ],
         "correct": [2],
-        "explanation": "Slajd 46; W architekturze React dane przekazywane jako właściwości (`props`) są z założenia ściśle niemodyfikowalne (read-only / immutable) dla komponentu, który je otrzymuje. Komponent nie może zmieniać swoich własnych propsów."
+        "explanation": "Strona 384; W architekturze React dane przekazywane jako właściwości (`props`) są z założenia ściśle niemodyfikowalne (read-only / immutable) dla komponentu, który je otrzymuje. Komponent nie może zmieniać swoich własnych propsów."
     },
     {
         "question": "Który poziom dojrzałości REST API wg modelu Richardsona reprezentują adresy i czasowniki:\nPOST http://localhost:56263/api/pictures\nGET http://localhost:56263/api/pictures/1",
@@ -450,7 +450,7 @@ const allQuestions = [
             "Narzędzie do tworzenia prostego serwera www"
         ],
         "correct": [0],
-        "explanation": "Kurcze nie ma wprost, ale slajd 16; Puppeteer to oficjalna biblioteka dla Node.js udostępniająca wysokopoziomowe API do zdalnego sterowania przeglądarkami Chromium/Chrome w trybie bezinterfejsowym (headless mode)."
+        "explanation": "Kurcze nie ma wprost, ale strona 454; Puppeteer to oficjalna biblioteka dla Node.js udostępniająca wysokopoziomowe API do zdalnego sterowania przeglądarkami Chromium/Chrome w trybie bezinterfejsowym (headless mode)."
     },
     {
         "question": "Za pomocą jakiego słowa kluczowego w JavaScript deklaruje się zmienne?",
@@ -576,7 +576,7 @@ const allQuestions = [
             "funkcja zwrotna (ang. callback), która jest wywoływana raz dla każdego elementu tablicy"
         ],
         "correct": [3],
-        "explanation": "Slajd 158, Gemini. Metoda `Array.prototype.map()` przyjmuje jako swój główny i wymagany argument funkcję wywołania zwrotnego (callback), która jest aplikowana do każdego elementu tablicy."
+        "explanation": "Strona158, Gemini. Metoda `Array.prototype.map()` przyjmuje jako swój główny i wymagany argument funkcję wywołania zwrotnego (callback), która jest aplikowana do każdego elementu tablicy."
     },
     {
         "question": "Czym jest REPL (ang. Read-Eval-Print-Loop)?",
@@ -598,7 +598,7 @@ const allQuestions = [
             "obiektu ObjectId"
         ],
         "correct": [3],
-        "explanation": "Na logike; Slajd 12; MongoDB używa specjalnego obiektu ObjectId dla klucza głównego."
+        "explanation": "Na logike; Strona 302; MongoDB używa specjalnego obiektu ObjectId dla klucza głównego."
     },
     {
         "question": "Do znajdowania potencjalnych miejsc wystąpienia błędów, identyfikowania obszarów, które stwarzają ryzyko wystąpienia błędów lub wrażliwych konstrukcji służy:",
@@ -653,7 +653,7 @@ const allQuestions = [
             "włączenia mechanizmu pozwalającego serwerowi wskazać inne źródła niż jego własne."
         ],
         "correct": [3],
-        "explanation": "Slajd 43; Polityka CORS to mechanizm bezpieczeństwa przeglądarek internetowych. Wykorzystanie middleware CORS na serwerze pozwala określić w nagłówkach odpowiedzi, jakie zewnętrzne domeny (Origins) mają prawo odpytywać dany serwer."
+        "explanation": "Strona 266; Polityka CORS to mechanizm bezpieczeństwa przeglądarek internetowych. Wykorzystanie middleware CORS na serwerze pozwala określić w nagłówkach odpowiedzi, jakie zewnętrzne domeny (Origins) mają prawo odpytywać dany serwer."
     },
     {
         "question": "Jaki będzie wynik poniższego kodu?\nlet sum = 0\nconst a = [1,2,3]\na.forEach(getSum)\nconsole.log(sum)\nfunction getSum(elem){ sum += elem }",
@@ -707,7 +707,7 @@ const allQuestions = [
             "mongoserver"
         ],
         "correct": [0],
-        "explanation": "Slajd 18; Główny proces demona systemowego bazy danych pełniący funkcję serwera MongoDB uruchamia się w systemie operacyjnym za pomocą pliku wykonywalnego/polecenia `mongod`."
+        "explanation": "Strona 308; Główny proces demona systemowego bazy danych pełniący funkcję serwera MongoDB uruchamia się w systemie operacyjnym za pomocą pliku wykonywalnego/polecenia `mongod`."
     },
     {
         "question": "Które z poniższych jest opartym na GUI narzędziem do debugowania w Node.js?",
@@ -740,7 +740,7 @@ const allQuestions = [
             "const obj = new Object()"
         ],
         "correct": [0],
-        "explanation": "Slajd 30; Znak równości `=` wewnątrz deklaracji literału obiektu  powoduje krytyczny błąd składniowy. Do mapowania par klucz-wartość w obiektach JS służy dwukropek `:`."
+        "explanation": "Strona 117; Znak równości `=` wewnątrz deklaracji literału obiektu  powoduje krytyczny błąd składniowy. Do mapowania par klucz-wartość w obiektach JS służy dwukropek `:`."
     },
     {
         "question": "Na którym poziomie Richardsona jest dokumentacja API",
@@ -839,7 +839,7 @@ const allQuestions = [
             "Playwright nie wymaga Node.js, działa bezpośrednio w przeglądarce"
         ],
         "correct": [1],
-        "explanation": "Slajd 16"
+        "explanation": "Strona 454"
     },
     {
         "question": "[Wykład] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
@@ -850,6 +850,6 @@ const allQuestions = [
             "wrapper.find(Button).at(1)"
         ],
         "correct": [2],
-        "explanation": "Slajd 10: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane"
+        "explanation": "Strona 448: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane"
     }
 ]
