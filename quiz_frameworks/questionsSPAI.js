@@ -717,13 +717,13 @@ const allQuestions = [
     {
         "question": "Które z poniższych jest opartym na GUI narzędziem do debugowania w Node.js?",
         "options": [
-            "A. REPL",
-            "B. Core node debugger",
-            "C. Console",
-            "D. Node Inspector"
+            "REPL",
+            "Core node debugger",
+            "Console",
+            "Node Inspector"
         ],
-        "correct": [3],
-        "explanation": "`Node Inspector` udostępnia graficzny interfejs (GUI), zintegrowany z narzędziami Chrome DevTools, pozwalający na wygodne debugowanie kodu Node.js w przeglądarce."
+        "correct": [1],
+        "explanation": "CHUJ WIE O CO CHODZI; `Node Inspector` udostępnia graficzny interfejs (GUI), zintegrowany z narzędziami Chrome DevTools, pozwalający na wygodne debugowanie kodu Node.js w przeglądarce."
     },
     {
         "question": "Którego z poniższych elementów należy użyć do uzyskania dostępu do funkcji fetch() z elementu h1 w JSX?",
