@@ -295,7 +295,7 @@ const allQuestions = [
             "zawiera informacje o projekcie: wersja, opis, autorzy itd. oraz o zależnościach, jakie zostały wykorzystane do stworzenia projektu",
             "można utworzyć za pomocą polecenia 'npm init'"
         ],
-        "correct": [1, 2, 3],
+        "correct": [0],
         "explanation": "Slajd 54; Gemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
     },
     {
