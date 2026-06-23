@@ -838,7 +838,7 @@ const allQuestions = [
             "Playwright obsługuje wiele przeglądarek (Chromium, Firefox, WebKit), ma auto-wait, codegen i trace viewer",
             "Playwright nie wymaga Node.js, działa bezpośrednio w przeglądarce"
         ],
-        "correct": [1],
+        "correct": [2],
         "explanation": "Strona 454"
     },
     {
