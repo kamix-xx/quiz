@@ -41,7 +41,7 @@ const allQuestions = [
             "występuje duże marnotrawstwo pamięci"
         ],
         "correct": [1],
-        "explanation": "Ma sens, nie próbujcie nawet szukać `virtual DOM` w prezentacji xD; Virtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
+        "explanation": "Slajd 25; Ma sens, nawet jest w prezentacji, ale oczywiście kurwa `wirtualny` a nie `virtual`; \nVirtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
     },
     {
         "question": "Czym jest 'useState' w poniższej konstrukcji?\nconst [state, setState] = useState()",
@@ -235,10 +235,10 @@ const allQuestions = [
     {
         "question": "Jaka liczba elementów może być zwrócona przez prawidłowy komponent Reacta?",
         "options": [
-            "A) 1 (komponent musi zwracać jeden główny element)",
-            "B) 2",
-            "C) 3",
-            "D) 5"
+            "1 (komponent musi zwracać jeden główny element)",
+            "2",
+            "3",
+            "5"
         ],
         "correct": [0],
         "explanation": "Składnia JSX wymaga, aby funkcja renderująca komponent zwracała dokładnie jeden korzeń (root element). Może to być pojedynczy tag HTML, inny komponent lub tzw. fragment (`<>...</>`)."
