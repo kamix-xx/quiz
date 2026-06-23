@@ -83,13 +83,13 @@ const allQuestions = [
     {
         "question": "Główny komponent w React to:",
         "options": [
-            "A) App",
-            "B) JSX",
-            "C) index",
-            "D) Main"
+            "App",
+            "JSX",
+            "index",
+            "Main"
         ],
         "correct": [0],
-        "explanation": "W standardowych konfiguracjach i szablonach startowych Reacta (np. Create React App, Vite) domyślnym, głównym komponentem aplikacji spinającym pozostałe komponenty potomne jest komponent `App`."
+        "explanation": "Nie wiem co tu tłumaczyć, jak nie wierzysz to sprawdź w internecie"
     },
     {
         "question": "Wskaż polecenie, które uruchomi kod zawarty w pliku hello.js:",
@@ -445,7 +445,7 @@ const allQuestions = [
             "5"
         ],
         "correct": [2],
-        "explanation": "Strona 14;  \n" +
+        "explanation": "Strona 14 (ogólne) i 15 (konkrety);  \n" +
             "• Informacyjny: 1xx\n" +
             "• Powodzenie: 2xx\n" +
             "• Przekierowanie: 3xx\n" +
@@ -559,13 +559,18 @@ const allQuestions = [
     {
         "question": "Błąd serwera:",
         "options": [
-            "A. 500",
-            "B. 404",
-            "C. 403",
-            "D. 400"
+            "500",
+            "404",
+            "403",
+            "400"
         ],
         "correct": [0],
-        "explanation": "Kod błędu `500 Internal Server Error` jednoznacznie reprezentuje ogólny, nieoczekiwany błąd występujący bezpośrednio po stronie serwera. Kody z serii 4xx reprezentują błędy po stronie klienta."
+        "explanation": "Strona 14 (ogólne) i 15 (konkrety);  \n" +
+            "• Informacyjny: 1xx\n" +
+            "• Powodzenie: 2xx\n" +
+            "• Przekierowanie: 3xx\n" +
+            "• Błąd klienta: 4xx\n" +
+            "• Błąd serwera: 5xx"
     },
     {
         "question": "Co powinno znaleźć się wewnątrz nawiasów metody Array.map()?",
@@ -603,13 +608,13 @@ const allQuestions = [
     {
         "question": "Do znajdowania potencjalnych miejsc wystąpienia błędów, identyfikowania obszarów, które stwarzają ryzyko wystąpienia błędów lub wrażliwych konstrukcji służy:",
         "options": [
-            "A. moduł nodemon",
-            "B. biblioteka puppeteer",
-            "C. biblioteka jest",
-            "D. narzędzie ESLint"
+            "moduł nodemon",
+            "biblioteka puppeteer",
+            "biblioteka jest",
+            "narzędzie ESLint"
         ],
         "correct": [3],
-        "explanation": "ESLint jest statycznym analizatorem kodu (linterem) dla języka JavaScript, którego podstawowym zadaniem jest weryfikacja poprawności składniowej pod kątem wzorców błędów oraz dobrych praktyk projektowych."
+        "explanation": "Strona 22; ESLint jest statycznym analizatorem kodu (linterem) dla języka JavaScript, którego podstawowym zadaniem jest weryfikacja poprawności składniowej pod kątem wzorców błędów oraz dobrych praktyk projektowych."
     },
     {
         "question": "Idempotentność to dobra praktyka REST API oznaczająca, że...",
@@ -836,7 +841,7 @@ const allQuestions = [
         "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
     },
     {
-        "question": "[Wykład] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
+        "question": "[PK] Dlaczego Playwright stał się preferowanym narzędziem do testów E2E zamiast Puppeteer w 2026?",
         "options": [
             "Playwright jest płatny i lepiej wspierany przez producenta",
             "Playwright wspiera tylko Chrome, więc jest szybszy",
@@ -847,7 +852,7 @@ const allQuestions = [
         "explanation": "Strona 454",
     },
     {
-        "question": "[Wykład] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
+        "question": "[PK] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
         "options": [
             "container.querySelector('.btn-delete')",
             "screen.getByTestId('delete-button')",
@@ -856,5 +861,16 @@ const allQuestions = [
         ],
         "correct": [2],
         "explanation": "Strona 448: Im bardziej test przypomina sposób użycia, tym więcej pewności daje <- tak jest w prezentacji napisane",
+    },
+    {
+        "question": "[PK 1/6] Co się stanie, jeśli middleware NIE wywoła ani next(), ani res.send/res.json/res.end?",
+        "options": [
+            "Express automatycznie przekaże żądanie do następnego middleware po 100ms",
+            "Aplikacja zwróci błąd HTTP 500 z komunikatem 'Internal Server Error'",
+            "Żądanie zawiśnie i klient otrzyma timeout (lub czeka w nieskończoność)",
+            "Express wyrzuci wyjątek i serwer się zatrzyma"
+        ],
+        "correct": [2],
+        "explanation": "Strona 228: Brak wywołania next() ani res.send → żądanie wisi i kończy się timeoutem",
     }
 ]
