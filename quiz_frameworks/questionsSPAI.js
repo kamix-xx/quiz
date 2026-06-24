@@ -831,7 +831,7 @@ const allQuestions = [
             "API jest interfejsem „software-to-software\"",
             "API jest interfejsem użytkownika"
         ],
-        "correct": [1, 2],
+        "correct": [3],
         "explanation": "Strona 485: `API (Application Programming Interface) interfejs komunikacji między dwoma systemami`"
     },
     {
