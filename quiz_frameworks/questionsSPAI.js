@@ -78,7 +78,7 @@ const allQuestions = [
             "zawiera informacje o projekcie: wersja, opis, autorzy"
         ],
         "correct": [1, 2, 3],
-        "explanation": "Strona 54;\nGemini:Plik `package.json` stanowi manifest projektu npm. Przechowuje metadane oraz deklaracje zależności pobieranych przez `npm install`. Automatycznym restartem zajmuje się osobne narzędzie (np. nodemon), a nie sam plik konfiguracyjny."
+        "explanation": "Strona 54;<br>Gemini: Plik `package.json` stanowi manifest projektu npm. Przechowuje metadane oraz deklaracje zależności pobieranych przez `npm install`. Automatycznym restartem zajmuje się osobne narzędzie (np. nodemon), a nie sam plik konfiguracyjny."
     },
     {
         "question": "Główny komponent w React to:",
@@ -257,7 +257,7 @@ const allQuestions = [
             "POST"
         ],
         "correct": [0],
-        "explanation": "Strona 240;\nPOST - utworzenie nowego zasobu,\nPUT - pełne nadpisanie,\nGET pobranie,\nDELETE - usunięcie"
+        "explanation": "Strona 240;<br>POST - utworzenie nowego zasobu,<br>PUT - pełne nadpisanie,<br>GET pobranie,<br>DELETE - usunięcie"
     },
     {
         "question": "Wskaż wynik działania kodu:\n[1, 2, 3].map(x => x * x * x)",
@@ -301,7 +301,7 @@ const allQuestions = [
             "można utworzyć za pomocą polecenia 'npm init'"
         ],
         "correct": [0],
-        "explanation": "Strona 54;\nGemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
+        "explanation": "Strona 54;<br>Gemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
     },
     {
         "question": "Którre stwierdzenie dotyczące szkieletu programistycznego Express nie jest prawdziwe:",
@@ -448,10 +448,10 @@ const allQuestions = [
         ],
         "correct": [2],
         "explanation": "Strona 14 (ogólne) i 15 (konkrety);  \n" +
-            "• Informacyjny: 1xx\n" +
-            "• Powodzenie: 2xx\n" +
-            "• Przekierowanie: 3xx\n" +
-            "• Błąd klienta: 4xx\n" +
+            "• Informacyjny: 1xx<br>" +
+            "• Powodzenie: 2xx<br>" +
+            "• Przekierowanie: 3xx<br>" +
+            "• Błąd klienta: 4xx<br>" +
             "• Błąd serwera: 5xx"
     },
     {
@@ -568,10 +568,10 @@ const allQuestions = [
         ],
         "correct": [0],
         "explanation": "Strona 14 (ogólne) i 15 (konkrety);  \n" +
-            "• Informacyjny: 1xx\n" +
-            "• Powodzenie: 2xx\n" +
-            "• Przekierowanie: 3xx\n" +
-            "• Błąd klienta: 4xx\n" +
+            "• Informacyjny: 1xx<br>" +
+            "• Powodzenie: 2xx<br>" +
+            "• Przekierowanie: 3xx<br>" +
+            "• Błąd klienta: 4xx<br>" +
             "• Błąd serwera: 5xx"
     },
     {
@@ -878,7 +878,7 @@ const allQuestions = [
         "explanation": "Strona 454",
     },
     {
-        "question": "[PK 4/5 Zespół używa Husky + lint-staged.\nCo się stanie po uruchomieniu git commit?] ",
+        "question": "[PK 4/5] Zespół używa Husky + lint-staged.\nCo się stanie po uruchomieniu git commit?",
         "options": [
             "Wszystkie pliki projektu zostaną sprawdzone przez ESLint i Prettier",
             "Tylko pliki w staging area zostaną sprawdzone; jeśli format niepoprawny, lint-staged" +
@@ -887,7 +887,9 @@ const allQuestions = [
             "Pliki zostaną tylko sformatowane przez Prettier, ESLint będzie pominięty"
         ],
         "correct": [1],
-        "explanation": "Wskazówka: dlaczego 'staged' w nazwie lint-staged?",
+        "explanation": "Strona 462 -  1. Husky uruchamia .husky/pre-commit 2. lint-staged bierze pliki w staging area\n" +
+            "3. Dla każdego pliku uruchamia odpowiednie narzędzia" +
+            "4. Jeśli błąd – commit zostaje przerwany;<br>Wskazówka: dlaczego 'staged' w nazwie lint-staged?",
     },
     {
         "question": "[PK 5/5] Użytkownicy pewnej aplikacji skarżą się, że 'kliknięcie przycisku reaguje powoli'." +
@@ -895,7 +897,7 @@ const allQuestions = [
         "options": [
             "LCP (Largest Contentful Paint) – czas do narysowania głównego elementu",
             "CLS (Cumulative Layout Shift) – suma przesunięć layoutu",
-            "INP (Interaction to Next Paint) – czas reakcji na interakcję\n",
+            "INP (Interaction to Next Paint) – czas reakcji na interakcję",
             "FCP (First Contentful Paint) – czas do pierwszego renderu"
         ],
         "correct": [2],
