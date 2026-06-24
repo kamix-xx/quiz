@@ -224,7 +224,7 @@ const allQuestions = [
             "main.jsx"
         ],
         "correct": [0, 4],
-        "explanation": "Strona 235 (server.js/index.js),  344 (main.jsx); Domyślnym punktem startowym aplikacji, w którym następuje pobranie głównego kontenera HTML i zamontowanie drzewa komponentów za pomocą modułu ReactDOM, jest plik `index.js` (lub odpowiednio `main.jsx` w nowszych konfiguracjach z Vite)."
+        "explanation": "Strona 344 (main.jsx); Domyślnym punktem startowym aplikacji, w którym następuje pobranie głównego kontenera HTML i zamontowanie drzewa komponentów za pomocą modułu ReactDOM, jest plik `index.js` (lub odpowiednio `main.jsx` w nowszych konfiguracjach z Vite)."
     },
     {
         "question": "Co należy użyć, aby przekazać dane z zewnątrz do komponentu?",
