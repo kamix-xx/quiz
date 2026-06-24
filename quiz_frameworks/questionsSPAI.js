@@ -732,8 +732,8 @@ const allQuestions = [
             "Console",
             "Node Inspector"
         ],
-        "correct": [1, 3],
-        "explanation": "CHUJ WIE O CO CHODZI; `Node Inspector` udostępnia graficzny interfejs (GUI), zintegrowany z narzędziami Chrome DevTools, pozwalający na wygodne debugowanie kodu Node.js w przeglądarce."
+        "correct": [3],
+        "explanation": "CHUJ WIE O CO CHODZI; `Node Inspector` udostępnia graficzny interfejs (GUI), zintegrowany z narzędziami Chrome DevTools, pozwalający na wygodne debugowanie kodu Node.js w przeglądarce. Core node debugger: To wbudowany w Node.js debuger, ale działa on stricte w trybie tekstowym/wierszu poleceń (uruchamiany jako node inspect)."
     },
     {
         "question": "Którego z poniższych elementów należy użyć do uzyskania dostępu do funkcji fetch() z elementu h1 w JSX?",
