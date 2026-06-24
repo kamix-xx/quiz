@@ -352,13 +352,14 @@ const allQuestions = [
     {
         "question": "W React programowanie odbywa się za pomocą:",
         "options": [
-            "A) małych modułów",
-            "B) dużych modułów",
-            "C) samodzielnych komponentów",
-            "D) pakietów"
+            "małych modułów",
+            "dużych modułów",
+            "samodzielnych komponentów",
+            "pakietów"
         ],
         "correct": [2],
-        "explanation": "Główną filozofią projektową biblioteki React jest komponentowość (Component-Based Development) — budowanie interfejsu z niezależnych, izolowanych komponentów wielokrotnego użytku."
+        "explanation": "Strona 44 -  React umożliwia budowanie złożonych interfejsów użytkownika za pomocą małych i odizolowanych od siebie" +
+            "fragmentów kodu, zwanych komponentami"
     },
     {
         "question": "Wykonywane jest renderowanie listy przy użyciu metody map z języka JavaScript.\nJaki element jest wymagany podczas renderowania każdego elementu listy?",
@@ -740,7 +741,7 @@ const allQuestions = [
             "<h1>${fetch{}}</h1>"
         ],
         "correct": [0],
-        "explanation": "Wywołanie i wstrzyknięcie wyniku dowolnej funkcji JavaScript w strukturze kodu JSX odbywa się przy pomocy standardowych klamer osadzających: &#10094;h1>{fetch()}&#10094;/h1>."
+        "explanation": "Wywołanie i wstrzyknięcie wyniku dowolnej funkcji JavaScript w strukturze kodu JSX odbywa się przy pomocy standardowych klamer osadzających: &lt;h1>{fetch()}&lt;/h1>."
     },
     {
         "question": "Który z poniższych NIE jest obiektem JS?",
@@ -889,8 +890,8 @@ const allQuestions = [
         "explanation": "Wskazówka: dlaczego 'staged' w nazwie lint-staged?",
     },
     {
-        "question": "[PK 5/5 Użytkownicy pewnej aplikacji skarżą się, że 'kliknięcie przycisku reaguje powoli'." +
-            "\nKtórą metrykę Web Vitals należy sprawdzić w pierwszej kolejności?] ",
+        "question": "[PK 5/5] Użytkownicy pewnej aplikacji skarżą się, że 'kliknięcie przycisku reaguje powoli'." +
+            "\nKtórą metrykę Web Vitals należy sprawdzić w pierwszej kolejności?",
         "options": [
             "LCP (Largest Contentful Paint) – czas do narysowania głównego elementu",
             "CLS (Cumulative Layout Shift) – suma przesunięć layoutu",
@@ -941,7 +942,8 @@ const allQuestions = [
             "\n`app.get('/data', async (req, res) => {\n" +
             "\tconst result = await fetchFromAPI() // rzuca błąd!\n" +
             "\tres.json(result)\n" +
-            "})\n`",
+            "})`" +
+            "\n\nFunkcja fetchFromAPI() rzuca wyjątek. Co się stanie BEZ żadnej obsługi?",
         "options": [
             "Express automatycznie złapie błąd i wyśle 500",
             "Żądanie zawiśnie (timeout), w konsoli pojawi się 'UnhandledPromiseRejection",
@@ -952,9 +954,8 @@ const allQuestions = [
         "explanation": "Wskazówka: różnica między Express 4 (klasyczny) a Express 5 (od 2024) jest tu kluczowa",
     },
     {
-        "question": "[PK 5/6] Implementujesz logowanie z JWT. Wysyłasz access token przez\n" +
-            "Authorization header, a refresh token zapisujesz w cookie BEZ flag httpOnly i sameSite. " +
-            "Klient (React SPA) zapisuje też access token w localStorage „dla wygody\"." +
+        "question": "[PK 5/6] Implementujesz logowanie z JWT. Wysyłasz access token przez Authorization header, a refresh token zapisujesz w cookie BEZ flag httpOnly i sameSite. " +
+            "\nKlient (React SPA) zapisuje też access token w localStorage „dla wygody\"." +
             "\n\nKtóre z poniższych jest NAJWIĘKSZYM zagrożeniem?",
         "options": [
             "Brute-force ataki – bez rate limiting hacker zgadnie hasło",
@@ -963,7 +964,7 @@ const allQuestions = [
             "Cookie zajmuje za dużo miejsca w przeglądarce"
         ],
         "correct": [1],
-        "explanation": "Wskazówka: pomyśl co może zrobić atakujący który wstrzyknął &#10094;script> na stronie",
+        "explanation": "Wskazówka: pomyśl co może zrobić atakujący który wstrzyknął &lt;script> na stronie",
     },
     {
         "question": "[PK 6/6] Które z poniższych jest WBUDOWANE w Express (od wersji 4.16) i NIE wymaga osobnej instalacji z npm?",
