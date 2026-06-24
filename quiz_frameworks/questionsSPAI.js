@@ -620,10 +620,10 @@ const allQuestions = [
     {
         "question": "Idempotentność to dobra praktyka REST API oznaczająca, że...",
         "options": [
-            "A. do każdej aktualizacji zasobu należy stosować PUT - w przypadku nadpisywania całego obiektu i PATCH - w przypadku nadpisywania",
-            "B. należy korzystać z nagłówków do wywołania meta-danych.",
-            "C. należy stosować paginację, gdy zwracana jest duża lista książek.",
-            "D. każde wywołanie REST-owego API powinno zmieniać dany zasób maksymalnie jeden raz, nawet gdy jest wykonywane wielokrotnie"
+            "do każdej aktualizacji zasobu należy stosować PUT - w przypadku nadpisywania całego obiektu i PATCH - w przypadku nadpisywania",
+            "należy korzystać z nagłówków do wywołania meta-danych.",
+            "należy stosować paginację, gdy zwracana jest duża lista książek.",
+            "każde wywołanie REST-owego API powinno zmieniać dany zasób maksymalnie jeden raz, nawet gdy jest wykonywane wielokrotnie"
         ],
         "correct": [3],
         "explanation": "Oczywiście, że nie ma tego w prezentacji (dobra jest w tej ekstra - 493); Idempotentność gwarantuje, że końcowy efekt powtarzania tego samego żądania na serwerze nie wpłynie na zmianę stanu aplikacji w sposób inny niż pierwsze poprawne wykonanie."
