@@ -223,7 +223,7 @@ const allQuestions = [
             "main.js",
             "main.jsx"
         ],
-        "correct": [0, 4],
+        "correct": [4],
         "explanation": "Strona 344 (main.jsx); Domyślnym punktem startowym aplikacji, w którym następuje pobranie głównego kontenera HTML i zamontowanie drzewa komponentów za pomocą modułu ReactDOM, jest plik `index.js` (lub odpowiednio `main.jsx` w nowszych konfiguracjach z Vite)."
     },
     {
