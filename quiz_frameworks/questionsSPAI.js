@@ -13,13 +13,13 @@ const allQuestions = [
     {
         "question": "Silniki szablonów, które można użyć w szkielecie Express:",
         "options": [
-            "A) EJS",
-            "B) Pug",
-            "C) Handlebars",
-            "D) żaden z powyższych"
+            "EJS",
+            "Pug",
+            "Handlebars",
+            "żaden z powyższych"
         ],
         "correct": [0, 1, 2],
-        "explanation": "Express jest kompatybilny z wieloma popularnymi silnikami szablonów, w tym EJS, Pug (dawniej Jade) oraz Handlebars, które są powszechnie stosowane i integrowane za pomocą `app.set('view engine', ...)`."
+        "explanation": "Strona 235; Express jest kompatybilny z wieloma popularnymi silnikami szablonów, w tym EJS, Pug (dawniej Jade) oraz Handlebars, które są powszechnie stosowane i integrowane za pomocą `app.set('view engine', ...)`."
     },
     {
         "question": "Oprogramowanie pośredniczące w Express realizuje następujące zadania:",
@@ -45,7 +45,7 @@ const allQuestions = [
             "występuje duże marnotrawstwo pamięci"
         ],
         "correct": [1],
-        "explanation": "Strona 25; Ma sens, nawet jest w prezentacji, ale oczywiście kurwa `wirtualny` a nie `virtual`; \nVirtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
+        "explanation": "Strona 24, 45; Ma sens, nawet jest w prezentacji, ale oczywiście kurwa `wirtualny` a nie `virtual`; \nVirtual DOM to lekka reprezentacja struktury HTML trzymana w pamięci. Zmiany są na nim dokonywane bardzo szybko, a algorytm różnicowy (diffing) aktualizuje w prawdziwym drzewie DOM wyłącznie te elementy, które rzeczywiście uległy zmianie."
     },
     {
         "question": "Czym jest 'useState' w poniższej konstrukcji?\nconst [state, setState] = useState()",
@@ -111,18 +111,18 @@ const allQuestions = [
             "Component jest możliwością nazwaną"
         ],
         "correct": [2, 3],
-        "explanation": "Dokładnie ten przykład: strona 136, ogólnie: 132-140; W składni modułów ES6 element importowany poza klamrami (`React`) stanowi import domyślny (`export default`), natomiast elementy ujęte w klamry (`{ Component }`) to importy nazwane (`export const/class...`)."
+        "explanation": "Dokładnie ten przykład: strona 136, ogólnie: 132-140;\nnazwana w {}, domyślna bez\nGemini:W składni modułów ES6 element importowany poza klamrami (`React`) stanowi import domyślny (`export default`), natomiast elementy ujęte w klamry (`{ Component }`) to importy nazwane (`export const/class...`)."
     },
     {
         "question": "Hooki w React:",
         "options": [
-            "A) wymagają deklaracji konstruktora",
-            "B) muszą być wywoływane na najwyższym poziomie, nie można ich wywoływać winside zagnieżdżonych funkcji, pętli, warunków",
-            "C) występują w komponentach klasowych",
-            "D) wymagają użycia słowa kluczowego 'this' w deklaracji lub modyfikacji stanu"
+            "wymagają deklaracji konstruktora",
+            "muszą być wywoływane na najwyższym poziomie, nie można ich wywoływać winside zagnieżdżonych funkcji, pętli, warunków",
+            "występują w komponentach klasowych",
+            "wymagają użycia słowa kluczowego 'this' w deklaracji lub modyfikacji stanu"
         ],
         "correct": [1],
-        "explanation": "Zgodnie z oficjalnymi zasadami stosowania Hooków (Rules of Hooks), mogą być one wywoływane wyłącznie na najwyższym poziomie komponentów funkcyjnych. Nie wolno ich umieszczać wewnątrz instrukcji warunkowych, pętli czy funkcji wewnętrznych."
+        "explanation": "Strona 392-294 (w funkcjach a nie klasach, bez `this`); Gemini: Zgodnie z oficjalnymi zasadami stosowania Hooków (Rules of Hooks), mogą być one wywoływane wyłącznie na najwyższym poziomie komponentów funkcyjnych. Nie wolno ich umieszczać wewnątrz instrukcji warunkowych, pętli czy funkcji wewnętrznych."
     },
     {
         "question": "Wskaż prawidłowe określenia dla REST:",
@@ -167,7 +167,7 @@ const allQuestions = [
             "dokumenty w kolekcji nie posiadają unikalnych identyfikatorów",
             "MongoDB przechowuje dane w rekordach i tabelach"
         ],
-        "correct": [2, 3, 4],
+        "correct": [3, 4],
         "explanation": "Strona 166 (język); MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
     },
     {
@@ -201,7 +201,7 @@ const allQuestions = [
             "\"Połowa liczby 20 wynosi ${20/2}\""
         ],
         "correct": [2],
-        "explanation": "Sljad 10 - grawis; Znak $; Szablony ciągów tekstowych (Template Literals) w standardzie ES6 są definiowane i ograniczane wyłącznie za pomocą znaków grawisu (tzw. backticków ` `). Tylko w nich działa interpolacja `${expression}`."
+        "explanation": "Strona 97 - grawis; Znak $; Szablony ciągów tekstowych (Template Literals) w standardzie ES6 są definiowane i ograniczane wyłącznie za pomocą znaków grawisu (tzw. backticków ` `). Tylko w nich działa interpolacja `${expression}`."
     },
     {
         "question": "Jakie są rodzaje komponentów w React?",
@@ -257,7 +257,7 @@ const allQuestions = [
             "POST"
         ],
         "correct": [0],
-        "explanation": "Strona 240; POST - utworzenie nowego zasobu, PUT - pełne nadpisanie, GET pobranie, DELETE - usunięcie"
+        "explanation": "Strona 240;\nPOST - utworzenie nowego zasobu,\nPUT - pełne nadpisanie,\nGET pobranie,\nDELETE - usunięcie"
     },
     {
         "question": "Wskaż wynik działania kodu:\n[1, 2, 3].map(x => x * x * x)",
@@ -306,13 +306,14 @@ const allQuestions = [
     {
         "question": "Którre stwierdzenie dotyczące szkieletu programistycznego Express nie jest prawdziwe:",
         "options": [
-            "A) Mocno obciążone witryny oparte na szkielecie Express cechują się niską wydajnością",
-            "B) Express to szkielet działający po stronie serwera",
-            "C) Express upraszcza proces budowania aplikacji internetowej w porównaniu do Node",
-            "D) Express odchodzi od wbudowanych komponentów na rzecz konfigurowalnej warstwy pośredniczącej"
+            "Mocno obciążone witryny oparte na szkielecie Express cechują się niską wydajnością",
+            "Express to szkielet działający po stronie serwera",
+            "Express upraszcza proces budowania aplikacji internetowej w porównaniu do Node",
+            "Express odchodzi od wbudowanych komponentów na rzecz konfigurowalnej warstwy pośredniczącej"
         ],
         "correct": [0],
-        "explanation": "Stwierdzenie A jest nieprawdziwe. Express opiera się na asynchronicznej i nieblokującej naturze Node.js, dzięki czemu aplikacje na nim zbudowane cechują się bardzo wysoką wydajnością przy dużym obciążeniu."
+        "explanation": "Strona 41-42 1:1 poprawne; Mocno obciążone witryny utworzone z użyciem Expressa\n" +
+            "cechują się WYSOKĄ wydajnością"
     },
     {
         "question": "Wskaż prawdziwe stwierdzenia dotyczące szkieletu Express:",
@@ -373,13 +374,13 @@ const allQuestions = [
     {
         "question": "Który hook umożliwia pobieranie danych przez aplikację klienta za pośrednictwem API?",
         "options": [
-            "A) useAxios",
-            "B) useState",
-            "C) useFeed",
-            "D) useEffect"
+            "useAxios",
+            "useState",
+            "useFeed",
+            "useEffect"
         ],
         "correct": [3],
-        "explanation": "Chociaż pobieranie danych realizują biblioteki (np. Axios lub fetch), to w samym React operację wywołania zapytania sieciowego (efekt uboczny) po zamontowaniu komponentu umieszcza się wewnątrz standardowego hooka `useEffect`."
+        "explanation": "Strona 396 (useEffect jako przykład pobierania danych z API, więc chyba to);\nGemini:Chociaż pobieranie danych realizują biblioteki (np. Axios lub fetch), to w samym React operację wywołania zapytania sieciowego (efekt uboczny) po zamontowaniu komponentu umieszcza się wewnątrz standardowego hooka `useEffect`."
     },
     {
         "question": "Wskaż niepoprawne stwierdzenie dotyczące platformy Node:",
@@ -423,7 +424,7 @@ const allQuestions = [
             "3"
         ],
         "correct": [2],
-        "explanation": "Nie znalazłem tego wgl w prezentacji (jest w bonusowej jednak) https://cycl.pl/posts/rest-api-mdd/Model Richardsona definiuje Poziom 2 jako jednoczesne wykorzystanie dedykowanych adresów URI dla konkretnych zasobów (z Poziomu 1) oraz właściwych czasowników/metod protokołu HTTP (np. GET, POST) do precyzowania typu operacji."
+        "explanation": "Nie znalazłem tego wgl w prezentacji (jest w bonusowej jednak) https://cycl.pl/posts/rest-api-mdd/ \nModel Richardsona definiuje Poziom 2 jako jednoczesne wykorzystanie dedykowanych adresów URI dla konkretnych zasobów (z Poziomu 1) oraz właściwych czasowników/metod protokołu HTTP (np. GET, POST) do precyzowania typu operacji."
     },
     {
         "question": "Jakie elementy zawiera projekt Reacta?",
@@ -535,10 +536,10 @@ const allQuestions = [
     {
         "question": "/cars/get - jaki to poziom REST API?",
         "options": [
-            "A. Poziom 1",
-            "B. Poziom 2",
-            "C. Poziom 3",
-            "D. Poziom 0"
+            "Poziom 1",
+            "Poziom 2",
+            "Poziom 3",
+            "Poziom 0"
         ],
         "correct": [3],
         "explanation": "Stosowanie konstrukcji URL zawierających czasowniki operacyjne (np. `/get-cars`, `/cars/get`) przy jednoczesnym ignorowaniu semantyki metod HTTP jest cechą charakterystyczną dla architektury typu RPC (kody bagienne), czyli Poziomu 0 w modelu Richardsona."
@@ -924,8 +925,8 @@ const allQuestions = [
         "explanation": "Strona 254 (to pytanie): `Wskazówka: parametry ścieżki (:id) vs query string (?include=) to dwa OSOBNE źródła`, oba muszą być stringami",
     },
     {
-        "question": "[PK 3/6] Klient wysyła POST /api/login z body JSON: { \"email\": \"a@b.pl\" }\ni nagłówkiem Content-Type: application/json." +
-            "\nJakie middleware MUSI być zarejestrowane PRZED tym handlerem, by req.body było zdefiniowane?",
+        "question": "[PK 3/6] Klient wysyła POST\n`/api/login z body JSON: { \"email\": \"a@b.pl\" }`\ni nagłówkiem Content-Type: application/json." +
+            "\n\nJakie middleware MUSI być zarejestrowane PRZED tym handlerem, by req.body było zdefiniowane?",
         "options": [
             "`app.use(express.urlencoded({ extended: true }))`",
             "`app.use(express.json())`",
