@@ -430,13 +430,13 @@ const allQuestions = [
     {
         "question": "Jakie elementy zawiera projekt Reacta?",
         "options": [
-            "a) wszystkie wymienione",
-            "b) treści zastępcze",
-            "c) kompletny zestaw narzędzi programistycznych",
-            "d) podstawowy zestaw plików aplikacji"
+            "wszystkie wymienione",
+            "treści zastępcze",
+            "kompletny zestaw narzędzi programistycznych",
+            "podstawowy zestaw plików aplikacji"
         ],
         "correct": [0],
-        "explanation": "Struktura startowa wygenerowanego projektu zawiera pełną konfigurację środowiskową, bazowy zestaw plików źródłowych, gotowe skrypty budujące oraz domyślne komponenty/treści zastępcze."
+        "explanation": "Strona od 340;<br>Struktura startowa wygenerowanego projektu zawiera pełną konfigurację środowiskową, bazowy zestaw plików źródłowych, gotowe skrypty budujące oraz domyślne komponenty/treści zastępcze."
     },
     {
         "question": "Kody odpowiedzi HTTP, które można zaobserwować w momencie, gdy stara zawartość została zastąpiona i przekierowana do nowej, rozpoczynają się od cyfry:",
@@ -632,13 +632,13 @@ const allQuestions = [
     {
         "question": "Jaka biblioteka do wykonywania testów jest najczęściej kojarzona z Reactem?",
         "options": [
-            "A. Jest",
-            "B. Chai",
-            "C. Sinon",
-            "D. Mocha"
+            "Jest",
+            "Chai",
+            "Sinon",
+            "Mocha"
         ],
         "correct": [0],
-        "explanation": "`Jest` to najpopularniejszy framework testowy stworzony przez Meta, dostarczany domyślnie wraz z narzędziami uruchomieniowymi aplikacji React do przeprowadzania testów jednostkowych."
+        "explanation": "RTL, ale oczywiście go tu nie ma, wygooglałem też `Jest`<br>`Jest` to najpopularniejszy framework testowy stworzony przez Meta, dostarczany domyślnie wraz z narzędziami uruchomieniowymi aplikacji React do przeprowadzania testów jednostkowych."
     },
     {
         "question": "Jaka jest poprawna składnia zapisu wyrażenia w JSX?",
@@ -757,10 +757,10 @@ const allQuestions = [
     {
         "question": "Na którym poziomie Richardsona jest dokumentacja API",
         "options": [
-            "A. Poziom 3",
-            "B. Poziom 2",
-            "C. Poziom 1",
-            "D. Poziom 0"
+            "Poziom 3",
+            "Poziom 2",
+            "Poziom 1",
+            "Poziom 0"
         ],
         "correct": [0],
         "explanation": "Poziom 3 (HATEOAS) wprowadza mechanizm samoczynnego odkrywania zasobów poprzez hiperłącza zwrotne dostarczane w odpowiedzi, co eliminuje konieczność posiadania sztywnej, zewnętrznej specyfikacji technicznej."
@@ -823,21 +823,21 @@ const allQuestions = [
     {
         "question": "Wskaż nieprawidłowe stwierdzenie.",
         "options": [
-            "A. API dostarcza informacji nie tylko o możliwości wykonania danej operacji, ale też o sposobie w jak ją wykonać oraz rezultacie wykonania",
-            "B. Za sprawą API aplikacje „rozmawiają między sobą bez udziału użytkownika",
-            "C. API jest interfejsem „software-to-software\"",
-            "D. API jest interfejsem użytkownika"
+            "API dostarcza informacji nie tylko o możliwości wykonania danej operacji, ale też o sposobie w jak ją wykonać oraz rezultacie wykonania",
+            "Za sprawą API aplikacje „rozmawiają między sobą bez udziału użytkownika",
+            "API jest interfejsem „software-to-software\"",
+            "API jest interfejsem użytkownika"
         ],
-        "correct": [3],
-        "explanation": "API (Application Programming Interface) jest ze swojej definicji interfejsem programistycznym przeznaczonym dla maszyn i oprogramowania, a nie interfejsem użytkownika (UI) przeznaczonym do interakcji z człowiekiem."
+        "correct": [2],
+        "explanation": "Strona 485: `API (Application Programming Interface) interfejs komunikacji między dwoma systemami`"
     },
     {
         "question": "Wskaż złą praktykę podczas konstruowania punktu końcowego URL",
         "options": [
-            "A. DELETE /surveys/123",
-            "B. POST /surveys/123",
-            "C. GET /surveys/123/responses",
-            "D. PUT /surveys/123"
+            "DELETE /surveys/123",
+            "POST /surveys/123",
+            "GET /surveys/123/responses",
+            "PUT /surveys/123"
         ],
         "correct": [1],
         "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
