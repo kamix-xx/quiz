@@ -289,7 +289,7 @@ const allQuestions = [
             "jest środowiskiem wieloplatformowym",
             "możliwe jest używanie synchronicznych wersji funkcji"
         ],
-        "correct": [1],
+        "correct": [0],
         "explanation": "Strona 38-39; Node.js opiera się na architekturze jednowątkowej pętli zdarzeń (Event Loop). Kod JavaScript użytkownika wykonuje się zawsze w obrębie jednego, głównego wątku."
     },
     {
