@@ -702,13 +702,16 @@ const allQuestions = [
     {
         "question": "Która(e) metoda HTTP tworzy nowy zasób (jeśli on jeszcze nie istnieje) na podstawie ładunku podanego w treści żądania?",
         "options": [
-            "A. PATCH",
-            "B. POST, PUT",
-            "C. POST",
-            "D. PUT"
+            "PUT",
+            "POST",
+            "DELETE",
+            /*"POST, PUT",*/
+            "PATCH"
+
         ],
         "correct": [1],
-        "explanation": "W architekturze REST tworzenie zasobu realizuje się najczęściej za pomocą metody `POST`, ale dopuszczalne jest też użycie metody `PUT`, o ile klient zna dokładny docelowy adres URL nowego zasobu."
+        "explanation": "Strona 240;<br>POST - utworzenie nowego zasobu,<br>PUT - pełne nadpisanie,<br>GET pobranie,<br>DELETE - usunięcie" +
+            "<br> Gemini: W architekturze REST tworzenie zasobu realizuje się najczęściej za pomocą metody `POST`, ale dopuszczalne jest też użycie metody `PUT`, o ile klient zna dokładny docelowy adres URL nowego zasobu."
     },
     {
         "question": "Które polecenie służy do uruchomienia serwera MongoDB?",
