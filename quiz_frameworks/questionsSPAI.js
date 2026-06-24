@@ -50,10 +50,10 @@ const allQuestions = [
     {
         "question": "Czym jest 'useState' w poniższej konstrukcji?\nconst [state, setState] = useState()",
         "options": [
-            "A) hookiem",
-            "B) propsem",
-            "C) stanem",
-            "D) konstruktorem"
+            "hookiem",
+            "propsem",
+            "stanem",
+            "konstruktorem"
         ],
         "correct": [0],
         "explanation": "`useState` to podstawowy, wbudowany Hook wprowadzony w React, który pozwala komponentom funkcyjnym na posiadanie i aktualizowanie własnego wewnętrznego stanu."
