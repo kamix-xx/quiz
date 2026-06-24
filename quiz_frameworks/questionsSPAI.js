@@ -168,7 +168,7 @@ const allQuestions = [
             "MongoDB przechowuje dane w rekordach i tabelach"
         ],
         "correct": [3, 4],
-        "explanation": "Strona 166 (język); MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
+        "explanation": "Strona 298 (JS), 166 (język zapytań);<br>MongoDB to baza dokumentowa (NoSQL), która operuje na kolekcjach i dokumentach (BSON), a nie tabelach i rekordach. Każdy dokument musi obligatoryjnie posiadać unikalny identyfikator w polu `_id`. Chociaż zapytania i konsola powłoki są zbliżone składniowo do JS i go interpretują, natywnym językiem operacji na bazie jest MQL (MongoDB Query Language)."
     },
     {
         "question": "W skład stosu MERN wchodzą następujące technologie:",
