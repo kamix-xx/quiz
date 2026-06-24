@@ -206,10 +206,10 @@ const allQuestions = [
     {
         "question": "Jakie są rodzaje komponentów w React?",
         "options": [
-            "A) bezstanowe",
-            "B) stanowe",
-            "C) funkcjonalne",
-            "D) klasowe"
+            "bezstanowe",
+            "stanowe",
+            "funkcjonalne",
+            "klasowe"
         ],
         "correct": [0, 1, 2, 3],
         "explanation": "W ekosystemie React komponenty dzieli się ze względu na architekturę techniczną (klasowe i funkcjonalne) oraz ze względu na posiadanie i zarządzanie wewnętrznym stanem danych (stanowe i bezstanowe)."
