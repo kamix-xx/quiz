@@ -72,13 +72,13 @@ const allQuestions = [
     {
         "question": "Wybierz prawidłowe określenia. Plik `package.json`:",
         "options": [
-            "A) jest narzędziem do automatycznego restartowania programu po wprowadzeniu zmian w kodzie",
-            "B) można utworzyć samodzielnie lub za pomocą polecenia: `npm init`",
-            "C) zawiera szereg zależności niezbędnych do działania aplikacji, które należy pobrać za pomocą polecenia `npm install`",
-            "D) zawiera informacje o projekcie: wersja, opis, autorzy"
+            "jest narzędziem do automatycznego restartowania programu po wprowadzeniu zmian w kodzie",
+            "można utworzyć samodzielnie lub za pomocą polecenia: `npm init`",
+            "zawiera szereg zależności niezbędnych do działania aplikacji, które należy pobrać za pomocą polecenia `npm install`",
+            "zawiera informacje o projekcie: wersja, opis, autorzy"
         ],
         "correct": [1, 2, 3],
-        "explanation": "Plik `package.json` stanowi manifest projektu npm. Przechowuje metadane oraz deklaracje zależności pobieranych przez `npm install`. Automatycznym restartem zajmuje się osobne narzędzie (np. nodemon), a nie sam plik konfiguracyjny."
+        "explanation": "Strona 54;\nGemini:Plik `package.json` stanowi manifest projektu npm. Przechowuje metadane oraz deklaracje zależności pobieranych przez `npm install`. Automatycznym restartem zajmuje się osobne narzędzie (np. nodemon), a nie sam plik konfiguracyjny."
     },
     {
         "question": "Główny komponent w React to:",
@@ -301,7 +301,7 @@ const allQuestions = [
             "można utworzyć za pomocą polecenia 'npm init'"
         ],
         "correct": [0],
-        "explanation": "Strona 54; Gemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
+        "explanation": "Strona 54;\nGemini: Plik `package.json` to statyczny plik konfiguracyjny (manifest), a nie aktywne narzędzie deweloperskie realizujące zadanie ciągłego monitorowania kodu i restartu procesu (do tego służy np. `nodemon`)."
     },
     {
         "question": "Którre stwierdzenie dotyczące szkieletu programistycznego Express nie jest prawdziwe:",
@@ -842,7 +842,7 @@ const allQuestions = [
         "explanation": "Strona 240; Wysyłanie żądania metodą `POST` na bezpośredni identyfikator istniejącego obiektu zasobu (`/surveys/123`) jest błędne semantycznie. Do pełnej lub częściowej aktualizacji zasobu o znanym ID służą metody `PUT` lub `PATCH`, natomiast `POST` służy do kolekcji nadrzędnej."
     },
     {
-        "question": "[PK 1/5 Który z poniższych testów to test JEDNOSTKOWY (unit)?] ",
+        "question": "[PK 1/5] Który z poniższych testów to test JEDNOSTKOWY (unit)?",
         "options": [
             "Test sprawdzający, czy formularz logowania wysyła żądanie HTTP do /api/auth, baza" +
             "zapisuje sesję, a użytkownik zostaje przekierowany na /dashboard",
@@ -852,7 +852,7 @@ const allQuestions = [
             "Test sprawdzający, czy aplikacja React po renderowaniu i interakcji z formularzem zwraca poprawne odpowiedzi z backendu Express"
         ],
         "correct": [1],
-        "explanation": "Gemini",
+        "explanation": "Na logike test jednostkowy, czyli jakis mały musi byc nwm; Gemini tez mowi ze ta odp",
     },
     {
         "question": "[PK 2/5] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
