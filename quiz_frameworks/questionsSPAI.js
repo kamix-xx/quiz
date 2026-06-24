@@ -542,8 +542,8 @@ const allQuestions = [
             "Poziom 3",
             "Poziom 0"
         ],
-        "correct": [3],
-        "explanation": "Stosowanie konstrukcji URL zawierających czasowniki operacyjne (np. `/get-cars`, `/cars/get`) przy jednoczesnym ignorowaniu semantyki metod HTTP jest cechą charakterystyczną dla architektury typu RPC (kody bagienne), czyli Poziomu 0 w modelu Richardsona."
+        "correct": [0],
+        "explanation": "Poziom 0 (Bagno POX): Istnieje jeden punkt wejścia (np. /api) dla wszystkich operacji, a intencja (co zrobić) jest przesyłana w ciele (body) żądania. Poziom 1 (Zasoby): To jest dokładnie przypadek /cars/get. API zaczyna wprowadzać podział na zasoby (wiemy, że operujemy na samochodach – cars), ale zamiast używać metod HTTP do określenia akcji, czasownik opisujący czynność jest wpisany na sztywno w adres URL (/get)."
     },
     {
         "question": "Babel, JSX wybierz prawidłowe zdania:",
