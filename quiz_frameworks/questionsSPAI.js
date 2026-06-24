@@ -279,18 +279,18 @@ const allQuestions = [
             "`await` jest używane podczas wywołania funkcji"
         ],
         "correct": [1],
-        "explanation": "Strona 153 elegancko rozpisane 1:1; Słowa kluczowe `async` oraz `await` są konstrukcjami składniowymi zarezerwowanymi i stosowanymi wyłącznie w odniesieniu do definicji i wywołań funkcji, nie można ich przypisywać bezpośrednio do deklaracji zwykłych zmiennych bądź stałych."
+        "explanation": "Strona 153 elegancko rozpisane 1:1;<br>Słowa kluczowe `async` oraz `await` są konstrukcjami składniowymi zarezerwowanymi i stosowanymi wyłącznie w odniesieniu do definicji i wywołań funkcji, nie można ich przypisywać bezpośrednio do deklaracji zwykłych zmiennych bądź stałych."
     },
     {
         "question": "Wskaż nieprawdziwe stwierdzenie opisujące platformę Node:",
         "options": [
-            "A) jest domyślnie wielowątkowa",
-            "B) powstała w celu ułatwienia programowania asynchronicznego",
-            "C) jest środowiskiem wieloplatformowym",
-            "D) możliwe jest używanie synchronicznych wersji funkcji"
+            "jest domyślnie wielowątkowa",
+            "powstała w celu ułatwienia programowania asynchronicznego",
+            "jest środowiskiem wieloplatformowym",
+            "możliwe jest używanie synchronicznych wersji funkcji"
         ],
-        "correct": [0],
-        "explanation": "Node.js opiera się na architekturze jednowątkowej pętli zdarzeń (Event Loop). Kod JavaScript użytkownika wykonuje się zawsze w obrębie jednego, głównego wątku."
+        "correct": [1],
+        "explanation": "Strona 38-39; Node.js opiera się na architekturze jednowątkowej pętli zdarzeń (Event Loop). Kod JavaScript użytkownika wykonuje się zawsze w obrębie jednego, głównego wątku."
     },
     {
         "question": "Wskaż sformułowanie nieprawidłowe. Plik `package.json`:",
@@ -447,7 +447,7 @@ const allQuestions = [
             "5"
         ],
         "correct": [2],
-        "explanation": "Strona 14 (ogólne) i 15 (konkrety);  \n" +
+        "explanation": "Strona 14 (ogólne) i 15 (konkrety);<br>" +
             "• Informacyjny: 1xx<br>" +
             "• Powodzenie: 2xx<br>" +
             "• Przekierowanie: 3xx<br>" +
@@ -478,7 +478,7 @@ const allQuestions = [
     },
     {
         "question": "Jaki będzie wynik wykonania poniższego kodu, gdy w polu adresu przeglądarki wpiszemy:" +
-            "\n\nhttp://localhost:3000/test?first=hello&second=world\n" +
+            "\n\nhttp://localhost:3000/test?first=hello&second=world\n\n" +
             "const express = require('express');\n" +
             "const app = express();\n" +
             "app.get('/', (req, res, next) => {\n" +
@@ -567,7 +567,7 @@ const allQuestions = [
             "400"
         ],
         "correct": [0],
-        "explanation": "Strona 14 (ogólne) i 15 (konkrety);  \n" +
+        "explanation": "Strona 14 (ogólne) i 15 (konkrety);<br>" +
             "• Informacyjny: 1xx<br>" +
             "• Powodzenie: 2xx<br>" +
             "• Przekierowanie: 3xx<br>" +
@@ -856,7 +856,7 @@ const allQuestions = [
         "explanation": "Na logike test jednostkowy, czyli jakis mały musi byc nwm; Gemini tez mowi ze ta odp",
     },
     {
-        "question": "[PK 2/5] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
+        "question": "[PK 2/5] Komponent UserCard wyświetla imię i przycisk 'Usuń'.\n\nKtóry selektor RTL jest NAJLEPSZY do znalezienia przycisku usuwania?",
         "options": [
             "container.querySelector('.btn-delete')",
             "screen.getByTestId('delete-button')",
